@@ -198,7 +198,7 @@
                         <button class="flex items-center focus:outline-none">
                             <i class="fas fa-user text-white hover:text-crypto-primary text-lg"></i>
                             <svg class="w-3 h-3 ml-1 text-white group-hover:text-crypto-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
-                                <path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                         <div class="absolute -right-10 w-44 bg-white rounded-md shadow-lg z-20 hidden group-hover:block dark:bg-neutral-800">
@@ -235,9 +235,10 @@
         </nav>
     </header>
     <div class="flex">
-        @yield('sidebar')
-        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"></div>
-        <main class="flex-1 px-5 md:px-10 lg:px-0 bg-black custom-scrollbar">
+        @hasSection('sidebar')
+            @yield('sidebar')   
+        @endif
+        <main class="@hasSection('sidebar') md:pe-5 @else md:px-10 @endif flex-1 px-5 lg:px-0 overflow-y-auto bg-black custom-scrollbar">
             @yield('content')
         </main>
     </div>

@@ -1,6 +1,9 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
+} */
 /* For Webkit-based browsers (Chrome, Safari, Edge) */
 main::-webkit-scrollbar {
   width: 6px; /* Thin width */
@@ -52,7 +55,7 @@ main {
   transition: background-color 0.3s ease;
 }
 .step-connector.active {
-  background-color: rgb(163 230 53);
+  @apply bg-crypto-primary;
 }
 .step-circle {
   width: 24px;
@@ -65,17 +68,10 @@ main {
   color: white;
   transition: all 0.3s ease;
 }
-.step-circle.active {
-  background-color: rgb(163 230 53);
+/* .step-circle.completed {
+  @apply bg-crypto-primary;
   color: black;
-}
-.bg-btn {
-  background-color: rgb(240 187 11);
-}
-.step-circle.completed {
-  background-color: rgb(163 230 53);
-  color: black;
-}
+} */
 
 /* Sidebar transitions */
 .sidebar {

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 
-Route::get('/dashboard', [WebController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [WebController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('user.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
