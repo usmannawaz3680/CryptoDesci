@@ -15,7 +15,7 @@
     <header>
         <nav class="bg-white border-gray-200 dark:bg-crypto-accent dark:border-gray-700">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between md:justify-start md:gap-8 p-4">
-                <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="{{ url('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Desci</span>
                 </a>
                 <button data-collapse-toggle="navbar-dropdown" type="button"
@@ -44,7 +44,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-45 dark:bg-neutral-800 dark:divide-gray-600 p-4">
+                            <div id="dropdownNavbar" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-45 dark:bg-neutral-800 dark:divide-gray-600 p-4">
                                 <div class="text-gray-400 text-sm font-medium space-y-2">
                                     <div class="flex items-center space-x-2 py-1">
                                         <span>Arbitrage</span>
@@ -74,7 +74,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbarProjects" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-65 dark:bg-neutral-800 dark:divide-gray-600 p-4">
+                            <div id="dropdownNavbarProjects" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-65 dark:bg-neutral-800 dark:divide-gray-600 p-4">
                                 <div class="text-gray-400 text-sm font-medium space-y-2">
                                     <a href="#" class="hover:text-crypto-primary">
                                         <div class="flex items-center space-x-2 py-1 flex-wrap">
@@ -107,7 +107,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbarEarn" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-55 dark:bg-neutral-800 dark:divide-gray-600 p-4">
+                            <div id="dropdownNavbarEarn" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-55 dark:bg-neutral-800 dark:divide-gray-600 p-4">
                                 <div class="text-gray-400 text-sm font-medium space-y-4">
                                     <!-- Original 3 Sections -->
                                     <a href="#" class="hover:text-crypto-primary block">
@@ -147,7 +147,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbarNfts" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-neutral-800 dark:divide-gray-600">
+                            <div id="dropdownNavbarNfts" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-neutral-800 dark:divide-gray-600">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                                     <li>
                                         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
@@ -171,7 +171,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbarSquare" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-neutral-800 dark:divide-gray-600">
+                            <div id="dropdownNavbarSquare" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-neutral-800 dark:divide-gray-600">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                                     <li>
                                         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>

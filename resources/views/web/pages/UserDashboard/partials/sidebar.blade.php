@@ -172,7 +172,7 @@
                 <div class="p-4 border-t border-gray-800 flex items-center justify-between">
                     <div class="flex items-center gap-3">
                         <img src="/assets/images/placeholder.svg" alt="User" class="w-8 h-8 rounded-full">
-                        <span class="text-sm">User-d6270</span>
+                        <span class="text-sm">{{ auth()->user()->name }}</span>
                     </div>
                     <button class="text-gray-400 hover:text-white">
                         <i class="fas fa-sign-out-alt"></i>

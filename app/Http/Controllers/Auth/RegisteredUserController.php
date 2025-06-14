@@ -44,7 +44,11 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+        if (Auth::user()->is_admin) {
+            return redirect(route('admin.dashboard', absolute: false));
+        }
+        else {
+            return redirect(route('user.dashboard', absolute: false));
+        }
     }
 }

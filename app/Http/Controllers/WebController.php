@@ -14,4 +14,12 @@ class WebController extends Controller
     {
         return view('web.pages.UserDashboard.dashboard');
     }
+    public function nftHome()
+    {
+        return view('web.pages.nft.index');
+    }
+    public function admin()
+    {
+        return view('admin.pages.home');
+    }
 }
