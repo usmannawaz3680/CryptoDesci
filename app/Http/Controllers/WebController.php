@@ -10,4 +10,8 @@ class WebController extends Controller
     {
         return view('web.pages.home');
     }
+    public function dashboard()
+    {
+        return view('web.pages.UserDashboard.dashboard');
+    }
 }
