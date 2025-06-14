@@ -3,11 +3,6 @@ import "flowbite";
 import "datatables.net";
 import "datatables.net-dt/css/dataTables.dataTables.css";
 import $ from "jquery";
-import Alpine from "alpinejs";
-window.Alpine = Alpine;
-Alpine.start();
-// import "flowbite";
-
 $(document).ready(function () {
     $("[id^='cryptoTable']").each(function () {
         $(this).DataTable({
