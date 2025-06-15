@@ -643,7 +643,7 @@
                 </h2>
                 <div id="accordion-flush-body-5" class="hidden" aria-labelledby="accordion-flush-heading-5">
                     <div class="py-4 border-b border-gray-700">
-                        <p class="text-gray-300 text-sm">Binance NFT charges competitive trading fees for NFT transactions with transparent pricing.</p>
+                        <p class="text-gray-300 text-sm">Desci NFT charges competitive trading fees for NFT transactions with transparent pricing.</p>
                     </div>
                 </div>
 
