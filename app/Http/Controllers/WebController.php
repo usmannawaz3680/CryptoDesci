@@ -18,8 +18,16 @@ class WebController extends Controller
     {
         return view('web.pages.nft.index');
     }
-    public function admin()
+    public function copyTrading()
     {
-        return view('admin.pages.home');
+        return view('web.pages.copyTrading.index');
+    }
+    public function tradingBots()
+    {
+        return view('web.pages.tradingBots.index');
+    }
+    public function earnOverview()
+    {
+        return view('web.pages.earn.overview');
     }
 }

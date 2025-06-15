@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desci - @yield('title')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     @stack('style')
@@ -49,14 +50,14 @@
                                     <div class="flex items-center space-x-2 py-1">
                                         <span>Arbitrage</span>
                                     </div>
-                                    <a href="#" class="hover:text-crypto-primary">
+                                    <a href="{{ route('web.tradingbots') }}" class="hover:text-crypto-primary">
                                         <div class="flex items-center space-x-2 py-1 flex-wrap">
                                             <i class="fa-solid fa-robot text-crypto-primary text-lg"></i>
                                             <span>Trading Bots</span>
                                         </div>
                                         <span class="text-gray-500 text-xs">Trade smarter with our various automated strategies - easy, fast and reliable</span>
                                     </a>
-                                    <a href="#" class="hover:text-crypto-primary">
+                                    <a href="{{ route('web.copytrading') }}" class="hover:text-crypto-primary">
                                         <div class="flex items-center space-x-2 py-1 flex-wrap">
                                             <i class="fa-solid fa-clone text-crypto-primary text-lg"></i>
                                             <span>Copy Trading</span>
@@ -110,7 +111,7 @@
                             <div id="dropdownNavbarEarn" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-55 dark:bg-neutral-800 dark:divide-gray-600 p-4">
                                 <div class="text-gray-400 text-sm font-medium space-y-4">
                                     <!-- Original 3 Sections -->
-                                    <a href="#" class="hover:text-crypto-primary block">
+                                    <a href="{{ route('web.earn.overview') }}" class="hover:text-crypto-primary block">
                                         <div class="flex items-center space-x-2 py-1">
                                             <i class="fa-solid fa-circle-info text-crypto-primary text-lg"></i>
                                             <span class="text-white font-medium">Overview</span>
@@ -141,7 +142,10 @@
                             </div>
                         </li>
                         <li>
-                            <button id="dropdownNavbarLinkProjects" data-dropdown-toggle="dropdownNavbarNfts" data-dropdown-trigger='hover' data-dropdown-delay=100
+                            <a href="{{ url('/nft-home') }}"
+                                class="block py-2 px-3 text-white rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">
+                                NFTs </a>
+                            {{-- <button id="dropdownNavbarLinkProjects" data-dropdown-toggle="dropdownNavbarNfts" data-dropdown-trigger='hover' data-dropdown-delay=100
                                 class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 md:w-auto dark:text-white md:dark:hover:text-crypto-primary dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">NFTs
                                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -162,10 +166,13 @@
                                 <div class="py-1">
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </li>
                         <li>
-                            <button id="dropdownNavbarLinkProjects" data-dropdown-toggle="dropdownNavbarSquare" data-dropdown-trigger='hover' data-dropdown-delay=100
+                            <a href="{{ url('/') }}"
+                                class="block py-2 px-3 text-white rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">
+                                Square </a>
+                            {{-- <button id="dropdownNavbarLinkProjects" data-dropdown-toggle="dropdownNavbarSquare" data-dropdown-trigger='hover' data-dropdown-delay=100
                                 class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 md:w-auto dark:text-white md:dark:hover:text-crypto-primary dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Square
                                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -186,7 +193,12 @@
                                 <div class="py-1">
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                                 </div>
-                            </div>
+                            </div> --}}
+                        </li>
+                        <li>
+                            <a href="{{ url('/') }}"
+                                class="block py-2 px-3 text-purple-500 rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary dark:text-purple-400 md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">
+                                Donate </a>
                         </li>
                     </ul>
                 </div>
@@ -236,9 +248,13 @@
     </header>
     <div class="flex">
         @hasSection('sidebar')
-            @yield('sidebar')   
+            @yield('sidebar')
         @endif
-        <main class="@hasSection('sidebar') md:pe-5 @else md:px-10 @endif flex-1 px-5 lg:px-0 overflow-y-auto bg-black custom-scrollbar">
+        <main class="@hasSection('sidebar')
+md:pe-5
+@else
+md:px-10
+@endif flex-1 px-5 lg:px-0 overflow-y-auto bg-black custom-scrollbar">
             @yield('content')
         </main>
     </div>
@@ -257,7 +273,7 @@
                 <ul class="space-y-2">
                     <li><a href="/copy-trading" class="text-gray-400 hover:text-yellow-400">Copy Trading</a></li>
                     <li><a href="/trading-bots" class="text-gray-400 hover:text-yellow-400">Trading Bots</a></li>
-                    <li><a href="/earn" class="text-gray-400 hover:text-yellow-400">Earn</a></li>
+                    <li><a href="/earn/overview" class="text-gray-400 hover:text-yellow-400">Earn</a></li>
                     <li><a href="/wallet" class="text-gray-400 hover:text-yellow-400">Wallet</a></li>
                 </ul>
             </div>

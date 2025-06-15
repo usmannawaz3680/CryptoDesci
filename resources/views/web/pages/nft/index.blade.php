@@ -507,6 +507,424 @@
                         </button>
                     </div>
                 </div>
+                <div class="hidden" id="trending" role="tabpanel" aria-labelledby="trending-tab">
+                    <!-- Table Headers -->
+                    <div class="grid grid-cols-2 gap-8 mb-4">
+                        <div class="flex text-xs text-gray-400 uppercase tracking-wider px-4">
+                            <div class="w-8">#</div>
+                            <div class="flex-1">Collections</div>
+                            <div class="w-24 text-right">Floor Price</div>
+                            <div class="w-24 text-right">Volume</div>
+                        </div>
+                        <div class="flex text-xs text-gray-400 uppercase tracking-wider px-4">
+                            <div class="w-8">#</div>
+                            <div class="flex-1">Collections</div>
+                            <div class="w-24 text-right">Floor Price</div>
+                            <div class="w-24 text-right">Volume</div>
+                        </div>
+                    </div>
+
+                    <!-- Data Rows - Exact Match -->
+                    <div class="space-y-1">
+                        <!-- Row 1 -->
+                        <div class="grid grid-cols-2 gap-8 hover:bg-binance-gray/30 rounded-lg transition-colors">
+                            <!-- Left Column - Rank 1 -->
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">1</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">🦊</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Fluffy Metaverse</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">4.83 ETH</div>
+                                    <div class="text-red-400 text-xs">-1.4%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">2.2k ETH</div>
+                                    <div class="text-green-400 text-xs">+42.1%</div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column - Rank 11 -->
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">11</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">B</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">BLANZ Official</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">5.11 ETH</div>
+                                    <div class="text-green-400 text-xs">+1.1%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">4.11 ETH</div>
+                                    <div class="text-red-400 text-xs">-27.7%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="grid grid-cols-2 gap-8 hover:bg-binance-gray/30 rounded-lg transition-colors">
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">2</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">🐱</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Proud Kitty Gang</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">8.51 ETH</div>
+                                    <div class="text-green-400 text-xs">+2.1%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">48.4k ETH</div>
+                                    <div class="text-green-400 text-xs">+15.2%</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">12</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">D</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Doodles</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">1.83 ETH</div>
+                                    <div class="text-red-400 text-xs">-8.4%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">39.12 ETH</div>
+                                    <div class="text-green-400 text-xs">+5.7%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="grid grid-cols-2 gap-8 hover:bg-binance-gray/30 rounded-lg transition-colors">
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">3</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">S</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Sorare</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">4.53 ETH</div>
+                                    <div class="text-red-400 text-xs">-2.3%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">3.4k ETH</div>
+                                    <div class="text-green-400 text-xs">+8.1%</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">13</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">LR</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Lit Ragers</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">1.89 ETH</div>
+                                    <div class="text-red-400 text-xs">-8.4%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">34.57 ETH</div>
+                                    <div class="text-red-400 text-xs">-6.1%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Continue with remaining rows... -->
+                        <!-- Row 4 -->
+                        <div class="grid grid-cols-2 gap-8 hover:bg-binance-gray/30 rounded-lg transition-colors">
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">4</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">🏔️</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Alpine Race Collectibles</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">4.91 ETH</div>
+                                    <div class="text-green-400 text-xs">+1.2%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">5.4k ETH</div>
+                                    <div class="text-green-400 text-xs">+12.3%</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">14</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-teal-500 to-blue-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">⚡</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Pokemon - Generation 1</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">5.89 ETH</div>
+                                    <div class="text-green-400 text-xs">+2.1%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">2.47 ETH</div>
+                                    <div class="text-red-400 text-xs">-1.8%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 5 -->
+                        <div class="grid grid-cols-2 gap-8 hover:bg-binance-gray/30 rounded-lg transition-colors">
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">5</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">🌍</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Otherdeeds Expanded</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">5.1k ETH</div>
+                                    <div class="text-green-400 text-xs">+3.2%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">34.5k ETH</div>
+                                    <div class="text-green-400 text-xs">+18.7%</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">15</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">🎄</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Holidays in Snowland</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">4.83 ETH</div>
+                                    <div class="text-red-400 text-xs">-2.1%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">5.52 ETH</div>
+                                    <div class="text-green-400 text-xs">+7.3%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Continue with rows 6-10 following the same pattern... -->
+                        <!-- I'll add a few more to complete the table -->
+
+                        <!-- Row 6 -->
+                        <div class="grid grid-cols-2 gap-8 hover:bg-binance-gray/30 rounded-lg transition-colors">
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">6</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">🎮</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">Moonbirds</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">5.41 ETH</div>
+                                    <div class="text-green-400 text-xs">+1.8%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">34.71 ETH</div>
+                                    <div class="text-green-400 text-xs">+9.2%</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">16</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">HY</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">HV-MTL</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">8.92 ETH</div>
+                                    <div class="text-green-400 text-xs">+4.2%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">1.32 ETH</div>
+                                    <div class="text-red-400 text-xs">-3.1%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 10 -->
+                        <div class="grid grid-cols-2 gap-8 hover:bg-binance-gray/30 rounded-lg transition-colors">
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">10</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">🍔</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">FOOD FOR DEGENS</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">4.83 ETH</div>
+                                    <div class="text-red-400 text-xs">-1.2%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">5.1 ETH</div>
+                                    <div class="text-green-400 text-xs">+2.8%</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center py-3 px-4">
+                                <div class="w-8 text-gray-400 text-sm">20</div>
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-red-500 rounded-full flex items-center justify-center relative">
+                                        <span class="text-white font-bold text-sm">🅱️</span>
+                                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white text-sm">BEANZ</div>
+                                        <div class="text-xs text-gray-400">Verified</div>
+                                    </div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">5.50 ETH</div>
+                                    <div class="text-green-400 text-xs">+3.4%</div>
+                                </div>
+                                <div class="w-24 text-right">
+                                    <div class="text-white font-medium text-sm">1.51 ETH</div>
+                                    <div class="text-red-400 text-xs">-1.2%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View All Button -->
+                    <div class="text-center mt-8">
+                        <button class="bg-binance-card hover:bg-binance-light-gray text-white px-8 py-3 rounded-lg transition-colors border border-gray-700 hover:border-gray-600">
+                            View All
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

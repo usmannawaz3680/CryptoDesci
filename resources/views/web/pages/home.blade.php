@@ -19,7 +19,7 @@
                         <!-- Sign Up Form -->
                         <div class="space-y-4">
                             <div class="flex flex-col sm:flex-row gap-3">
-                                <input type="text" placeholder="Email/Phone number" class="flex-1 bg-Desci-card border text-crypto-accent border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-crypto-primary focus:ring-1 focus:ring-crypto-primary">
+                                <input type="text" placeholder="Email/Phone number" class="flex-1 bg-crypto-accent/70 border text-crypto-accent border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-crypto-primary focus:ring-1 focus:ring-crypto-primary">
                                 <button class="bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-crypto-primary transition-colors whitespace-nowrap">
                                     Start now
                                 </button>
@@ -34,7 +34,7 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex space-x-3">
                                     <!-- Google -->
-                                    <button class="w-12 h-12 bg-Desci-card border border-gray-700 rounded-lg flex items-center justify-center hover:border-gray-600 transition-colors">
+                                    <button class="w-12 h-12 bg-crypto-accent/70 border border-gray-700 rounded-lg flex items-center justify-center hover:border-gray-600 transition-colors">
                                         <svg class="w-5 h-5" viewBox="0 0 24 24">
                                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                                             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -44,7 +44,7 @@
                                     </button>
 
                                     <!-- Apple -->
-                                    <button class="w-12 h-12 bg-Desci-card border border-gray-700 rounded-lg flex items-center justify-center hover:border-gray-600 transition-colors">
+                                    <button class="w-12 h-12 bg-crypto-accent/70 border border-gray-700 rounded-lg flex items-center justify-center hover:border-gray-600 transition-colors">
                                         <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path
                                                 d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
@@ -52,7 +52,7 @@
                                     </button>
 
                                     <!-- Telegram -->
-                                    <button class="w-12 h-12 bg-Desci-card border border-gray-700 rounded-lg flex items-center justify-center hover:border-gray-600 transition-colors">
+                                    <button class="w-12 h-12 bg-crypto-accent/70 border border-gray-700 rounded-lg flex items-center justify-center hover:border-gray-600 transition-colors">
                                         <svg class="w-5 h-5 text-[#0088cc]" fill="currentColor" viewBox="0 0 24 24">
                                             <path
                                                 d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
@@ -61,7 +61,7 @@
                                 </div>
 
                                 <!-- App Download -->
-                                <button class="w-12 h-12 bg-Desci-card border border-gray-700 rounded-lg flex items-center justify-center hover:border-gray-600 transition-colors">
+                                <button class="w-12 h-12 bg-crypto-accent/70 border border-gray-700 rounded-lg flex items-center justify-center hover:border-gray-600 transition-colors">
                                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                     </svg>
@@ -73,7 +73,7 @@
                     <!-- Middle Section - Statistics Cards -->
                     <div class="lg:col-span-3 space-y-4">
                         <!-- Copy Trading Card -->
-                        <div class="bg-Desci-card rounded-2xl p-6 border border-gray-800">
+                        <div class="bg-crypto-accent/70 rounded-2xl p-6 border border-gray-800">
                             <div class="text-sm text-gray-400 mb-2">Copy trading</div>
                             <div class="text-3xl font-bold mb-4">200,000</div>
                             <div class="flex items-center justify-between">
@@ -87,7 +87,7 @@
                         </div>
 
                         <!-- Trading Volume Card -->
-                        <div class="bg-Desci-card rounded-2xl p-6 border border-gray-800">
+                        <div class="bg-crypto-accent/70 rounded-2xl p-6 border border-gray-800">
                             <div class="text-sm text-gray-400 mb-2">24h trading volume</div>
                             <div class="text-3xl font-bold mb-4">25.64B</div>
                             <button class="text-sm text-gray-400 hover:text-white transition-colors">View</button>
@@ -96,7 +96,7 @@
 
                     <!-- Right Section - Popular Cryptocurrencies -->
                     <div class="lg:col-span-4">
-                        <div class="bg-Desci-card rounded-2xl p-6 border border-gray-800">
+                        <div class="bg-crypto-accent/70 rounded-2xl p-6 border border-gray-800">
                             <h3 class="text-lg font-semibold mb-6">Popular</h3>
 
                             <div class="space-y-4">
@@ -416,17 +416,17 @@
 
                                 <div class="space-y-6">
                                     <div>
-                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">Bitget Wallet</h3>
+                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">Desci Wallet</h3>
                                         <p class="text-gray-300">Discover a safer, decentralized experience with a Web3 wallet.</p>
                                     </div>
 
                                     <div>
-                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">Bitget Swap</h3>
+                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">Desci Swap</h3>
                                         <p class="text-gray-300">Cross-chain swap with flexible price limits.</p>
                                     </div>
 
                                     <div>
-                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">Bitget NFT</h3>
+                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">Desci NFT</h3>
                                         <p class="text-gray-300">Place batch orders and buy NFTs with any coin.</p>
                                     </div>
 
@@ -470,11 +470,11 @@
                     
                     <!-- Central shield -->
                     <div class="relative w-96 h-96 flex items-center justify-center">
-                        <div class="w-32 h-40 bg-gradient-to-b from-bitget-card to-bitget-light-gray rounded-t-full rounded-b-lg border-2 border-crypto-primary animate-float animate-pulse-glow relative overflow-hidden">
+                        <div class="w-32 h-40 bg-gradient-to-b from-crypto-accent/90 to-bg-crypto-accent/20 rounded-t-full rounded-b-lg border-2 border-crypto-primary animate-float animate-pulse-glow relative overflow-hidden">
                             <!-- Shield glow effect -->
                             <div class="absolute inset-0 bg-gradient-to-b from-crypto-primary/20 to-transparent"></div>
                             
-                            <!-- Bitget logo/symbol -->
+                            <!-- Desci logo/symbol -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <svg class="w-12 h-12 text-crypto-primary" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -498,7 +498,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                 <!-- Protection Fund -->
                 <div class="group relative">
-                    <div class="bg-gradient-to-br from-bitget-card to-bitget-light-gray rounded-2xl p-8 border border-gray-800 hover:border-crypto-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-crypto-primary/10 h-full">
+                    <div class="bg-gradient-to-br from-crypto-accent/90 to-bg-crypto-accent/20 rounded-2xl p-8 border border-gray-800 hover:border-crypto-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-crypto-primary/10 h-full">
                         <!-- Icon -->
                         <div class="w-16 h-16 bg-gradient-to-br from-crypto-primary to-teal-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -525,7 +525,7 @@
 
                 <!-- Proof of Reserves -->
                 <div class="group relative">
-                    <div class="bg-gradient-to-br from-bitget-card to-bitget-light-gray rounded-2xl p-8 border border-gray-800 hover:border-crypto-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-crypto-primary/10 h-full">
+                    <div class="bg-gradient-to-br from-crypto-accent/90 to-bg-crypto-accent/20 rounded-2xl p-8 border border-gray-800 hover:border-crypto-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-crypto-primary/10 h-full">
                         <!-- Icon -->
                         <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-crypto-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -552,7 +552,7 @@
 
                 <!-- Cold Storage -->
                 <div class="group relative">
-                    <div class="bg-gradient-to-br from-bitget-card to-bitget-light-gray rounded-2xl p-8 border border-gray-800 hover:border-crypto-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-crypto-primary/10 h-full">
+                    <div class="bg-gradient-to-br from-crypto-accent/90 to-bg-crypto-accent/20 rounded-2xl p-8 border border-gray-800 hover:border-crypto-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-crypto-primary/10 h-full">
                         <!-- Icon -->
                         <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-crypto-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -606,7 +606,7 @@
             <!-- FAQ Header -->
             <div class="text-center mb-12">
                 <h2 class="text-4xl md:text-5xl font-bold text-white">
-                    Bitget FAQ
+                    Desci FAQ
                 </h2>
             </div>
 
@@ -625,7 +625,7 @@
                 <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed">
-                            A cryptocurrency exchange is a digital platform that allows users to buy, sell, and trade cryptocurrencies. It serves as a marketplace where users can exchange digital assets for other cryptocurrencies or traditional fiat currencies. Bitget is a leading cryptocurrency exchange that offers spot trading, futures trading, and various other financial services in the crypto space.
+                            A cryptocurrency exchange is a digital platform that allows users to buy, sell, and trade cryptocurrencies. It serves as a marketplace where users can exchange digital assets for other cryptocurrencies or traditional fiat currencies. Desci is a leading cryptocurrency exchange that offers spot trading, futures trading, and various other financial services in the crypto space.
                         </p>
                     </div>
                 </div>
@@ -633,7 +633,7 @@
                 <!-- FAQ Item 2 -->
                 <h2 id="accordion-flush-heading-2">
                     <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
-                        <span class="text-lg md:text-xl">What products does Bitget offer?</span>
+                        <span class="text-lg md:text-xl">What products does Desci offer?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
                         </svg>
@@ -642,7 +642,7 @@
                 <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Bitget offers a comprehensive suite of cryptocurrency trading and financial products:
+                            Desci offers a comprehensive suite of cryptocurrency trading and financial products:
                         </p>
                         <ul class="text-gray-300 space-y-2 ml-4">
                             <li class="flex items-start">
@@ -681,7 +681,7 @@
                 <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Bitget provides multiple ways to track cryptocurrency prices in real-time:
+                            Desci provides multiple ways to track cryptocurrency prices in real-time:
                         </p>
                         <ul class="text-gray-300 space-y-2 ml-4">
                             <li class="flex items-start">
@@ -707,7 +707,7 @@
                 <!-- FAQ Item 4 -->
                 <h2 id="accordion-flush-heading-4">
                     <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-4" aria-expanded="false" aria-controls="accordion-flush-body-4">
-                        <span class="text-lg md:text-xl">How to trade cryptocurrencies on Bitget?</span>
+                        <span class="text-lg md:text-xl">How to trade cryptocurrencies on Desci?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
                         </svg>
@@ -716,7 +716,7 @@
                 <div id="accordion-flush-body-4" class="hidden" aria-labelledby="accordion-flush-heading-4">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Trading cryptocurrencies on Bitget is simple and straightforward:
+                            Trading cryptocurrencies on Desci is simple and straightforward:
                         </p>
                         <ol class="text-gray-300 space-y-3 ml-4">
                             <li class="flex items-start">
@@ -746,7 +746,7 @@
                 <!-- FAQ Item 5 -->
                 <h2 id="accordion-flush-heading-5">
                     <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-5" aria-expanded="false" aria-controls="accordion-flush-body-5">
-                        <span class="text-lg md:text-xl">How to earn with crypto on Bitget?</span>
+                        <span class="text-lg md:text-xl">How to earn with crypto on Desci?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
                         </svg>
@@ -755,7 +755,7 @@
                 <div id="accordion-flush-body-5" class="hidden" aria-labelledby="accordion-flush-heading-5">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Bitget offers multiple ways to earn passive income with your cryptocurrency:
+                            Desci offers multiple ways to earn passive income with your cryptocurrency:
                         </p>
                         <ul class="text-gray-300 space-y-2 ml-4">
                             <li class="flex items-start">
@@ -785,7 +785,7 @@
                 <!-- FAQ Item 6 -->
                 <h2 id="accordion-flush-heading-6">
                     <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-6" aria-expanded="false" aria-controls="accordion-flush-body-6">
-                        <span class="text-lg md:text-xl">Why choose Bitget as your cryptocurrency exchange?</span>
+                        <span class="text-lg md:text-xl">Why choose Desci as your cryptocurrency exchange?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
                         </svg>
@@ -794,7 +794,7 @@
                 <div id="accordion-flush-body-6" class="hidden" aria-labelledby="accordion-flush-heading-6">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Bitget stands out as a leading cryptocurrency exchange for several key reasons:
+                            Desci stands out as a leading cryptocurrency exchange for several key reasons:
                         </p>
                         <ul class="text-gray-300 space-y-2 ml-4">
                             <li class="flex items-start">
