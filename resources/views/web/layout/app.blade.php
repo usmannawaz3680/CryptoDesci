@@ -193,7 +193,7 @@
                 <!-- Icon Group -->
                 <div class="hidden xl:flex items-center space-x-4 ml-auto">
                     <a href="#"><i class="fas fa-search text-white hover:text-crypto-primary text-lg"></i></a>
-                    <button class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Connect Wallet</button>
+                    <button class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Deposit</button>
                     <div class="relative group">
                         <button class="flex items-center focus:outline-none">
                             <i class="fas fa-user text-white hover:text-crypto-primary text-lg"></i>
