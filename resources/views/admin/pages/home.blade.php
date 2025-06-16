@@ -26,9 +26,7 @@
                         </div>
                         <div class="ml-4">
                             @auth
-                                @if(auth()->user()->is_admin)
                                     <h2 class="text-lg md:text-xl font-medium">{{ auth()->user()->name }}</h2>
-                                @endif
                             @endauth
                         </div>                        
                     </div>

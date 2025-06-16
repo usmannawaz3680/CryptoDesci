@@ -30,4 +30,8 @@ class WebController extends Controller
     {
         return view('web.pages.earn.overview');
     }
+    public function admin()
+    {
+        return view('admin.pages.home');
+    }
 }
