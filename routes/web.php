@@ -10,6 +10,7 @@ Route::get('/nft-home', [WebController::class, 'nftHome'])->name('web.nft.home')
 Route::get('/copy-trading', [WebController::class, 'copyTrading'])->name('web.copytrading');
 Route::get('/trading-bots', [WebController::class, 'tradingBots'])->name('web.tradingbots');
 Route::get('/earn/overview', [WebController::class, 'earnOverview'])->name('web.earn.overview');
+Route::get('/markets', [WebController::class, 'markets'])->name('web.markets');
 // route('web.earn.overview')
 // User Dashboard
 Route::get('/dashboard', [WebController::class, 'dashboard'])

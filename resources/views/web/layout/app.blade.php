@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <script src="//unpkg.com/alpinejs" defer></script>
     @stack('style')
 </head>
 
@@ -35,7 +36,7 @@
                                 Crypto</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('web.markets') }}"
                                 class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Markets</a>
                         </li>
                         <li>
@@ -205,6 +206,7 @@
                 <!-- Icon Group -->
                 <div class="hidden xl:flex items-center space-x-4 ml-auto">
                     <a href="#"><i class="fas fa-search text-white hover:text-crypto-primary text-lg"></i></a>
+                    @auth('web')                        
                     <button class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Deposit</button>
                     <div class="relative group">
                         <button class="flex items-center focus:outline-none">
@@ -238,7 +240,10 @@
                         <i class="fas fa-bell text-white hover:text-crypto-primary text-lg"></i>
                         <span class="absolute top-0 right-0 h-2 w-2 bg-yellow-400 rounded-full"></span>
                     </a>
-                    <a href="#"><i class="fas fa-expand text-white hover:text-crypto-primary text-lg"></i></a>
+                    @endauth
+                    @if (auth('web')->guest())
+                    <a href="/login" class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Login/Signup</a>
+                    @endif
                     <a href="#"><i class="fas fa-globe text-white hover:text-crypto-primary text-lg"></i></a>
                     <a href="#"><i class="fas fa-moon text-white hover:text-crypto-primary text-lg"></i></a>
                 </div>
@@ -326,7 +331,47 @@ md:px-10
             &copy; {{ date('Y') }} CryptoApp. All rights reserved.
         </div>
     </footer>
-    <script src="{{ asset('assets/js/app-bundle.js') }}?v={{ time() }}"></script>
+    <div x-data="{ show: false, message: '', type: '' }" x-init="@if (session('success')) show = true; message = '{{ session('success') }}'; type = 'success';
+        @elseif(session('error'))
+            show = true; message = '{{ session('error') }}'; type = 'error';
+        @elseif(session('warning'))
+            show = true; message = '{{ session('warning') }}'; type = 'warning';
+        @elseif(session('info'))
+            show = true; message = '{{ session('info') }}'; type = 'info'; @endif
+    
+    if (show) {
+        setTimeout(() => show = false, 5000);
+    }" x-show="show" x-transition class="fixed bottom-5 right-5 z-50">
+        <div x-show="type === 'success'" class="flex items-center w-full max-w-xs p-4 mb-4 text-green-800 bg-green-100 rounded-lg shadow" role="alert">
+            <svg class="w-5 h-5 me-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414L9 13.414l4.707-4.707z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm font-medium" x-text="message"></span>
+        </div>
+
+        <div x-show="type === 'error'" class="flex items-center w-full max-w-xs p-4 mb-4 text-red-800 bg-red-100 rounded-lg shadow" role="alert">
+            <svg class="w-5 h-5 me-2 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10A8 8 0 11 2 10a8 8 0 0116 0zM9 9V5a1 1 0 012 0v4a1 1 0 01-2 0zm0 4a1 1 0 102 0 1 1 0 00-2 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm font-medium" x-text="message"></span>
+        </div>
+
+        <div x-show="type === 'warning'" class="flex items-center w-full max-w-xs p-4 mb-4 text-yellow-800 bg-yellow-100 rounded-lg shadow" role="alert">
+            <svg class="w-5 h-5 me-2 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8.257 3.099c.366-.773 1.396-.773 1.762 0l7.071 14.918c.33.695-.161 1.483-.881 1.483H2.067c-.72 0-1.211-.788-.881-1.483L8.257 3.1zM11 14a1 1 0 11-2 0 1 1 0 012 0zm-1-2a1 1 0 01-1-1V9a1 1 0 012 0v2a1 1 0 01-1 1z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm font-medium" x-text="message"></span>
+        </div>
+
+        <div x-show="type === 'info'" class="flex items-center w-full max-w-xs p-4 mb-4 text-blue-800 bg-blue-100 rounded-lg shadow" role="alert">
+            <svg class="w-5 h-5 me-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10A8 8 0 11 2 10a8 8 0 0116 0zM11 10a1 1 0 10-2 0 1 1 0 002 0zm0 2a1 1 0 10-2 0v2a1 1 0 002 0v-2z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm font-medium" x-text="message"></span>
+        </div>
+    </div>
+
+    <script src="{{ asset('assets/js/app-bundle.js') }}"></script>
     @stack('script')
 </body>
 

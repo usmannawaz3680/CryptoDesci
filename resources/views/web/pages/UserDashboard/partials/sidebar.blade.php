@@ -117,11 +117,29 @@
 
                 <div class="flex-1 overflow-y-auto px-2 space-y-1 custom-scrollbar">
                     <!-- Dashboard -->
-                    <a href="{{ route('user.dashboard') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('user.dashboard') ? 'bg-crypto-primary/20': ''  }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
+                    <a href="{{ route('user.dashboard') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('user.dashboard') ? 'bg-crypto-primary/20 font-semibold' : '' }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
                         <i class="fas fa-home w-5 text-center text-crypto-primary"></i>
                         <span class="text-sm">Dashboard</span>
                     </a>
+                    <a href="{{ route('web.markets') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('web.markets') ? 'bg-crypto-primary/20 font-semibold' : '' }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
+                        <i class="fas fa-shop w-5 text-center text-crypto-primary"></i>
+                        <span class="text-sm">Markets</span>
+                    </a>
 
+                    <div class="space-y-1">
+                        <button data-collapse-toggle="earn-dropdown" class="w-full flex items-center justify-between px-4 py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition {{ Route::is('web.earn.*') ? 'bg-crypto-primary/20 font-semibold' : '' }}">
+                            <span class="flex items-center gap-3">
+                                <i class="fas fa-dollar w-5 text-center text-crypto-primary"></i>
+                                <span class="text-sm">Earn</span>
+                            </span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="earn-dropdown" class="pl-10 {{ Route::is('web.earn.*') ? '' : 'hidden' }}">
+                            <a href="{{ route('web.earn.overview') }}" class="block py-2 text-sm hover:text-white  {{ Route::is('web.earn.overview') ? 'text-crypto-primary font-semibold' : 'text-gray-400' }}">Overview</a>
+                        </div>
+                    </div>
+
+                    {{-- 
                     <!-- Dropdown Menu -->
                     <div class="space-y-1">
                         <button data-collapse-toggle="assets-dropdown" class="w-full flex items-center justify-between px-4 py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
@@ -165,7 +183,7 @@
                             <a href="#" class="block py-2 text-sm hover:text-white text-gray-400">Verification</a>
                             <a href="#" class="block py-2 text-sm hover:text-white text-gray-400">API Management</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Footer -->
@@ -174,9 +192,12 @@
                         <img src="/assets/images/placeholder.svg" alt="User" class="w-8 h-8 rounded-full">
                         <span class="text-sm">{{ auth()->user()->name }}</span>
                     </div>
-                    <button class="text-gray-400 hover:text-white">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="text-gray-400 hover:text-white">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </form>
                 </div>
             </nav>
         </aside>
