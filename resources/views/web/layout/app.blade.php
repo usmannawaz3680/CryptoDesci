@@ -48,9 +48,6 @@
                             <!-- Dropdown menu -->
                             <div id="dropdownNavbar" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-45 dark:bg-neutral-800 dark:divide-gray-600 p-4">
                                 <div class="text-gray-400 text-sm font-medium space-y-2">
-                                    <div class="flex items-center space-x-2 py-1">
-                                        <span>Arbitrage</span>
-                                    </div>
                                     <a href="{{ route('web.tradingbots') }}" class="hover:text-crypto-primary">
                                         <div class="flex items-center space-x-2 py-1 flex-wrap">
                                             <i class="fa-solid fa-robot text-crypto-primary text-lg"></i>
@@ -81,23 +78,20 @@
                                     <a href="#" class="hover:text-crypto-primary">
                                         <div class="flex items-center space-x-2 py-1 flex-wrap">
                                             <i class="fa-solid fa-dollar-sign text-crypto-primary text-lg"></i>
-                                            <span>Origin trail</span>
+                                            <span>Finance</span>
                                         </div>
-                                        <span class="text-gray-500 text-xs">Contracts settled in USDT & USDC</span>
+                                        <span class="text-gray-500">
+                                            Discover innovative DeFi projects and investment opportunities
+                                        </span>
                                     </a>
                                     <a href="#" class="hover:text-crypto-primary">
                                         <div class="flex items-center space-x-2 py-1 flex-wrap">
-                                            <i class="fa-solid fa-boxes-packing text-crypto-primary text-lg"></i>
-                                            <span>Vita Dao</span>
+                                            <i class="fa-solid fa-blog text-crypto-primary text-lg"></i>
+                                            <span>Publishing</span>
                                         </div>
-                                        <span class="text-gray-500 text-xs">Contracts settled in cryptocurrency</span>
-                                    </a>
-                                    <a href="#" class="hover:text-crypto-primary">
-                                        <div class="flex items-center space-x-2 py-1 flex-wrap">
-                                            <i class="fa-solid fa-flask-vial text-crypto-primary text-lg"></i>
-                                            <span>Al Chemist AI</span>
-                                        </div>
-                                        <span class="text-gray-500 text-xs">USDT options with limited downside and afforable entry</span>
+                                        <span class="text-gray-500">
+                                            Explore the latest in crypto news, insights, and analysis
+                                        </span>
                                     </a>
                                 </div>
                             </div>
@@ -206,7 +200,7 @@
                 <!-- Icon Group -->
                 <div class="hidden xl:flex items-center space-x-4 ml-auto">
                     <a href="#"><i class="fas fa-search text-white hover:text-crypto-primary text-lg"></i></a>
-                    @auth('web')                        
+                    @auth('web')
                     <button class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Deposit</button>
                     <div class="relative group">
                         <button class="flex items-center focus:outline-none">
@@ -338,7 +332,7 @@ md:px-10
             show = true; message = '{{ session('warning') }}'; type = 'warning';
         @elseif(session('info'))
             show = true; message = '{{ session('info') }}'; type = 'info'; @endif
-    
+
     if (show) {
         setTimeout(() => show = false, 5000);
     }" x-show="show" x-transition class="fixed bottom-5 right-5 z-50">
