@@ -111,7 +111,7 @@
                         <!-- Row 1 -->
                         <div class="grid grid-cols-2 gap-8 hover:bg-binance-gray/30 rounded-lg transition-colors">
                             <!-- Left Column - Rank 1 -->
-                            <div class="flex items-center py-3 px-4">
+                            <div class="flex items-center py-3 px-4 relative hover:bg-crypto-accent/70 cursor-pointer rounded-lg duration-200 hover:scale-105">
                                 <div class="w-8 text-gray-400 text-sm">1</div>
                                 <div class="flex items-center space-x-3 flex-1">
                                     <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center relative">
@@ -126,6 +126,7 @@
                                         <div class="font-medium text-white text-sm">Fluffy Metaverse</div>
                                         <div class="text-xs text-gray-400">Verified</div>
                                     </div>
+                                    <a href="/nft/profile" class="absolute h-full w-full top-0 start-0 left-0"></a>
                                 </div>
                                 <div class="w-24 text-right">
                                     <div class="text-white font-medium text-sm">4.83 ETH</div>
@@ -138,7 +139,7 @@
                             </div>
 
                             <!-- Right Column - Rank 11 -->
-                            <div class="flex items-center py-3 px-4">
+                            <div class="flex items-center py-3 px-4 relative hover:bg-crypto-accent/70 cursor-pointer rounded-lg duration-200 hover:scale-105">
                                 <div class="w-8 text-gray-400 text-sm">11</div>
                                 <div class="flex items-center space-x-3 flex-1">
                                     <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-500 rounded-full flex items-center justify-center relative">
@@ -162,6 +163,7 @@
                                     <div class="text-white font-medium text-sm">4.11 ETH</div>
                                     <div class="text-red-400 text-xs">-27.7%</div>
                                 </div>
+                                <a href="/nft/profile" class="absolute h-full w-full top-0 start-0 left-0"></a>
                             </div>
                         </div>
 

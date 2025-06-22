@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/nft-home', [WebController::class, 'nftHome'])->name('web.nft.home');
+Route::get('/nft/profile', [WebController::class, 'nftProfile'])->name('web.nft.profile');
+Route::get('/nft/collection', [WebController::class, 'nftCollection'])->name('web.nft.collection');
 Route::get('/copy-trading', [WebController::class, 'copyTrading'])->name('web.copytrading');
 Route::get('/trading-bots', [WebController::class, 'tradingBots'])->name('web.tradingbots');
+Route::get('/arbitrage-bots', [WebController::class, 'arbitrageBots'])->name('web.arbitragebots');
 Route::get('/earn/overview', [WebController::class, 'earnOverview'])->name('web.earn.overview');
 Route::get('/markets', [WebController::class, 'markets'])->name('web.markets');
 // route('web.earn.overview')

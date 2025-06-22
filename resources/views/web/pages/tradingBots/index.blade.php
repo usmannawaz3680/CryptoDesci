@@ -27,38 +27,45 @@
 
         <!-- Bot Marketplace Section -->
         <section class="mb-12">
-            <div class="flex justify-between items-center mb-4">
+            <div class="flex justify-center flex-col items-between mb-4 gap-4">
                 <div class="flex space-x-4">
-                    <button class="text-white border-b-2 border-crypto-primary">Spot Grid</button>
-                    <button class="text-gray-400">Arbitrage</button>
+                    <a href="/trading-bots" class="text-white fw-medium text-lg pb-2 border-b-2 border-crypto-primary">Spot Grid</a>
+                    <a href="/arbitrage-bots" class="text-gray-400 pb-2 hover:text-crypto-primary">Arbitrage</a>
                 </div>
-                <div class="flex space-x-2">
-                    <select class="bg-crypto-accent text-white border border-gray-300 rounded-md px-2 py-1">
-                        <option>Market</option>
-                    </select>
-                    <select class="bg-crypto-accent text-white border border-gray-300 rounded-md px-2 py-1">
-                        <option>1-7 Days</option>
-                    </select>
-                    <select class="bg-crypto-accent text-white border border-gray-300 rounded-md px-2 py-1">
-                        <option>ROI</option>
-                    </select>
-                    <select class="bg-crypto-accent text-white border border-gray-300 rounded-md px-2 py-1">
-                        <option>7D MDD</option>
-                    </select>
-                    <button class="bg-crypto-accent text-white border border-gray-300 rounded-md px-2 py-1">Top PNL</button>
+                <div class="flex justify-between items-center w-full">
+                    <div class="flex space-x-2">
+                        <select class="bg-crypto-accent text-white border border-gray-500 rounded-md px-2 py-1">
+                            <option>Market</option>
+                        </select>
+                        <select class="bg-crypto-accent text-white border border-gray-500 rounded-md px-2 py-1">
+                            <option>1-7 Days</option>
+                        </select>
+                        <select class="bg-crypto-accent text-white border border-gray-500 rounded-md px-2 py-1">
+                            <option>ROI</option>
+                        </select>
+                        <select class="bg-crypto-accent text-white border border-gray-500 rounded-md px-2 py-1">
+                            <option>7D MDD</option>
+                        </select>
+                    </div>
+                    <button class="bg-crypto-accent text-white border border-gray-500 rounded-md px-2 py-1">Top PNL</button>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-crypto-accent p-4 rounded-lg">
+                <div class="bg-crypto-accent p-4 rounded-lg cursor-pointer duration-150 border border-gray-700 hover:border-crypto-primary">
                     <div class="flex justify-between items-center mb-2">
-                        <span class="text-lg font-bold">ETH/USDT</span>
-                        <button class=" bg-crypto-primary text-black px-2 py-1 rounded-md">Copy</button>
+                        <div>
+                            <span class="text-lg font-bold">ETH/USDT</span>
+                            <span class="text-gray-500 block pt-1 text-sm"><i class="fa-solid fa-users"></i> 11</span>
+                        </div>
+                        <button class=" bg-crypto-primary font-medium text-black px-2 py-1 rounded-md">Copy</button>
                     </div>
-                    <div class="mb-2">
-                        <span class="text-xs text-gray-400">PNL (USD)</span>
-                        <span class="text-2xl font-bold text-green-500">$4,126.87</span>
+                    <div class="flex justify-between items-center gap-2">
+                        <div class="mb-2">
+                            <span class="text-xs text-gray-400">PNL (USD)</span>
+                            <span class="text-3xl font-medium text-green-500">$4,126.87</span>
+                        </div>
+                        <div class="w-3/6 h-24 bg-gray-700 mb-2"></div>
                     </div>
-                    <div class="w-full h-12 bg-gray-700 mb-2"></div>
                     <div class="grid grid-cols-2 gap-2 text-sm">
                         <div><span class="text-gray-400">ROI</span><br>1.37%</div>
                         <div><span class="text-gray-400">Runtime</span><br>4d 13h 46m</div>
@@ -67,41 +74,51 @@
                     </div>
                     <div class="text-right text-sm"><span class="text-gray-400">7D MDD</span> 8.45%</div>
                 </div>
-                <div class="bg-crypto-accent p-4 rounded-lg">
+                <div class="bg-crypto-accent p-4 rounded-lg cursor-pointer duration-150 border border-gray-700 hover:border-crypto-primary">
                     <div class="flex justify-between items-center mb-2">
-                        <span class="text-lg font-bold">ATM/USDT</span>
-                        <button class=" bg-crypto-primary text-black px-2 py-1 rounded-md">Copy</button>
+                        <div>
+                            <span class="text-lg font-bold">BTC/USDT</span>
+                            <span class="text-gray-500 block pt-1 text-sm"><i class="fa-solid fa-users"></i> 8</span>
+                        </div>
+                        <button class=" bg-crypto-primary font-medium text-black px-2 py-1 rounded-md">Copy</button>
                     </div>
-                    <div class="mb-2">
-                        <span class="text-xs text-gray-400">PNL (USD)</span>
-                        <span class="text-2xl font-bold text-green-500">$1,227.40</span>
+                    <div class="flex justify-between items-center gap-2">
+                        <div class="mb-2">
+                            <span class="text-xs text-gray-400">PNL (USD)</span>
+                            <span class="text-3xl font-medium text-green-500">$3,200.45</span>
+                        </div>
+                        <div class="w-3/6 h-24 bg-gray-700 mb-2"></div>
                     </div>
-                    <div class="w-full h-12 bg-gray-700 mb-2"></div>
                     <div class="grid grid-cols-2 gap-2 text-sm">
-                        <div><span class="text-gray-400">ROI</span><br>8.18%</div>
-                        <div><span class="text-gray-400">Runtime</span><br>4d 4h 54m</div>
-                        <div><span class="text-gray-400">Min. Investment</span><br>1,008.12 USDT</div>
-                        <div><span class="text-gray-400">24H/Total Matched Trades</span><br>261/425</div>
+                        <div><span class="text-gray-400">ROI</span><br>1.20%</div>
+                        <div><span class="text-gray-400">Runtime</span><br>3d 10h 30m</div>
+                        <div><span class="text-gray-400">Min. Investment</span><br>1,500.00 USDT</div>
+                        <div><span class="text-gray-400">24H/Total Matched Trades</span><br>10/25</div>
                     </div>
-                    <div class="text-right text-sm"><span class="text-gray-400">7D MDD</span> 12.35%</div>
+                    <div class="text-right text-sm"><span class="text-gray-400">7D MDD</span> 6.75%</div>
                 </div>
-                <div class="bg-crypto-accent p-4 rounded-lg">
+                <div class="bg-crypto-accent p-4 rounded-lg cursor-pointer duration-150 border border-gray-700 hover:border-crypto-primary">
                     <div class="flex justify-between items-center mb-2">
-                        <span class="text-lg font-bold">ETH/FDUSD</span>
-                        <button class=" bg-crypto-primary text-black px-2 py-1 rounded-md">Copy</button>
+                        <div>
+                            <span class="text-lg font-bold">XRP/USDT</span>
+                            <span class="text-gray-500 block pt-1 text-sm"><i class="fa-solid fa-users"></i> 5</span>
+                        </div>
+                        <button class=" bg-crypto-primary font-medium text-black px-2 py-1 rounded-md">Copy</button>
                     </div>
-                    <div class="mb-2">
-                        <span class="text-xs text-gray-400">PNL (USD)</span>
-                        <span class="text-2xl font-bold text-green-500">$1,006.08</span>
+                    <div class="flex justify-between items-center gap-2">
+                        <div class="mb-2">
+                            <span class="text-xs text-gray-400">PNL (USD)</span>
+                            <span class="text-3xl font-medium text-green-500">$1,200.00</span>
+                        </div>
+                        <div class="w-3/6 h-24 bg-gray-700 mb-2"></div>
                     </div>
-                    <div class="w-full h-12 bg-gray-700 mb-2"></div>
                     <div class="grid grid-cols-2 gap-2 text-sm">
-                        <div><span class="text-gray-400">ROI</span><br>1.50%</div>
-                        <div><span class="text-gray-400">Runtime</span><br>4d 20h 32m</div>
-                        <div><span class="text-gray-400">Min. Investment</span><br>1,040.90 FDUSD</div>
-                        <div><span class="text-gray-400">24H/Total Matched Trades</span><br>221/881</div>
+                        <div><span class="text-gray-400">ROI</span><br>0.85%</div>
+                        <div><span class="text-gray-400">Runtime</span><br>2d 5h 20m</div>
+                        <div><span class="text-gray-400">Min. Investment</span><br>800.00 USDT</div>
+                        <div><span class="text-gray-400">24H/Total Matched Trades</span><br>8/15</div>
                     </div>
-                    <div class="text-right text-sm"><span class="text-gray-400">7D MDD</span> 8.53%</div>
+                    <div class="text-right text-sm"><span class="text-gray-400">7D MDD</span> 5.50%</div>
                 </div>
             </div>
         </section>
@@ -138,12 +155,6 @@
         <section class="mb-12">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-2xl font-bold uppercase">Bots Academy</h2>
-                <div class="flex space-x-4">
-                    <button class="text-white">Trading Bot Essentials</button>
-                    <button class="text-white">Spot Grid</button>
-                    <button class="text-white border-b-2 border-crypto-primary">Futures Grid</button>
-                    <button class="text-white">Arbitrage</button>
-                </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class=" bg-crypto-accent/90 p-4 rounded-lg flex items-center">
@@ -280,71 +291,6 @@
                     </h2>
                     <div id="accordion-body-2" class="hidden p-5  bg-crypto-accent/90" aria-labelledby="accordion-heading-2">
                         <p class="text-gray-400">To create a spot grid trading strategy on Binance, log in to your account, navigate to the trading bots section, select 'Spot Grid,' configure your price range and grid intervals, and start the bot.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Grid Trading Bot Interface Section -->
-        <section class="mb-12 flex">
-            <div class="w-1/5  bg-crypto-accent/90 p-4">
-                <input type="text" placeholder="Search" class="w-full bg-crypto-accent text-white border border-gray-300 rounded-md px-2 py-1 mb-4">
-                <select class="w-full bg-crypto-accent text-white border border-gray-300 rounded-md px-2 py-1 mb-4">
-                    <option>ALL</option>
-                </select>
-                <ul class="space-y-2 mb-4">
-                    <li class="bg-crypto-accent p-2 rounded-md">1000CATUSDT</li>
-                    <li class="bg-crypto-accent p-2 rounded-md">1000CHEEMS/USDT</li>
-                </ul>
-                <div class="flex space-x-2 mb-4">
-                    <button class="text-white border-b-2 border-crypto-primary">Bots Wallet</button>
-                    <button class="text-gray-400">Fiat</button>
-                </div>
-                <div class="flex gap-3 flex-wrap justify-start items-center">
-                    <button class=" bg-crypto-primary text-black px-2 py-1 rounded-md">Market</button>
-                    <button class="border border-gray-300 text-white px-2 py-1 rounded-md">1-7 Days</button>
-                    <button class="border border-gray-300 text-white px-2 py-1 rounded-md">ROI</button>
-                    <button class="border border-gray-300 text-white px-2 py-1 rounded-md">7D MDD</button>
-                </div>
-            </div>
-            <div class="w-4/5 p-4">
-                <h1 class="text-4xl font-bold mb-8">Grid Bots</h1>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-crypto-accent p-4 rounded-lg">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-base font-bold">ETH/USDT</span>
-                            <button class=" bg-crypto-primary text-black px-2 py-1 rounded-md">Copy</button>
-                        </div>
-                        <div class="mb-2">
-                            <span class="text-xs text-gray-400">PNL (USD)</span>
-                            <span class="text-2xl font-bold text-green-500">$4,126.87</span>
-                        </div>
-                        <div class="w-full h-12 bg-gray-700 mb-2"></div>
-                        <div class="grid grid-cols-2 gap-2 text-sm">
-                            <div><span class="text-gray-400">ROI</span><br>1.37%</div>
-                            <div><span class="text-gray-400">Runtime</span><br>4d 13h 46m</div>
-                            <div><span class="text-gray-400">Min. Investment</span><br>1,678.01 USDT</div>
-                            <div><span class="text-gray-400">24H/Total Matched Trades</span><br>14/36</div>
-                        </div>
-                        <div class="text-right text-sm"><span class="text-gray-400">7D MDD</span> 8.45%</div>
-                    </div>
-                    <div class="bg-crypto-accent p-4 rounded-lg">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-base font-bold">ETH/USDT</span>
-                            <button class=" bg-crypto-primary text-black px-2 py-1 rounded-md">Copy</button>
-                        </div>
-                        <div class="mb-2">
-                            <span class="text-xs text-gray-400">PNL (USD)</span>
-                            <span class="text-2xl font-bold text-green-500">$4,126.87</span>
-                        </div>
-                        <div class="w-full h-12 bg-gray-700 mb-2"></div>
-                        <div class="grid grid-cols-2 gap-2 text-sm">
-                            <div><span class="text-gray-400">ROI</span><br>1.37%</div>
-                            <div><span class="text-gray-400">Runtime</span><br>4d 13h 46m</div>
-                            <div><span class="text-gray-400">Min. Investment</span><br>1,678.01 USDT</div>
-                            <div><span class="text-gray-400">24H/Total Matched Trades</span><br>14/36</div>
-                        </div>
-                        <div class="text-right text-sm"><span class="text-gray-400">7D MDD</span> 8.45%</div>
                     </div>
                 </div>
             </div>

@@ -34,4 +34,16 @@ class WebController extends Controller
     {
         return view('web.pages.UserDashboard.markets');
     }
+    public function arbitrageBots()
+    {
+        return view('web.pages.tradingBots.arbitrage');
+    }
+    public function nftProfile()
+    {
+        return view('web.pages.nft.profile');
+    }
+    public function nftCollection()
+    {
+        return view('web.pages.nft.show');
+    }
 }
