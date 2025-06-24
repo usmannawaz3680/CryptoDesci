@@ -2,11 +2,12 @@
 @section('title', 'Dashboard')
 
 @section('sidebar')
-    @include('web.pages.UserDashboard.partials.sidebar')
+    {{-- @include('web.pages.UserDashboard.partials.sidebar') --}}
+    @include('components.user-sidebar')
 @endsection
 
 @section('content')
-    <div class="w-full overflow-x-hidden custom-scrollbar bg-neutral-900">
+    <div class="overflow-x-hidden custom-scrollbar bg-neutral-900">
         <div class="content-area page-transition">
             <!-- User Profile Section -->
             <div class="p-4 md:p-6">

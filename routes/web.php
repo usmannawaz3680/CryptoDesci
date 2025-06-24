@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
+Route::get('/markets', [WebController::class, 'markets'])->name('web.markets');
 Route::get('/nft-home', [WebController::class, 'nftHome'])->name('web.nft.home');
 Route::get('/nft/profile', [WebController::class, 'nftProfile'])->name('web.nft.profile');
 Route::get('/nft/collection', [WebController::class, 'nftCollection'])->name('web.nft.collection');

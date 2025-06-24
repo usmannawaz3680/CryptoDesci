@@ -4,6 +4,21 @@
     <section>
         <div class="min-h-screen w-full bg-black">
             <div class="max-w-7xl mx-auto py-12">
+                <!-- TradingView Widget BEGIN -->
+                {{-- <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                        {
+                            "symbol": "NASDAQ:AAPL",
+                            "colorTheme": "dark",
+                            "isTransparent": false,
+                            "locale": "en",
+                            "width": "550"
+                        }
+                    </script>
+                </div> --}}
+                <!-- TradingView Widget END -->
                 <div class="grid grid-cols-1 lg:grid-cols-10 xl:grid-cols-12 gap-8 items-start">
                     <!-- Left Section - Hero Content -->
                     <div class="lg:col-span-5 space-y-8">
@@ -445,7 +460,7 @@
     <section class="min-h-screen bg-black relative">
         <!-- Background gradient overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-bitget-dark/50 to-black"></div>
-        
+
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <!-- Header Section -->
             <div class="text-center mb-20">
@@ -467,24 +482,24 @@
                     <div class="absolute inset-4 animate-rotate-slow" style="animation-direction: reverse; animation-duration: 15s;">
                         <div class="w-full h-full border border-crypto-primary/30 rounded-full"></div>
                     </div>
-                    
+
                     <!-- Central shield -->
                     <div class="relative w-96 h-96 flex items-center justify-center">
                         <div class="w-32 h-40 bg-gradient-to-b from-crypto-accent/90 to-bg-crypto-accent/20 rounded-t-full rounded-b-lg border-2 border-crypto-primary animate-float animate-pulse-glow relative overflow-hidden">
                             <!-- Shield glow effect -->
                             <div class="absolute inset-0 bg-gradient-to-b from-crypto-primary/20 to-transparent"></div>
-                            
+
                             <!-- Desci logo/symbol -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <svg class="w-12 h-12 text-crypto-primary" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                                 </svg>
                             </div>
-                            
+
                             <!-- Inner glow -->
                             <div class="absolute inset-2 bg-gradient-to-b from-crypto-primary/10 to-transparent rounded-t-full rounded-b-lg"></div>
                         </div>
-                        
+
                         <!-- Floating particles -->
                         <div class="absolute top-10 left-10 w-2 h-2 bg-crypto-primary rounded-full animate-pulse"></div>
                         <div class="absolute top-20 right-8 w-1 h-1 bg-crypto-primary rounded-full animate-pulse" style="animation-delay: 1s;"></div>
@@ -502,22 +517,22 @@
                         <!-- Icon -->
                         <div class="w-16 h-16 bg-gradient-to-br from-crypto-primary to-teal-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
                         </div>
-                        
+
                         <h3 class="text-2xl font-bold mb-4 group-hover:text-crypto-primary transition-colors duration-300">
                             Protection Fund
                         </h3>
                         <p class="text-gray-300 mb-6 leading-relaxed">
                             Our <span class="text-crypto-primary font-semibold">$689M Protection Fund</span> ensures the security of your assets with comprehensive coverage.
                         </p>
-                        
+
                         <!-- Learn more link -->
                         <div class="flex items-center text-crypto-primary group-hover:translate-x-2 transition-transform duration-300">
                             <span class="text-sm font-medium mr-2">Learn more</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </div>
                     </div>
@@ -529,22 +544,23 @@
                         <!-- Icon -->
                         <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-crypto-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                             </svg>
                         </div>
-                        
+
                         <h3 class="text-2xl font-bold mb-4 group-hover:text-crypto-primary transition-colors duration-300">
                             Proof of Reserves
                         </h3>
                         <p class="text-gray-300 mb-6 leading-relaxed">
                             We guarantee at least a <span class="text-crypto-primary font-semibold">1:1 reserve ratio</span> of our customer funds with full transparency.
                         </p>
-                        
+
                         <!-- Learn more link -->
                         <div class="flex items-center text-crypto-primary group-hover:translate-x-2 transition-transform duration-300">
                             <span class="text-sm font-medium mr-2">View reserves</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </div>
                     </div>
@@ -556,22 +572,22 @@
                         <!-- Icon -->
                         <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-crypto-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                             </svg>
                         </div>
-                        
+
                         <h3 class="text-2xl font-bold mb-4 group-hover:text-crypto-primary transition-colors duration-300">
                             Cold Storage
                         </h3>
                         <p class="text-gray-300 mb-6 leading-relaxed">
                             We store most digital assets in <span class="text-crypto-primary font-semibold">offline, multi-signature wallets</span> for maximum security.
                         </p>
-                        
+
                         <!-- Learn more link -->
                         <div class="flex items-center text-crypto-primary group-hover:translate-x-2 transition-transform duration-300">
                             <span class="text-sm font-medium mr-2">Security details</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </div>
                     </div>
@@ -601,7 +617,7 @@
             </div>
         </div>
     </section>
-        <section class="min-h-screen bg-black py-16">
+    <section class="min-h-screen bg-black py-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- FAQ Header -->
             <div class="text-center mb-12">
@@ -612,10 +628,11 @@
 
             <!-- FAQ Accordion -->
             <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-transparent text-white" data-inactive-classes="text-gray-300">
-                
+
                 <!-- FAQ Item 1 -->
                 <h2 id="accordion-flush-heading-1">
-                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-1" aria-expanded="false" aria-controls="accordion-flush-body-1">
+                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
+                        aria-controls="accordion-flush-body-1">
                         <span class="text-lg md:text-xl">What is a cryptocurrency exchange?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
@@ -625,14 +642,16 @@
                 <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed">
-                            A cryptocurrency exchange is a digital platform that allows users to buy, sell, and trade cryptocurrencies. It serves as a marketplace where users can exchange digital assets for other cryptocurrencies or traditional fiat currencies. Desci is a leading cryptocurrency exchange that offers spot trading, futures trading, and various other financial services in the crypto space.
+                            A cryptocurrency exchange is a digital platform that allows users to buy, sell, and trade cryptocurrencies. It serves as a marketplace where users can exchange digital assets for other cryptocurrencies or traditional fiat currencies. Desci is a leading cryptocurrency exchange
+                            that offers spot trading, futures trading, and various other financial services in the crypto space.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
                 <h2 id="accordion-flush-heading-2">
-                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
+                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+                        aria-controls="accordion-flush-body-2">
                         <span class="text-lg md:text-xl">What products does Desci offer?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
@@ -671,7 +690,8 @@
 
                 <!-- FAQ Item 3 -->
                 <h2 id="accordion-flush-heading-3">
-                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-3" aria-expanded="false" aria-controls="accordion-flush-body-3">
+                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
+                        aria-controls="accordion-flush-body-3">
                         <span class="text-lg md:text-xl">How do you track cryptocurrency prices?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
@@ -706,7 +726,8 @@
 
                 <!-- FAQ Item 4 -->
                 <h2 id="accordion-flush-heading-4">
-                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-4" aria-expanded="false" aria-controls="accordion-flush-body-4">
+                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-4" aria-expanded="false"
+                        aria-controls="accordion-flush-body-4">
                         <span class="text-lg md:text-xl">How to trade cryptocurrencies on Desci?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
@@ -745,7 +766,8 @@
 
                 <!-- FAQ Item 5 -->
                 <h2 id="accordion-flush-heading-5">
-                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-5" aria-expanded="false" aria-controls="accordion-flush-body-5">
+                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-5" aria-expanded="false"
+                        aria-controls="accordion-flush-body-5">
                         <span class="text-lg md:text-xl">How to earn with crypto on Desci?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
@@ -784,7 +806,8 @@
 
                 <!-- FAQ Item 6 -->
                 <h2 id="accordion-flush-heading-6">
-                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-6" aria-expanded="false" aria-controls="accordion-flush-body-6">
+                    <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-6" aria-expanded="false"
+                        aria-controls="accordion-flush-body-6">
                         <span class="text-lg md:text-xl">Why choose Desci as your cryptocurrency exchange?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>

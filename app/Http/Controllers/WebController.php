@@ -10,6 +10,11 @@ class WebController extends Controller
     {
         return view('web.pages.home');
     }
+
+    public function markets()
+    {
+        return view('web.pages.markets.index');
+    }
     public function dashboard()
     {
         return view('web.pages.UserDashboard.dashboard');
@@ -29,10 +34,6 @@ class WebController extends Controller
     public function earnOverview()
     {
         return view('web.pages.earn.overview');
-    }
-    public function markets()
-    {
-        return view('web.pages.UserDashboard.markets');
     }
     public function arbitrageBots()
     {
