@@ -33,6 +33,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function wallets()
+    {
+        return $this->hasMany(Wallet::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -44,5 +49,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+            do {
+                $uid = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+            } while (self::where('user_uid', $uid)->exists());
+
+            $user->user_uid = $uid;
+        });
     }
 }

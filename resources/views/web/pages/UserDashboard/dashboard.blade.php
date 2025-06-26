@@ -35,7 +35,7 @@
                         <div class="md:border-l md:border-neutral-600 md:pl-10">
                             <div class="text-gray-400 text-xs md:text-sm">UID</div>
                             <div class="flex items-center text-sm md:text-base">
-                                <span>1019573380</span>
+                                <span>{{ auth()->user()->user_uid }}</span>
                                 <i class="fas fa-copy ml-2 text-gray-400 cursor-pointer"></i>
                             </div>
                         </div>

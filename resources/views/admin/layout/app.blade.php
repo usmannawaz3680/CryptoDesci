@@ -11,7 +11,7 @@
     @stack('style')
 </head>
 
-<body>
+<body class="dark">
     <header>
         <nav class="bg-white border-gray-200 dark:bg-crypto-accent dark:border-gray-700">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between md:justify-start md:gap-8 p-4">
@@ -220,7 +220,7 @@
     </header>
     <div class="flex">
         @hasSection('sidebar')
-            @yield('sidebar')   
+            @yield('sidebar')
         @endif
         <main class="@hasSection('sidebar') md:pe-5 @else md:px-10 @endif flex-1 px-5 lg:px-0 overflow-y-auto bg-black custom-scrollbar">
             @yield('content')
