@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Wallet;
+use App\Models\AssetCoin;
 
 class WebController extends Controller
 {
@@ -17,7 +20,19 @@ class WebController extends Controller
     }
     public function dashboard()
     {
-        return view('web.pages.UserDashboard.dashboard');
+        $wallets = Auth::user()->wallets;
+        $holdings = $wallets->map(function ($wallet) {
+            return [
+                'coin' => $wallet->coin,
+                'balance' => $wallet->balance,
+            ];
+        })->filter(function ($holding) {
+            return $holding['balance'] > 0;
+        });
+        return view('web.pages.UserDashboard.dashboard', [
+            'wallets' => $wallets,
+            'holdings' => $holdings,
+        ]);
     }
     public function nftHome()
     {
@@ -46,5 +61,12 @@ class WebController extends Controller
     public function nftCollection()
     {
         return view('web.pages.nft.show');
+    }
+    public function deposit()
+    {
+        $assets = AssetCoin::where('is_active', true)->get();
+        return view('web.pages.UserDashboard.deposit', [
+            'assets' => $assets,
+        ]);
     }
 }

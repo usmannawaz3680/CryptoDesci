@@ -21,7 +21,12 @@ Route::get('/markets', [WebController::class, 'markets'])->name('web.markets');
 Route::get('/dashboard', [WebController::class, 'dashboard'])
     ->middleware(['auth', 'verified'])
     ->name('user.dashboard');
-
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/deposit', [WebController::class, 'deposit'])->name('deposit');
+    // Route::post('/deposit/submit', [WebController::class, 'depositSubmit'])->name('deposit.submit');
+    // Route::get('/withdraw', [WebController::class, 'withdraw'])->name('withdraw');
+    // Route::post('/withdraw/submit', [WebController::class, 'withdrawSubmit'])->name('withdraw.submit');
+});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

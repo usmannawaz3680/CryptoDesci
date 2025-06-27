@@ -139,7 +139,7 @@
                         </div>
                     </div>
                     <div class="flex items-baseline justify-start gap-3">
-                        <h3 class="text-4xl font-bold">0.00</h3>
+                        <h3 class="text-4xl font-bold">${{ number_format($wallets->sum('balance'), 3) }}</h3>
                         <div>
                             <button type="button" id="currency-drop" data-dropdown-toggle="currency-dropdown" data-dropdown-trigger="hover" data-dropdown-delay="100" class="text-white text-sm rounded hover:bg-dark-hover transition-colors mb-1">BTC <i class="fas fa-chevron-down"></i></button>
                             <ul id="currency-dropdown" class="z-10 hidden bg-crypto-accent rounded-lg shadow-sm w-24 dark:bg-crypto-accent/80 overflow-hidden">
