@@ -165,7 +165,7 @@
 
         <!-- Form Container -->
         <div class="binance-card p-8">
-            <form id="depositForm" action="#" method="POST" enctype="multipart/form-data">
+            <form id="depositForm" action="{{ route('user.deposit.submit') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Step 1: Currency Selection -->
@@ -177,19 +177,19 @@
 
                     <div class="max-w-md mx-auto">
                         <label for="currency" class="block text-sm font-medium mb-2">Cryptocurrency</label>
-                        <select id="currency" name="currency" class="binance-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                        <select id="currency" name="coin" class="binance-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
                             <option value="" selected>Select a cryptocurrency</option>
-                            @foreach($assets as $asset)
-                                <option value="{{ $asset->symbol }}" data-networks='["Tron (TRC20)"]'>
+                            @foreach ($assets as $asset)
+                                <option value="{{ $asset->id }}" data-networks='["Tron (TRC20)"]'>
                                     {{ $asset->name }} ({{ $asset->symbol }})
                                 </option>
-                                @endforeach
+                            @endforeach
                             {{-- <option value="USDT" data-networks='["Ethereum (ERC20)", "Tron (TRC20)", "Binance Smart Chain (BEP20)"]'>Tether (USDT)</option>
                             <option value="BNB" data-networks='["Binance Smart Chain (BEP20)", "Binance Chain (BEP2)"]'>Binance Coin (BNB)</option>
                             <option value="ADA" data-networks='["Cardano"]'>Cardano (ADA)</option>
                             <option value="DOT" data-networks='["Polkadot"]'>Polkadot (DOT)</option> --}}
                         </select>
-                        @error('currency')
+                        @error('coin')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
@@ -250,7 +250,7 @@
                         <div class="text-center">
                             <h3 class="text-lg font-semibold mb-4">QR Code</h3>
                             <div class="qr-code-container mx-auto">
-                                <img src="/placeholder.svg?height=200&width=200" alt="Deposit QR Code" class="w-48 h-48 bg-white rounded-lg" id="qr-code">
+                                <img src="{{ asset('assets/images/placeholder.svg') }}" alt="Deposit QR Code" class="w-48 h-48 bg-white rounded-lg" id="qr-code">
                             </div>
                             <p class="text-sm text-gray-400 mt-2">Scan with your wallet app</p>
                         </div>
@@ -273,8 +273,8 @@
 
                             <div class="mb-4">
                                 <label for="deposit_amount" class="block text-sm font-medium mb-2">Amount to Deposit</label>
-                                <input type="number" id="deposit_amount" name="deposit_amount" step="0.00000001" class="binance-input w-full px-4 py-3 rounded-lg focus:outline-none" placeholder="Enter amount" required>
-                                @error('deposit_amount')
+                                <input type="number" id="deposit_amount" name="amount" step="0.00000001" class="binance-input w-full px-4 py-3 rounded-lg focus:outline-none" placeholder="Enter amount" required>
+                                @error('amount')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -326,6 +326,13 @@
                                 <label for="transaction_id" class="block text-sm font-medium mb-2">Transaction ID (Hash) *</label>
                                 <input type="text" id="transaction_id" name="transaction_id" class="binance-input w-full px-4 py-3 rounded-lg focus:outline-none" placeholder="Enter transaction hash" required>
                                 @error('transaction_id')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="from_address" class="block text-sm font-medium mb-2">From Address: (optional)</label>
+                                <input type="text" id="from_address" name="from_address" class="binance-input w-full px-4 py-3 rounded-lg focus:outline-none" placeholder="Enter from address">
+                                @error('from_address')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -382,41 +389,23 @@
 
         // Network configurations
         const networkConfig = {
-            'BTC': {
-                'Bitcoin': {
-                    address: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa',
-                    confirmations: 3,
-                    arrivalTime: '30-60 minutes',
-                    minDeposit: '0.001'
-                }
-            },
-            'ETH': {
-                'Ethereum (ERC20)': {
-                    address: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
-                    confirmations: 12,
-                    arrivalTime: '5-10 minutes',
-                    minDeposit: '0.01'
-                }
-            },
-            'USDT': {
-                'Ethereum (ERC20)': {
-                    address: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
-                    confirmations: 12,
-                    arrivalTime: '5-10 minutes',
-                    minDeposit: '10'
-                },
+            1: {
                 'Tron (TRC20)': {
                     address: 'TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs',
                     confirmations: 20,
                     arrivalTime: '2-5 minutes',
-                    minDeposit: '10'
+                    minDeposit: '10',
+                    value: 'TRC20'
                 },
-                'Binance Smart Chain (BEP20)': {
-                    address: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
-                    confirmations: 15,
-                    arrivalTime: '3-5 minutes',
-                    minDeposit: '10'
-                }
+            },
+            2: {
+                'Tron (TRC20)': {
+                    address: 'TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs',
+                    confirmations: 20,
+                    arrivalTime: '2-5 minutes',
+                    minDeposit: '10',
+                    value: 'TRC20'
+                },
             }
         };
 
@@ -457,43 +446,42 @@
             const networkSelect = document.getElementById('network');
             networkSelect.innerHTML = '<option value="">Select a network</option>';
 
-            networks.forEach(network => {
-                const option = document.createElement('option');
-                option.value = network;
-                option.textContent = network;
-                networkSelect.appendChild(option);
+            const currency = document.getElementById('currency').value;
+
+            networks.forEach(networkName => {
+                const config = networkConfig[currency]?.[networkName];
+                if (config) {
+                    const option = document.createElement('option');
+                    option.value = config.value; // e.g., 'TRC20'
+                    option.textContent = networkName; // Display full name
+                    option.dataset.label = networkName; // Store original label for later use
+                    networkSelect.appendChild(option);
+                }
             });
 
             document.getElementById('network-next').disabled = true;
         }
 
+
         function updateDepositInfo() {
             const currency = document.getElementById('currency').value;
-            const network = document.getElementById('network').value;
+            const networkSelect = document.getElementById('network');
+            const selectedValue = networkSelect.value;
+            const selectedLabel = networkSelect.options[networkSelect.selectedIndex]?.dataset.label;
 
-            if (currency && network && networkConfig[currency] && networkConfig[currency][network]) {
-                const config = networkConfig[currency][network];
+            if (currency && selectedValue && selectedLabel && networkConfig[currency][selectedLabel]) {
+                const config = networkConfig[currency][selectedLabel];
 
-                // Update address
                 document.getElementById('deposit-address').textContent = config.address;
-
-                // Update network badge
-                document.getElementById('selected-network-badge').textContent = network;
-
-                // Update currency symbol
+                document.getElementById('selected-network-badge').textContent = selectedLabel;
                 document.getElementById('currency-symbol').textContent = currency;
-
-                // Update confirmations
                 document.getElementById('confirmations').textContent = config.confirmations;
-
-                // Update arrival time
                 document.getElementById('arrival-time').textContent = config.arrivalTime;
-
-                // Update minimum deposit
                 document.getElementById('deposit_amount').placeholder = `Min: ${config.minDeposit} ${currency}`;
                 document.getElementById('deposit_amount').min = config.minDeposit;
             }
         }
+
 
         function nextStep(step) {
             if (step < totalSteps) {

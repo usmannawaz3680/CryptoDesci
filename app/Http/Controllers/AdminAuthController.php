@@ -35,4 +35,14 @@ class AdminAuthController extends Controller
 
         return redirect()->route('admin.login');
     }
+    public function markNotificationsAsRead()
+    {
+        $admin = Auth::guard('admin')->user();
+        if ($admin) {
+            $admin->unreadNotifications->markAsRead();
+            return redirect()->back()->with('success', 'Notifications marked as read.');
+        }
+
+        return redirect()->back()->withErrors(['error' => 'Admin not authenticated.']);
+    }
 }

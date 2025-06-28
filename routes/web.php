@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\DepositController;
+use App\Http\Controllers\Admin\DepositController as AdminDepositController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
@@ -23,7 +25,7 @@ Route::get('/dashboard', [WebController::class, 'dashboard'])
     ->name('user.dashboard');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/deposit', [WebController::class, 'deposit'])->name('deposit');
-    // Route::post('/deposit/submit', [WebController::class, 'depositSubmit'])->name('deposit.submit');
+    Route::post('/deposit/submit', [DepositController::class, 'submit'])->name('user.deposit.submit');
     // Route::get('/withdraw', [WebController::class, 'withdraw'])->name('withdraw');
     // Route::post('/withdraw/submit', [WebController::class, 'withdrawSubmit'])->name('withdraw.submit');
 });
@@ -41,6 +43,11 @@ Route::prefix('admin')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
+        Route::get('/deposits', [AdminDepositController::class, 'index'])->name('admin.deposits');
+        Route::get('/deposits/{id}', [AdminDepositController::class, 'show'])->name('admin.deposits.show');
+        Route::post('/deposits/{id}/approve', [AdminDepositController::class, 'approve'])->name('admin.deposits.approve');
+        Route::post('/deposits/{id}/reject', [AdminDepositController::class, 'reject'])->name('admin.deposits.reject');
+        Route::get('/notifications/markAsRead', [AdminAuthController::class, 'markNotificationsAsRead'])->name('notifications.markAsRead');
     });
 });
 

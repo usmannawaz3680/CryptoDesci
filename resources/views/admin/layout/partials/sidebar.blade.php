@@ -24,6 +24,10 @@
                         <i class="fas fa-user-group w-5 text-center text-crypto-primary"></i>
                         <span class="text-sm">Users</span>
                     </a>
+                    <a href="{{ route('admin.deposits') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('admin.deposits') ? 'bg-crypto-primary/20': ''  }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
+                        <i class="fas fa-money-bill-wave w-5 text-center text-crypto-primary"></i>
+                        <span class="text-sm">Deposits</span>
+                    </a>
                 </div>
             </nav>
         </aside>
