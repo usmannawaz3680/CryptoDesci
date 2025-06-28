@@ -102,7 +102,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <a href="#"><i class="fas fa-wallet text-white hover:text-crypto-primary text-lg"></i></a>
+                        <a href="{{ route('user.assets')}}"><i class="fas fa-wallet text-white hover:text-crypto-primary text-lg"></i></a>
                         <a href="#" class="relative">
                             <i class="fas fa-bell text-white hover:text-crypto-primary text-lg"></i>
                             <span class="absolute top-0 right-0 h-2 w-2 bg-yellow-400 rounded-full"></span>

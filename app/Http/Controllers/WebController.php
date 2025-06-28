@@ -69,4 +69,14 @@ class WebController extends Controller
             'assets' => $assets,
         ]);
     }
+    public function assets()
+    {
+        $wallets = Auth::user()->wallets()->with('coin')->get();
+        $assets = AssetCoin::where('is_active', true)->get();
+
+        return view('web.pages.UserDashboard.assets', [
+            'wallets' => $wallets,
+            'assets' => $assets,
+        ]);
+    }
 }

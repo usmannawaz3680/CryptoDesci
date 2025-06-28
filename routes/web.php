@@ -26,6 +26,7 @@ Route::get('/dashboard', [WebController::class, 'dashboard'])
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/deposit', [WebController::class, 'deposit'])->name('deposit');
     Route::post('/deposit/submit', [DepositController::class, 'submit'])->name('user.deposit.submit');
+    Route::get('dashboard/assets', [WebController::class, 'assets'])->name('user.assets');
     // Route::get('/withdraw', [WebController::class, 'withdraw'])->name('withdraw');
     // Route::post('/withdraw/submit', [WebController::class, 'withdrawSubmit'])->name('withdraw.submit');
 });

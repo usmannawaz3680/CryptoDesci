@@ -109,7 +109,7 @@
                     <div class="border border-neutral-600 rounded-lg p-4 md:p-6 bg-crypto-accent/80 flex flex-col justify-between">
                         <h3 class="text-lg md:text-xl font-medium mb-2">Deposit</h3>
                         <div class="flex justify-center mt-12 md:mt-16">
-                            <button class="bg-btn text-black font-medium px-6 py-2 rounded w-full hover:bg-opacity-90 transition-colors">Deposit</button>
+                            <button onclick="location.href='{{ route('deposit') }}'" class="bg-btn text-black font-medium px-6 py-2 rounded w-full hover:bg-opacity-90 transition-colors">Deposit</button>
                         </div>
                     </div>
 
@@ -133,7 +133,7 @@
                         </div>
 
                         <div class="grid grid-cols-3 gap-2 md:flex md:gap-3">
-                            <button class="bg-dark-lighter text-white px-2 py-1.5 md:px-4 md:py-2 text-sm rounded hover:bg-dark-hover transition-colors">Deposit</button>
+                            <button onclick="location.href('{{ route('deposit') }}')" class="bg-dark-lighter text-white px-2 py-1.5 md:px-4 md:py-2 text-sm rounded hover:bg-dark-hover transition-colors">Deposit</button>
                             <button class="bg-dark-lighter text-white px-2 py-1.5 md:px-4 md:py-2 text-sm rounded hover:bg-dark-hover transition-colors">Withdraw</button>
                             <button class="bg-dark-lighter text-white px-2 py-1.5 md:px-4 md:py-2 text-sm rounded hover:bg-dark-hover transition-colors">Cash In</button>
                         </div>
