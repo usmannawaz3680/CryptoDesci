@@ -219,19 +219,18 @@
                         <tr class="asset-row">
                             <td data-label="Asset">
                                 <div class="flex items-center">
-                                    {{-- <img src="{{ $as" alt="{{ $asset['symbol'] }} icon" class="w-6 h-6 mr-3 rounded-full"> --}}
                                     <div>
-                                        <div class="asset-symbol">{{ $asset->symbold }}</div>
+                                        <div class="asset-symbol">{{ $asset->symbol }}</div>
                                         <div class="asset-name">{{ $asset->name }}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td data-label="Balance">{{ number_format($asset->balance, 8) }} {{ $asset->symbol }}</td>
-                            <td data-label="Value (USD)">$ {{ number_format($asset['usd_value'], 2) }}</td>
+                            <td data-label="Balance">{{ number_format($wallets->where('asset_coin_id', $asset->id)->sum('balance'), 8) }} {{ $asset->symbol }}</td>
+                            <td data-label="Value (USD)">$ {{ number_format($wallets->where('asset_coin_id', $asset->id)->sum('balance'), 2) }}</td>
                             <td data-label="Actions">
                                 <div class="flex space-x-2">
-                                    <button class="action-button deposit">Deposit</button>
-                                    <button class="action-button withdraw">Withdraw</button>
+                                    <button onclick="location.href='{{ route('deposit') }}'" class="action-button deposit">Deposit</button>
+                                    <a href="{{ route('user.withdrawls') }}" class="action-button withdraw">Withdraw</a>
                                 </div>
                             </td>
                         </tr>

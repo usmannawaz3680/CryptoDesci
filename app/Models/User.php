@@ -42,7 +42,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Deposit::class, 'user_id', 'id');
     }
-
+    public function withdrawls()
+    {
+        return $this->hasMany(Withdrawl::class, 'user_id', 'id');
+    }
     /**
      * Get the attributes that should be cast.
      *

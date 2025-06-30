@@ -79,4 +79,16 @@ class WebController extends Controller
             'assets' => $assets,
         ]);
     }
+    public function withdrawls()
+    {
+        $coins = AssetCoin::where('is_active', true)->get();
+        $withdrawls = Auth::user()->withdrawls()->with('coin')->get();
+        // $wallets = Wallet::where('user_id', Auth::user()->id)->get();
+        $wallets = auth()->user()->wallets()->pluck('balance', 'asset_coin_id')->toArray();
+        return view('web.pages.UserDashboard.withdrawls', [
+            'withdrawls' => $withdrawls,
+            'wallets' => $wallets,
+            'coins' => $coins,
+        ]);
+    }
 }

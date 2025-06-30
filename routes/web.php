@@ -5,7 +5,9 @@ use App\Http\Controllers\WebController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\WithdrawlController;
 use App\Http\Controllers\Admin\DepositController as AdminDepositController;
+use App\Http\Controllers\Admin\WithdrawalController as AdminWithdrawalController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
@@ -26,9 +28,12 @@ Route::get('/dashboard', [WebController::class, 'dashboard'])
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/deposit', [WebController::class, 'deposit'])->name('deposit');
     Route::post('/deposit/submit', [DepositController::class, 'submit'])->name('user.deposit.submit');
+    Route::get('/dashboard/withdrawls', [WebController::class, 'withdrawls'])->name('user.withdrawls');
+    Route::post('/withdraw/submit', [WithdrawlController::class, 'submit'])->name('user.withdraw.submit');
     Route::get('dashboard/assets', [WebController::class, 'assets'])->name('user.assets');
-    // Route::get('/withdraw', [WebController::class, 'withdraw'])->name('withdraw');
-    // Route::post('/withdraw/submit', [WebController::class, 'withdrawSubmit'])->name('withdraw.submit');
+    Route::get('/withdrawals', [AdminWithdrawalController::class, 'index'])->name('withdrawals.index');
+    Route::post('/withdrawals/{withdrawal}/approve', [AdminWithdrawalController::class, 'approve'])->name('withdrawals.approve');
+    Route::post('/withdrawals/{withdrawal}/reject', [AdminWithdrawalController::class, 'reject'])->name('withdrawals.reject');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
