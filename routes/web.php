@@ -26,14 +26,16 @@ Route::get('/dashboard', [WebController::class, 'dashboard'])
     ->middleware(['auth', 'verified'])
     ->name('user.dashboard');
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::post('/notifications/{id}/read', function ($id) {
+        $notification = auth()->user()->notifications()->findOrFail($id);
+        $notification->markAsRead();
+        return response()->json(['success' => true]);
+    })->name('notifications.read');
     Route::get('/deposit', [WebController::class, 'deposit'])->name('deposit');
     Route::post('/deposit/submit', [DepositController::class, 'submit'])->name('user.deposit.submit');
     Route::get('/dashboard/withdrawls', [WebController::class, 'withdrawls'])->name('user.withdrawls');
     Route::post('/withdraw/submit', [WithdrawlController::class, 'submit'])->name('user.withdraw.submit');
     Route::get('dashboard/assets', [WebController::class, 'assets'])->name('user.assets');
-    Route::get('/withdrawals', [AdminWithdrawalController::class, 'index'])->name('withdrawals.index');
-    Route::post('/withdrawals/{withdrawal}/approve', [AdminWithdrawalController::class, 'approve'])->name('withdrawals.approve');
-    Route::post('/withdrawals/{withdrawal}/reject', [AdminWithdrawalController::class, 'reject'])->name('withdrawals.reject');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -54,6 +56,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/deposits/{id}/approve', [AdminDepositController::class, 'approve'])->name('admin.deposits.approve');
         Route::post('/deposits/{id}/reject', [AdminDepositController::class, 'reject'])->name('admin.deposits.reject');
         Route::get('/notifications/markAsRead', [AdminAuthController::class, 'markNotificationsAsRead'])->name('notifications.markAsRead');
+        Route::get('/withdrawals', [AdminWithdrawalController::class, 'index'])->name('withdrawals.index');
+        Route::post('/withdrawals/{withdrawal}/approve', [AdminWithdrawalController::class, 'approve'])->name('withdrawals.approve');
+        Route::post('/withdrawals/{withdrawal}/reject', [AdminWithdrawalController::class, 'reject'])->name('withdrawals.reject');
     });
 });
 

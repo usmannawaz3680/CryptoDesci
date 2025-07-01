@@ -10,7 +10,7 @@
             <div class="p-4 md:p-6 bg-crypto-accent rounded-xl">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-2xl font-semibold">Withdrawal Requests</h2>
-                    <input type="text" id="searchInput" placeholder="Search by UID or TXID..." class="p-2 rounded border border-gray-300 w-64">
+                    <input type="text" id="searchInput" placeholder="Search by UID or TXID..." class="w-1/3 pl-5 pr-4 py-3 rounded-lg focus:outline-none border-gray-800 bg-neutral-900 placeholder:text-gray-400">
                 </div>
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -53,7 +53,9 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="7" class="text-center py-4 text-gray-500">No withdrawal requests found.</td></tr>
+                                <tr>
+                                    <td colspan="7" class="text-center py-4 text-gray-500">No withdrawal requests found.</td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -61,34 +63,77 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div id="actionModal" tabindex="-1" class="hidden fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto h-screen bg-black bg-opacity-50">
+        <div class="relative w-full max-w-md mx-auto mt-24">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div class="px-6 py-4 border-b rounded-t dark:border-gray-700">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white" id="modalTitle"></h3>
+                </div>
+                <div class="p-6 space-y-4">
+                    <input type="text" id="trxId" placeholder="Enter TRX ID" required class="w-full rounded-lg p-3 bg-gray-900 text-white border border-gray-700">
+                    <textarea id="adminNote" rows="4" class="w-full rounded-lg p-3 bg-gray-900 text-white border border-gray-700" placeholder="Enter admin note (optional)"></textarea>
+                </div>
+                <div class="flex justify-end px-6 py-4 border-t border-gray-200 rounded-b dark:border-gray-700">
+                    <button onclick="submitWithdrawAction()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('script')
-<script>
-function handleWithdrawAction(id, action) {
-    const confirmMsg = `Are you sure you want to ${action} this withdrawal?`;
-    if (confirm(confirmMsg)) {
-        fetch(`/admin/withdrawals/${id}/${action}`, {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            }
-        })
-        .then(() => location.reload())
-        .catch(err => {
-            alert('An error occurred');
-            console.error(err);
+    <script>
+        document.getElementById("searchInput").addEventListener("keyup", function() {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll("#withdrawalsTable tbody tr");
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(filter) ? "" : "none";
+            });
         });
-    }
-}
+    </script>
+    <script>
+        let currentWithdrawId = null;
+        let currentAction = null;
 
-document.getElementById("searchInput").addEventListener("keyup", function () {
-    const filter = this.value.toLowerCase();
-    const rows = document.querySelectorAll("#withdrawalsTable tbody tr");
-    rows.forEach(row => {
-        const text = row.innerText.toLowerCase();
-        row.style.display = text.includes(filter) ? "" : "none";
-    });
-});
-</script>
+        function handleWithdrawAction(id, action) {
+            currentWithdrawId = id;
+            currentAction = action;
+            document.getElementById('adminNote').value = '';
+            document.getElementById('modalTitle').textContent = `Confirm ${action.charAt(0).toUpperCase() + action.slice(1)} Withdrawal`;
+            document.getElementById('actionModal').classList.remove('hidden');
+        }
+
+        function submitWithdrawAction() {
+            const note = document.getElementById('adminNote').value;
+            const trxId = document.getElementById('trxId').value;
+
+            fetch(`/admin/withdrawals/${currentWithdrawId}/${currentAction}`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        admin_note: note,
+                        trx_id: trxId
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert(data.error || 'Something went wrong');
+                    }
+                })
+                .catch(err => {
+                    alert('An error occurred');
+                    console.error(err);
+                });
+
+            document.getElementById('actionModal').classList.add('hidden');
+        }
+    </script>
 @endpush

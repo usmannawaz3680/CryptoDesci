@@ -16,7 +16,7 @@ class WithdrawalRequested extends Notification
 
     public function via($notifiable)
     {
-        return ['mail', 'database']; // or just 'database' if not sending email
+        return ['database']; // or just 'database' if not sending email
     }
 
     public function toMail($notifiable)
@@ -36,6 +36,7 @@ class WithdrawalRequested extends Notification
             'coin'      => $this->withdrawal->coin->symbol,
             'address'   => $this->withdrawal->address,
             'id'        => $this->withdrawal->id,
+            'message'   => 'A new withdrawal request has been submitted.',
         ];
     }
 }

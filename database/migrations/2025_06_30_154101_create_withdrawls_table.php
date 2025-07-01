@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('asset_coin_id')->constrained('asset_coins')->onDelete('cascade');
             $table->decimal('amount', 20, 8);
             $table->string('network', 32)->nullable();
-            $table->string('trx_id', 76)->unique();
+            $table->string('trx_id', 76)->unique()->nullable();
             $table->string('to_address');
             $table->enum('status', ['pending', 'processing', 'completed', 'rejected'])->default('pending');
             $table->text('admin_note')->nullable();

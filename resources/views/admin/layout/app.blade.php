@@ -214,8 +214,8 @@
                             @forelse (Auth::guard('admin')->user()->unreadNotifications as $notification)
                                 <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div class="shrink-0">
-                                    <div class="w-11 h-11 bg-blue-700 rounded-full flex items-center justify-center"><i class="fas fa-bell"></i></div>
-                                    <div class="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-blue-600 border border-white rounded-full dark:border-gray-800">
+                                    <div class="w-11 h-11 bg-crypto-accent/80 rounded-full flex items-center justify-center"><i class="fas fa-bell"></i></div>
+                                    <div class="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-crypto-primary border border-white rounded-full dark:border-gray-800">
                                         <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                                             <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
                                             <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
@@ -224,17 +224,17 @@
                                 </div>
                                 <div class="w-full ps-3">
                                     <div class="text-gray-500 text-sm mb-1 dark:text-gray-400">{{ $notification->data['message'] }}</div>
-                                    @if ($notification->type === 'App\Notifications\DepositSubmitted')
+                                    @if ($notification->type === 'App\Notifications\DepositSubmitted' || $notification->type === 'App\Notifications\WithdrawalRequested')
                                         <div class="text-sm text-gray-900 dark:text-white flex flex-col gap-1">
                                             <div>
-                                                <span class="font-semibold">Deposit Amount:</span> {{ $notification->data['amount'] }} </span>
+                                                <span class="font-semibold">{{ $notification->type === 'App\Notifications\DepositSubmitted' ? 'Deposit' : 'Withdraw'}} Amount:</span> {{ $notification->data['amount'] }} </span>
                                             </div>
                                             <div>
-                                                <span class="font-semibold">Trx ID:</span> {{ $notification->data['trx_id'] }}</span>
+                                                <span class="font-semibold">{{ $notification->type === 'App\Notifications\DepositSubmitted' ? 'Trx ID' : 'Wallet Address'}}</span> {{ $notification->type === 'App\Notifications\DepositSubmitted' ? $notification->data['trx_id'] : $notification->data['address']}}</span>
                                             </div>
                                         </div>
                                     @endif
-                                    <div class="text-xs text-blue-600 dark:text-blue-500">{{ $notification->created_at->diffForHumans() }}</div>
+                                    <div class="text-xs text-crypto-primary">{{ $notification->created_at->diffForHumans() }}</div>
                                 </div>
                             </a>
                             @empty

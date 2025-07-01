@@ -12,10 +12,12 @@
     @stack('style')
 </head>
 
-<body class="bg-black" @hasSection('sidebar') x-data="{
+<body class="bg-black" @hasSection('sidebar')
+    x-data="{
         sidebarCollapsed: false,
         mobileExpanded: false,
-    }" @endif>
+    }"
+    @endif>
     <!-- Header with highest z-index -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white border-gray-200 dark:bg-crypto-accent dark:border-gray-700">
         <nav>
@@ -34,13 +36,17 @@
                 <div class="hidden w-full justify-between items-center md:flex md:w-auto" id="navbar-dropdown">
                     <ul class="flex flex-col font-normal p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-5 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-crypto-accent">
                         <li>
-                            <a href="#" class="block py-2 px-3 text-white rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">Buy Crypto</a>
+                            <a href="#"
+                                class="block py-2 px-3 text-white rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">Buy
+                                Crypto</a>
                         </li>
                         <li>
-                            <a href="{{ route('web.markets') }}" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Markets</a>
+                            <a href="{{ route('web.markets') }}"
+                                class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Markets</a>
                         </li>
                         <li>
-                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" data-dropdown-trigger='hover' data-dropdown-delay=100 class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 md:w-auto dark:text-white md:dark:hover:text-crypto-primary dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Trade
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" data-dropdown-trigger='hover' data-dropdown-delay=100
+                                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 md:w-auto dark:text-white md:dark:hover:text-crypto-primary dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Trade
                                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                 </svg>
@@ -66,13 +72,16 @@
                         </li>
                         <!-- Other navigation items... -->
                         <li>
-                            <a href="{{ url('/nft-home') }}" class="block py-2 px-3 text-white rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">NFTs</a>
+                            <a href="{{ url('/nft-home') }}"
+                                class="block py-2 px-3 text-white rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">NFTs</a>
                         </li>
                         <li>
-                            <a href="{{ url('/') }}" class="block py-2 px-3 text-white rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">Square</a>
+                            <a href="{{ url('/') }}"
+                                class="block py-2 px-3 text-white rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">Square</a>
                         </li>
                         <li>
-                            <a href="{{ url('/') }}" class="block py-2 px-3 text-purple-500 rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary dark:text-purple-400 md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">Donate</a>
+                            <a href="{{ url('/') }}"
+                                class="block py-2 px-3 text-purple-500 rounded-sm md:bg-transparent md:p-0 hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary dark:text-purple-400 md:dark:hover:text-crypto-primary dark:hover:text-white md:dark:bg-transparent">Donate</a>
                         </li>
                     </ul>
                 </div>
@@ -102,11 +111,46 @@
                                 </ul>
                             </div>
                         </div>
-                        <a href="{{ route('user.assets')}}"><i class="fas fa-wallet text-white hover:text-crypto-primary text-lg"></i></a>
-                        <a href="#" class="relative">
-                            <i class="fas fa-bell text-white hover:text-crypto-primary text-lg"></i>
-                            <span class="absolute top-0 right-0 h-2 w-2 bg-yellow-400 rounded-full"></span>
-                        </a>
+                        <a href="{{ route('user.assets') }}"><i class="fas fa-wallet text-white hover:text-crypto-primary text-lg"></i></a>
+                        <div class="relative" x-data="{ open: false }">
+                            <button @click="open = !open" class="relative focus:outline-none">
+                                <i class="fas fa-bell text-white hover:text-crypto-primary text-lg"></i>
+                                @if (auth()->user()->unreadNotifications->count() > 0)
+                                    <span class="absolute top-0 right-0 h-2 w-2 bg-yellow-400 rounded-full animate-ping"></span>
+                                @endif
+                            </button>
+
+                            <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg shadow-lg z-50">
+                                <div class="p-4 border-b border-gray-200 dark:border-gray-700 font-semibold">
+                                    Notifications
+                                </div>
+                                <ul class="max-h-80 overflow-y-auto divide-y divide-gray-200 dark:divide-gray-700">
+                                    @forelse(auth()->user()->notifications->take(10) as $notification)
+                                        <li>
+                                            <a href="{{ route('user.assets') }}" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700" onclick="markAsRead('{{ $notification->id }}')">
+                                                <div class="text-sm">
+                                                    {{ $notification->data['message'] ?? 'New update on your withdrawal' }}
+                                                </div>
+                                                @if (!empty($notification->data['admin_note']))
+                                                    <div class="text-xs text-gray-500 mt-1 italic">
+                                                        {{-- {{ $notification->data['admin_note'] }} --}}
+                                                        {{ number_format($notification->data['amount'], 4) }} transfer has been {{ $notification->data['status'] }}
+                                                    </div>
+                                                @endif
+                                                <div class="text-xs text-gray-400 mt-1">
+                                                    {{ $notification->created_at->diffForHumans() }}
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @empty
+                                        <li class="text-center text-sm text-gray-500 py-4">
+                                            No notifications.
+                                        </li>
+                                    @endforelse
+                                </ul>
+                            </div>
+                        </div>
+
                     @endauth
                     @if (auth('web')->guest())
                         <a href="/login" class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Login/Signup</a>
@@ -126,8 +170,12 @@
         @endif
 
         <!-- Main Content Area -->
-        <main class="flex-1 overflow-y-auto bg-black custom-scrollbar transition-all duration-300 ease-in-out @hasSection('sidebar')  @else px-5 md:px-10 @endif"
-            @hasSection('sidebar') :class="sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-72'" @endif>
+        <main class="flex-1 overflow-y-auto bg-black custom-scrollbar transition-all duration-300 ease-in-out @hasSection('sidebar')
+@else
+px-5 md:px-10
+@endif" @hasSection('sidebar')
+            :class="sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-72'"
+            @endif>
             <div>
                 @yield('content')
             </div>
@@ -135,8 +183,9 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-crypto-accent/90 text-white py-8 transition-all duration-300 ease-in-out"
-        @hasSection('sidebar') :class="sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-72'" @endif>
+    <footer class="bg-crypto-accent/90 text-white py-8 transition-all duration-300 ease-in-out" @hasSection('sidebar')
+        :class="sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-72'"
+        @endif>
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-8">
             <!-- Company Info -->
             <div>
@@ -178,12 +227,14 @@
                 <div class="flex space-x-4">
                     <a href="https://twitter.com/cryptoapp" class="text-gray-400 hover:text-yellow-400">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 14.008-7.496 14.008-13.985 0-.266-.006-.531-.018-.797.962-.695 1.8-1.562 2.457-2.549z" />
+                            <path
+                                d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 14.008-7.496 14.008-13.985 0-.266-.006-.531-.018-.797.962-.695 1.8-1.562 2.457-2.549z" />
                         </svg>
                     </a>
                     <a href="https://facebook.com/cryptoapp" class="text-gray-400 hover:text-yellow-400">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.129 22 16.991 22 12z" />
+                            <path
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.129 22 16.991 22 12z" />
                         </svg>
                     </a>
                     <a href="https://telegram.org/cryptoapp" class="text-gray-400 hover:text-yellow-400">
@@ -238,6 +289,17 @@
     </div>
 
     <script src="{{ asset('assets/js/app-bundle.js') }}"></script>
+    <script>
+        function markAsRead(notificationId) {
+            fetch(`/notifications/${notificationId}/read`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                }
+            });
+        }
+    </script>
+
     @stack('script')
 </body>
 

@@ -7,16 +7,18 @@ use App\Models\Wallet;
 use App\Models\Withdrawl;
 use App\Models\Coin;
 use App\Models\User;
+use App\Models\Admin;
 use App\Notifications\WithdrawalRequested;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Log;
 
 class WithdrawlController extends Controller
 {
     public function submit(Request $request)
     {
         $request->validate([
-            'coin'    => 'required|exists:coins,id',
+            'coin'    => 'required|exists:asset_coins,id',
             'network' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'amount'  => 'required|numeric|min:0.00000001',
@@ -31,8 +33,8 @@ class WithdrawlController extends Controller
                         ->where('asset_coin_id', $coinId)
                         ->first();
 
-        if (!$wallet || $wallet->balance < $amount) {
-            return back()->withErrors(['amount' => 'You don’t have sufficient balance to make this withdrawal.']);
+        if (!$wallet || $wallet->balance <= $amount) {
+            return back()->with('error', 'You don’t have sufficient balance to make this withdrawal.');
         }
 
         DB::beginTransaction();
@@ -41,13 +43,13 @@ class WithdrawlController extends Controller
                 'user_id'   => $user->id,
                 'asset_coin_id'   => $coinId,
                 'network'   => $request->network,
-                'address'   => $request->address,
+                'to_address'   => $request->address,
                 'amount'    => $amount,
                 'status'    => 'pending', // pending → approved → completed
             ]);
 
             // Notify admin(s)
-            $admins = User::where('role', 'admin')->get(); // Adjust role field if needed
+            $admins = Admin::first(); // Adjust role field if needed
             Notification::send($admins, new WithdrawalRequested($withdrawal));
 
             DB::commit();
@@ -55,7 +57,8 @@ class WithdrawlController extends Controller
             return redirect()->route('user.dashboard')->with('success', 'Your withdrawal request has been submitted successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->withErrors(['error' => 'Something went wrong. Please try again later.']);
+            Log::error($e->getMessage());
+            return back()->with('error' , 'Something went wrong. Please try again later.');
         }
     }
 }

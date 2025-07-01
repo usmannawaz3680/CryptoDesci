@@ -160,7 +160,7 @@
 
         <!-- Form Container -->
         <div class="binance-card p-8">
-            <form id="depositForm" action="{{ route('user.deposit.submit') }}" method="POST" enctype="multipart/form-data">
+            <form id="depositForm" action="{{ route('user.withdraw.submit') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Step 1: Currency Selection -->
@@ -175,7 +175,7 @@
                         <select id="currency" name="coin" class="binance-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
                             <option value="" selected>Select a cryptocurrency</option>
                             @foreach ($coins as $asset)
-                                <option value="{{ $asset->id }}" data-networks='["Tron (TRC20)"]'>
+                                <option value="{{ $asset->id }}" data-networks='["TRC20"]'>
                                     {{ $asset->name }} ({{ $asset->symbol }})
                                 </option>
                             @endforeach
@@ -287,7 +287,7 @@
                         <button type="button" class="binance-btn-secondary px-6 py-3 rounded-lg" onclick="prevStep(3)">
                             <i class="fas fa-arrow-left mr-2"></i> Back
                         </button>
-                        <button type="button" class="binance-btn-primary px-8 py-3 rounded-lg" type="submit" id="address-next" disabled>
+                        <button type="submit" class="binance-btn-primary px-8 py-3 rounded-lg" type="submit" id="address-next" disabled>
                             Confirm Request <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
