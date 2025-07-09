@@ -8,6 +8,8 @@ use App\Http\Controllers\DepositController;
 use App\Http\Controllers\WithdrawlController;
 use App\Http\Controllers\Admin\DepositController as AdminDepositController;
 use App\Http\Controllers\Admin\WithdrawalController as AdminWithdrawalController;
+use App\Http\Controllers\Admin\ExchangeController;
+use App\Http\Controllers\Admin\TradingPairController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
@@ -59,6 +61,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/withdrawals', [AdminWithdrawalController::class, 'index'])->name('withdrawals.index');
         Route::post('/withdrawals/{withdrawal}/approve', [AdminWithdrawalController::class, 'approve'])->name('withdrawals.approve');
         Route::post('/withdrawals/{withdrawal}/reject', [AdminWithdrawalController::class, 'reject'])->name('withdrawals.reject');
+        Route::get('/exchanges', [ExchangeController::class, 'index'])->name('admin.exchanges.index');
+        Route::get('/pairs', [TradingPairController::class, 'index'])->name('admin.pairs.index');
     });
 });
 

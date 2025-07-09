@@ -16,18 +16,35 @@
 
                 <div class="flex-1 overflow-y-auto px-2 space-y-1 custom-scrollbar">
                     <!-- Dashboard -->
-                    <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('admin.dashboard') ? 'bg-crypto-primary/20': ''  }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
+                    <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('admin.dashboard') ? 'bg-crypto-primary/20' : '' }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
                         <i class="fas fa-home w-5 text-center text-crypto-primary"></i>
                         <span class="text-sm">Dashboard</span>
                     </a>
-                    <a href="{{ route('admin.users') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('admin.users') ? 'bg-crypto-primary/20': ''  }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
+                    <a href="{{ route('admin.users') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('admin.users') ? 'bg-crypto-primary/20' : '' }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
                         <i class="fas fa-user-group w-5 text-center text-crypto-primary"></i>
                         <span class="text-sm">Users</span>
                     </a>
-                    <a href="{{ route('admin.deposits') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('admin.deposits') ? 'bg-crypto-primary/20': ''  }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
+                    <a href="{{ route('admin.deposits') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('admin.deposits') ? 'bg-crypto-primary/20' : '' }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
                         <i class="fas fa-money-bill-wave w-5 text-center text-crypto-primary"></i>
                         <span class="text-sm">Deposits</span>
                     </a>
+                    <!-- Crypto Data Dropdown -->
+                    <div x-data="{ open: false }">
+                        <button @click="open = !open" class="w-full flex items-center gap-3 px-4 py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition text-left">
+                            <i class="fas fa-coins w-5 text-center text-crypto-primary"></i>
+                            <span class="text-sm flex-1">Exchange Data</span>
+                            <i :class="open ? 'fa-chevron-up' : 'fa-chevron-down'" class="fas text-xs"></i>
+                        </button>
+                        <div x-show="open" x-collapse class="mt-1 space-y-1 pl-9">
+                            <a href="{{ route('admin.exchanges.index') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.exchanges.*') ? 'bg-crypto-primary/20' : '' }}">
+                                All Exchanges
+                            </a>
+                            <a href="{{ route('admin.pairs.index') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.pairs.*') ? 'bg-crypto-primary/20' : '' }}">
+                                All Trading Pairs
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </nav>
         </aside>
