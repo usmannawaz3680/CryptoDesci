@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DepositController as AdminDepositController;
 use App\Http\Controllers\Admin\WithdrawalController as AdminWithdrawalController;
 use App\Http\Controllers\Admin\ExchangeController;
 use App\Http\Controllers\Admin\TradingPairController;
+use App\Http\Controllers\Admin\ArbitrageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
@@ -63,6 +64,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/withdrawals/{withdrawal}/reject', [AdminWithdrawalController::class, 'reject'])->name('withdrawals.reject');
         Route::get('/exchanges', [ExchangeController::class, 'index'])->name('admin.exchanges.index');
         Route::get('/pairs', [TradingPairController::class, 'index'])->name('admin.pairs.index');
+        Route::get('/arbitrage-bots/create', [ArbitrageController::class, 'create'])->name('admin.arbitrage.create');
+        Route::get('/arbitrage-bots', [ArbitrageController::class, 'index'])->name('admin.arbitrage.index');
     });
 });
 

@@ -44,7 +44,22 @@
                             </a>
                         </div>
                     </div>
-
+                    <div x-data="{ open: false }">
+                        <button @click="open = !open" class="w-full flex items-center gap-3 px-4 py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition text-left">
+                            <i class="fas fa-coins w-5 text-center text-crypto-primary"></i>
+                            <span class="text-sm flex-1">Arbitrage Bots</span>
+                            <i :class="open ? 'fa-chevron-up' : 'fa-chevron-down'" class="fas text-xs"></i>
+                        </button>
+                        <div x-show="open" x-collapse class="mt-1 space-y-1 pl-9">
+                            <a href="{{ route('admin.arbitrage.create') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.arbitrage.create') ? 'bg-crypto-primary/20' : '' }}">
+                                Create
+                            </a>
+                            <a href="{{ route('admin.arbitrage.index') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.arbitrage.index') ? 'bg-crypto-primary/20' : '' }}">
+                                View
+                            </a>
+                        </div>
+                    </div>
+                    </a>
                 </div>
             </nav>
         </aside>
