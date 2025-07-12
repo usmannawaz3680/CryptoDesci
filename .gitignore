@@ -17,6 +17,7 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 vite.config.js
+tailwind.config.js
 /auth.json
 /.fleet
 /.idea

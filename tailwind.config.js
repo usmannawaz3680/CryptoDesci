@@ -10,9 +10,6 @@ export default {
 
     theme: {
         extend: {
-            // fontFamily: {
-            //     sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-            // },
             colors: {
                 crypto: {
                     primary: "#f0bb0b",
