@@ -43,26 +43,96 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <!-- Example Arbitrage Card -->
-                <div class="bg-crypto-accent p-4 rounded-lg border border-gray-700 hover:border-crypto-primary flex flex-col justify-between">
-                    <div class="flex justify-between items-center mb-2">
-                        <div>
-                            <span class="text-lg font-bold">AXLUSDT <span class="bg-gray-700 text-xs px-2 py-1 rounded ml-1">Perp</span></span>
-                            <div class="text-gray-500 text-sm">AXL/USDT</div>
+                @foreach ($bots as $bot)
+                    @php
+                        $activeInterval = $bot->intervals->where('is_active', 1)->first();
+                        $fundingTime = optional($activeInterval)->ends_at ?? now()->addHour(); // fallback if no active
+                        $countdownId = 'countdown-' . $bot->id;
+                    @endphp
+
+                    <div class="bg-crypto-accent p-4 rounded-lg border border-gray-700 hover:border-crypto-primary flex flex-col justify-between">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <span class="text-lg font-bold">{{ $bot->tradingPair->base_asset . $bot->tradingPair->quote_asset }}
+                                    <span class="bg-gray-700 text-xs px-2 py-1 rounded ml-1">Perp</span>
+                                </span>
+                                <div class="text-gray-500 text-sm">{{ $bot->tradingPair->base_asset }}/{{ $bot->tradingPair->quote_asset }}</div>
+                            </div>
+                            <a href="" class="bg-crypto-primary text-black font-bold px-4 py-1 rounded-md">
+                                Create
+                            </a>
                         </div>
-                        <button class="bg-crypto-primary text-black font-bold px-4 py-1 rounded-md">Create</button>
+
+                        {{-- TradingView Chart Widget --}}
+                        <div class="h-48 w-full mb-3 rounded overflow-hidden">
+                            {{-- <div id="tv_chart_{{ $bot->id }}" class="w-full h-full"></div> --}}
+                            <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                {{-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div> --}}
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                                    {
+                                        "symbol": "{{ $bot->tradingPair->tv_symbol }}",
+                                        "chartOnly": false,
+                                        "dateRange": "12M",
+                                        "noTimeScale": true,
+                                        "colorTheme": "dark",
+                                        "isTransparent": true,
+                                        "locale": "en",
+                                        "width": "100%",
+                                        "autosize": true,
+                                        "height": "100%"
+                                    }
+                                </script>
+                            </div>
+                            <!-- TradingView Widget END -->
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 text-sm mb-2">
+                            <div><span class="text-gray-400">3d APR</span><br>
+                                <span class="text-green-500 font-bold">{{ $activeInterval->apr_3d ?? '—' }}%</span>
+                            </div>
+                            <div><span class="text-gray-400">7d APR</span><br>
+                                <span class="text-green-500">{{ $activeInterval->apr_7d ?? '—' }}%</span>
+                            </div>
+                            <div><span class="text-gray-400">30d APR</span><br>
+                                <span class="text-green-500">{{ $activeInterval->apr_30d ?? '—' }}%</span>
+                            </div>
+                            <div><span class="text-gray-400">Spread Rate</span><br>{{ $bot->spread_rate }}%</div>
+                        </div>
+
+                        <div class="flex justify-between text-xs text-gray-400">
+                            <div>Next Funding<br><span class="text-white">{{ $activeInterval->funding_rate ?? '0.0011' }}%</span></div>
+                            <div>Countdown<br><span id="{{ $countdownId }}" class="text-white">--:--:--</span></div>
+                        </div>
                     </div>
-                    <div class="h-12 w-full bg-gray-800 rounded mb-2"></div> <!-- Placeholder for chart -->
-                    <div class="grid grid-cols-2 gap-2 text-sm mb-2">
-                        <div><span class="text-gray-400">3d APR</span><br><span class="text-green-500 font-bold">1384.99%</span></div>
-                        <div><span class="text-gray-400">7d APR</span><br><span class="text-green-500">2191.03%</span></div>
-                        <div><span class="text-gray-400">30d APR</span><br><span class="text-green-500">943.72%</span></div>
-                        <div><span class="text-gray-400">Spread Rate</span><br>0.0986%</div>
-                    </div>
-                    <div class="flex justify-between text-xs text-gray-400">
-                        <div>Next Funding<br><span class="text-white">0.0011%</span></div>
-                        <div>Countdown<br><span class="text-white">00:54:40</span></div>
-                    </div>
-                </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const countdownEl{{ $bot->id }} = document.getElementById('{{ $countdownId }}');
+                            const targetTime{{ $bot->id }} = new Date("{{ \Carbon\Carbon::parse($fundingTime)->toIso8601String() }}").getTime();
+
+                            function updateCountdown{{ $bot->id }}() {
+                                const now = new Date().getTime();
+                                const distance = targetTime{{ $bot->id }} - now;
+
+                                if (distance < 0) {
+                                    countdownEl{{ $bot->id }}.innerText = "00:00:00";
+                                    return;
+                                }
+
+                                const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                                const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                                const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+
+                                countdownEl{{ $bot->id }}.innerText = `${hours}:${minutes}:${seconds}`;
+                                setTimeout(updateCountdown{{ $bot->id }}, 1000);
+                            }
+
+                            updateCountdown{{ $bot->id }}();
+                        });
+                    </script>
+                @endforeach
                 <!-- Repeat for more cards as needed -->
             </div>
         </section>

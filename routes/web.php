@@ -66,6 +66,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/pairs', [TradingPairController::class, 'index'])->name('admin.pairs.index');
         Route::get('/arbitrage-bots/create', [ArbitrageController::class, 'create'])->name('admin.arbitrage.create');
         Route::get('/arbitrage-bots', [ArbitrageController::class, 'index'])->name('admin.arbitrage.index');
+        Route::post('/arbitrage-bots', [ArbitrageController::class, 'store'])->name('admin.arbitrage-bots.store');
+        Route::get('/arbitrage-bots/{id}/configure', [ArbitrageController::class, 'configure'])->name('admin.arbitrage.configure');
+        Route::post('/arbitrage-bots/{id}/save-fees', [ArbitrageController::class, 'saveFees'])->name('admin.arbitrage-bots.saveFees');
+        Route::post('/arbitrage-bots/{id}/save-interval', [ArbitrageController::class, 'saveInterval'])->name('admin.arbitrage-bots.saveInterval');
     });
 });
 

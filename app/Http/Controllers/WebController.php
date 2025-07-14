@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArbitrageBot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Wallet;
@@ -52,7 +53,8 @@ class WebController extends Controller
     }
     public function arbitrageBots()
     {
-        return view('web.pages.tradingBots.arbitrage');
+        $bots = ArbitrageBot::with(['intervals', 'fees', 'tradingPair'])->get();
+        return view('web.pages.tradingBots.arbitrage', compact('bots'));
     }
     public function nftProfile()
     {

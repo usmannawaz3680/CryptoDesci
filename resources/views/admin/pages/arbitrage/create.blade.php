@@ -8,7 +8,7 @@
         <div class="p-4 md:p-6 bg-crypto-accent rounded-xl text-white">
             <h2 class="text-2xl font-semibold mb-4 text-crypto-primary">Create Arbitrage Bot</h2>
 
-            <form action="" method="POST">
+            <form action="{{ route('admin.arbitrage-bots.store') }}" method="POST">
                 @csrf
 
                 {{-- Trading Pair --}}
@@ -67,6 +67,11 @@
                         <option value="1">Type 1 (Sell First)</option>
                         <option value="2">Type 2 (Buy First)</option>
                     </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block mb-1 text-sm font-medium text-white">Spread Rate</label>
+                    <input type="text" class="w-full p-2.5 rounded-lg bg-zinc-800 border border-gray-600 text-white focus:ring-crypto-primary focus:border-crypto-primary" name="spread_rate" value="2.405">
                 </div>
 
                 {{-- Is Active Toggle --}}
