@@ -21,6 +21,7 @@ Route::get('/nft/collection', [WebController::class, 'nftCollection'])->name('we
 Route::get('/copy-trading', [WebController::class, 'copyTrading'])->name('web.copytrading');
 Route::get('/trading-bots', [WebController::class, 'tradingBots'])->name('web.tradingbots');
 Route::get('/arbitrage-bots', [WebController::class, 'arbitrageBots'])->name('web.arbitragebots');
+Route::get('/arbitrage-bots/{id}', [WebController::class, 'arbitrageBotsDetail'])->name('web.arbitragebots.detail');
 Route::get('/earn/overview', [WebController::class, 'earnOverview'])->name('web.earn.overview');
 Route::get('/markets', [WebController::class, 'markets'])->name('web.markets');
 // route('web.earn.overview')

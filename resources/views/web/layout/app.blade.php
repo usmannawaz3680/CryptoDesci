@@ -172,7 +172,7 @@
         <!-- Main Content Area -->
         <main class="flex-1 overflow-y-auto bg-black custom-scrollbar transition-all duration-300 ease-in-out @hasSection('sidebar')
 @else
-px-5 md:px-10
+
 @endif" @hasSection('sidebar')
             :class="sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-72'"
             @endif>

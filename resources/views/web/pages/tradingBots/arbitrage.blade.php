@@ -58,7 +58,7 @@
                                 </span>
                                 <div class="text-gray-500 text-sm">{{ $bot->tradingPair->base_asset }}/{{ $bot->tradingPair->quote_asset }}</div>
                             </div>
-                            <a href="" class="bg-crypto-primary text-black font-bold px-4 py-1 rounded-md">
+                            <a href="{{ route('web.arbitragebots.detail', $bot->id) }}" class="bg-crypto-primary text-black font-bold px-4 py-1 rounded-md">
                                 Create
                             </a>
                         </div>
@@ -74,7 +74,7 @@
                                     {
                                         "symbol": "{{ $bot->tradingPair->tv_symbol }}",
                                         "chartOnly": false,
-                                        "dateRange": "12M",
+                                        "dateRange": "5M",
                                         "noTimeScale": true,
                                         "colorTheme": "dark",
                                         "isTransparent": true,
