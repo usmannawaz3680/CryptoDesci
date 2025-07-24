@@ -15,4 +15,8 @@ class Exchange extends Model
         'url',
         'logo'
     ];
+    public function pair()
+    {
+        return $this->hasMany(TradingPair::class);
+    }
 }

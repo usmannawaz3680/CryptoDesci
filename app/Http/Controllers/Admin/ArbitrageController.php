@@ -65,7 +65,7 @@ class ArbitrageController extends Controller
     public function configure($id)
     {
         try {
-            $bot = ArbitrageBot::with(['fees', 'intervals'])->findOrFail($id);
+            $bot = ArbitrageBot::with(['fees'])->findOrFail($id);
             return view('admin.pages.arbitrage.configure', compact('bot'));
         } catch (\Throwable $e) {
             Log::error('ArbitrageController::configure failed', ['bot_id' => $id, 'msg' => $e->getMessage()]);
@@ -103,39 +103,5 @@ class ArbitrageController extends Controller
         }
     }
 
-    public function saveInterval(Request $request, $id)
-    {
-        try {
-            $bot = ArbitrageBot::findOrFail($id);
-
-            $validated = $request->validate([
-                'apr_3d'     => 'nullable|numeric|min:0',
-                'apr_7d'     => 'nullable|numeric|min:0',
-                'apr_30d'    => 'nullable|numeric|min:0',
-                'starts_at'  => 'required|date',
-                'ends_at'    => 'required|date|after:starts_at',
-            ]);
-
-            DB::transaction(function () use ($bot, $validated) {
-                $bot->intervals()
-                    ->where('is_active', true)
-                    ->where('ends_at', '>=', $validated['starts_at'])
-                    ->update(['is_active' => false]);
-
-                $bot->intervals()->create([
-                    'apr_3d'    => $validated['apr_3d'],
-                    'apr_7d'    => $validated['apr_7d'],
-                    'apr_30d'   => $validated['apr_30d'],
-                    'starts_at' => $validated['starts_at'],
-                    'ends_at'   => $validated['ends_at'],
-                    'is_active' => true,
-                ]);
-            });
-
-            return back()->with('success', 'APR interval saved & activated!');
-        } catch (\Throwable $e) {
-            Log::error('ArbitrageController::saveInterval failed', ['bot_id' => $id, 'msg' => $e->getMessage()]);
-            return back()->with('danger', 'Failed to save APR interval.')->withInput();
-        }
-    }
+    // saveInterval and APR/Countdown/Interval logic removed as per new requirements
 }

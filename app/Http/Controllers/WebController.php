@@ -58,8 +58,8 @@ class WebController extends Controller
     }
     public function arbitrageBotsDetail($id)
     {
-        $bot = ArbitrageBot::findOrFail($id);
-        $bots = ArbitrageBot::with(['intervals', 'fees', 'tradingPair'])->where('is_active', 1)->get();
+        $bots = ArbitrageBot::with(['intervals', 'fees', 'tradingPair', 'exchange_from.pair', 'exchange_to.pair'])->where('is_active', 1)->get();
+        $bot = $bots->where('id', $id)->first();
         return view('web.pages.tradingBots.arbitrage-detail', compact('bot', 'bots'));
     }
     public function nftProfile()

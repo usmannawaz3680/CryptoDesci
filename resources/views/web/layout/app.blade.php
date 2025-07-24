@@ -21,7 +21,7 @@
     <!-- Header with highest z-index -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white border-gray-200 dark:bg-crypto-accent dark:border-gray-700">
         <nav>
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between md:justify-start md:gap-8 p-4">
+            <div class="w-full flex flex-wrap items-center justify-between md:justify-start md:gap-8 p-4">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Desci</span>
                 </a>

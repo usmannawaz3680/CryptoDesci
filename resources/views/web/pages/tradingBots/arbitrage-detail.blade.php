@@ -19,12 +19,15 @@
     </style>
 @endpush
 @section('content')
-    <section class="min-h-screen bg-crypto-accent text-gray-100 flex flex-col max-w-screen-2xl mx-auto justify-center">
-        <div class="flex-1 grid grid-cols-1 lg:grid-cols-[280px_1fr_320px] gap-4">
+    <section class="min-h-screen bg-zinc-950 text-gray-100 flex flex-col max-w-screen-2xl mx-auto justify-center">
+        <div class="bg-crypto-accent rounded-xl p-3 my-2 m-1">
+            <h2 class="text-xl font-bold">Welcome To Arbitrage Bot</h2>
+        </div>
+        <div class="flex-1 grid grid-cols-1 lg:grid-cols-[280px_1fr_320px] gap-3 mb-2 m-2 items-start">
             <!-- Left Sidebar -->
-            <div class="bg-crypto-panel rounded-lg p-1 flex flex-col gap-4">
+            <div class="bg-crypto-accent h-[600px] rounded-xl flex flex-col gap-3">
                 {{-- <h2 class="text-lg font-semibold text-crypto-primary">Welcome to Arbitrage Bot</h2> --}}
-                <div class="relative">
+                <div class="relative mt-5 mx-2">
                     <div class="absolute left-0 top-0 m-2 text-gray-400">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
                             <circle cx="11" cy="11" r="8" />
@@ -33,17 +36,18 @@
                     </div>
                     <input type="text" placeholder="Search" class="block w-full pl-9 pr-3 py-1 rounded-lg bg-crypto-accent border border-gray-400 text-gray-100 placeholder:text-gray-400 focus:border-crypto-primary focus:ring-crypto-primary" />
                 </div>
-                <div class="flex items-center gap-2">
-                    <select id="usd-m-select" class="bg-crypto-accent border border-crypto-primary text-gray-100 text-sm rounded-lg focus:ring-crypto-primary focus:border-crypto-primary block w-full p-2.5">
-                        <option selected value="usd-m">USD-M</option>
+                <div class="flex items-center gap-2 mx-2 justify-center">
+                    <select id="usd-m-select" class="bg-crypto-accent border border-crypto-primary text-gray-300  text-sm rounded-lg focus:ring-crypto-primary focus:border-crypto-primary block w-full p-2">
+                        <option selected value="usd">USD-M</option>
                         <option value="coin-m">COIN-M</option>
                     </select>
-                    <select id="3d-select" class="bg-crypto-accent border border-crypto-primary text-gray-100 text-sm rounded-lg focus:ring-crypto-primary focus:border-crypto-primary block w-full p-2.5">
+                    <select id="3d-select" class="bg-crypto-accent border border-crypto-primary text-gray-300 text-sm rounded-lg focus:ring-crypto-primary focus:border-crypto-primary block w-full p-2">
                         <option selected value="3d">3D</option>
-                        <option value="2d">2D</option>
+                        <option value="7d">7D</option>
+                        <option value="30d">30D</option>
                     </select>
                 </div>
-                <div class="flex gap-0 justify-start items-center text-nowrap">
+                <div class="flex gap-0 justify-start items-center text-nowrap mx-2">
                     <button type="button" class="px-1 text-xs text-crypto-primary">
                         All
                     </button>
@@ -54,7 +58,7 @@
                         Reverse Carry
                     </button>
                 </div>
-                <div class="flex items-center justify-between text-xs text-gray-400">
+                <div class="flex items-center justify-between text-xs text-gray-400 mx-2">
                     <span>Portfolio</span>
                     <div class="flex items-center gap-1">
                         <span>3D Funding%</span>
@@ -72,7 +76,7 @@
                     </div>
                 </div>
                 <div class="flex-1 overflow-y-auto scrollbar-thin">
-                    <div class="grid gap-1">
+                    <div class="grid gap-0">
                         {{-- @php
                             $portfolioItems = [
                                 ['name' => 'BTCUSDT Perp', 'symbol' => 'BTC/USDT', 'funding' => '0.0342%', 'apr' => '4.17%', 'icon' => '/placeholder.svg?height=20&width=20', 'isNegative' => false],
@@ -87,14 +91,16 @@
                             ];
                         @endphp --}}
                         @foreach ($bots as $item)
-                            <div class="flex items-center p-[2px] hover:bg-black duration-75 justify-between text-sm">
+                            <div class="flex items-center hover:bg-crypto-primary/10 cursor-pointer duration-75 rounded justify-between text-sm p-2 relative">
                                 <div class="flex flex-col align-top gap-2">
                                     {{-- <img src="{{ $item['icon'] }}" alt="{{ $item['name'] }}" width="20" height="20" /> --}}
                                     <div class="flex items-center gap-1">
-                                        <span class="bg-green-900 text-green-500 w-3 h-3 rounded text-xs inline-flex items-center content-center justify-center font-medium">S</span><div class="font-medium">{{ $item->tradingPair->base_asset . $item->tradingPair->quote_asset }}</div>
+                                        <span class="bg-green-900 text-green-500 w-3 h-3 rounded text-xs inline-flex items-center content-center justify-center font-medium">S</span>
+                                        <div class="font-medium">{{ $item->tradingPair->base_asset . $item->tradingPair->quote_asset }}</div>
                                     </div>
                                     <div class="flex items-center gap-1">
-                                        <span class="bg-red-900 text-red-500 w-3 h-3 rounded text-xs inline-flex items-center content-center justify-center font-medium">B</span><div class="font-medium">{{ $item->tradingPair->base_asset . '/' . $item->tradingPair->quote_asset }}</div>
+                                        <span class="bg-red-900 text-red-500 w-3 h-3 rounded text-xs inline-flex items-center content-center justify-center font-medium">B</span>
+                                        <div class="font-medium">{{ $item->tradingPair->base_asset . '/' . $item->tradingPair->quote_asset }}</div>
                                     </div>
                                 </div>
                                 <div class="text-right text-xs">
@@ -103,6 +109,7 @@
                                         {{ $item->spread_rate }}%
                                     </div>
                                 </div>
+                                <a href="{{ route('web.arbitragebots.detail', $item->id) }}" class="absolute w-full h-full top-0 start-0 z-10"></a>
                             </div>
                         @endforeach
                     </div>
@@ -111,39 +118,48 @@
 
             <!-- Main Content -->
             <div class="flex flex-col gap-4">
-                <div class="bg-crypto-panel rounded-lg p-4">
-                    <div class="flex items-center justify-between text-sm mb-4">
-                        <div class="flex items-center gap-2">
-                            <span class="text-crypto-red font-medium">S BTCUSDT Perp</span>
-                            <span class="text-crypto-green font-medium">B BTC/USDT</span>
+                <div class="bg-crypto-accent rounded-lg">
+                    <div class="flex items-center justify-start gap-3 text-sm mb-0 px-4 pt-3">
+                        <div class="flex flex-col align-top gap-1">
+                            {{-- <img src="{{ $item['icon'] }}" alt="{{ $item['name'] }}" width="20" height="20" /> --}}
+                            <div class="flex items-center gap-1">
+                                <span class="bg-green-900 text-green-500 w-3 h-3 rounded text-xs inline-flex items-center content-center justify-center font-medium">S</span>
+                                <div class="font-medium">{{ $bot->tradingPair->base_asset . $item->tradingPair->quote_asset }}</div>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span class="bg-red-900 text-red-500 w-3 h-3 rounded text-xs inline-flex items-center content-center justify-center font-medium">B</span>
+                                <div class="font-medium">{{ $bot->tradingPair->base_asset . '/' . $item->tradingPair->quote_asset }}</div>
+                            </div>
                         </div>
-                        <div class="grid grid-cols-5 gap-4 text-center">
+                        <div class="flex gap-2 text-start text-xs items-center">
                             <div>
-                                <div class="text-crypto-textMuted">Spread Rate</div>
-                                <div class="text-crypto-red">-0.0368%</div>
+                                <div class="text-gray-400">Spread Rate</div>
+                                <div class="text-green-500">{{ $bot->spread_rate }}%</div>
                             </div>
                             <div>
-                                <div class="text-crypto-textMuted">3d Funding APR</div>
-                                <div class="text-crypto-green">0.0342% / 4.17%</div>
+                                <div class="text-gray-400">3d Funding APR</div>
+                                <div class="text-green-500">{{ $bot->intervals->first()->apr_3d }}% / 4.17%</div>
                             </div>
                             <div>
-                                <div class="text-crypto-textMuted">7d Funding APR</div>
-                                <div class="text-crypto-green">0.0648% / 3.37%</div>
+                                <div class="text-gray-400">7d Funding APR</div>
+                                <div class="text-green-500">{{ $bot->intervals->first()->apr_7d }}% / 3.37%</div>
                             </div>
                             <div>
-                                <div class="text-crypto-textMuted">30d Funding APR</div>
-                                <div class="text-crypto-green">0.3996% / 4.86%</div>
+                                <div class="text-gray-400">30d Funding APR</div>
+                                <div class="text-green-500">{{ $bot->intervals->first()->apr_30d }}% / 4.86%</div>
+                            </div>
+                            {{-- <div>
+                                <div class="text-gray-400">Next Funding</div>
+                                <div class="text-green-500">0.0011%</div>
                             </div>
                             <div>
-                                <div class="text-crypto-textMuted">Next Funding</div>
-                                <div class="text-crypto-green">0.0011%</div>
-                                <div class="text-crypto-textMuted">Countdown</div>
+                                <div class="text-gray-400">Countdown</div>
                                 <div class="text-gray-100">02:46:53</div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="mb-4 border-b border-crypto-primary">
-                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" data-tabs-active-classes="text-crypto-primary border-crypto-primary" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                             <li class="me-2" role="presentation">
                                 <button class="inline-block p-4 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary" id="chart-tab"
                                     data-tabs-target="#chart" type="button" role="tab" aria-controls="chart" aria-selected="true">
@@ -159,17 +175,17 @@
                         </ul>
                     </div>
                     <div id="default-tab-content">
-                        <div class="hidden p-4 rounded-lg" id="chart" role="tabpanel" aria-labelledby="chart-tab">
+                        <div class="hidden rounded-lg max-h-screen" id="chart" role="tabpanel" aria-labelledby="chart-tab">
                             <div class="flex flex-col gap-4">
                                 <!-- Chart 1 -->
-                                <div class="bg-crypto-accent rounded-lg p-4 border border-crypto-primary">
+                                <div class="bg-crypto-accent rounded-lg">
                                     <div class="flex items-center justify-between text-sm mb-2">
                                         <div class="flex items-center gap-2">
                                             <span class="font-medium">BTCUSDT Perp</span>
                                             <span class="text-crypto-red">105375.4</span>
                                             <span class="text-crypto-red">-0.22%</span>
                                         </div>
-                                        <div class="flex items-center gap-2 text-crypto-textMuted">
+                                        {{-- <div class="flex items-center gap-2 text-crypto-textMuted">
                                             <span>15m</span>
                                             <span>1H</span>
                                             <span>4H</span>
@@ -178,9 +194,41 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
                                                 <path d="m6 9 6 6 6-6" />
                                             </svg>
-                                        </div>
+                                        </div> --}}
                                     </div>
-                                    <div class="text-xs text-crypto-textMuted mb-2">
+                                    <!-- TradingView Widget BEGIN -->
+                                    <div class="tradingview-widget-container" style="height:100%;width:100%">
+                                        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+                                        {{-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div> --}}
+                                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                                            {
+                                                "allow_symbol_change": false,
+                                                "calendar": false,
+                                                "details": false,
+                                                "hide_side_toolbar": true,
+                                                "hide_top_toolbar": true,
+                                                "hide_legend": false,
+                                                "hide_volume": false,
+                                                "hotlist": false,
+                                                "interval": "D",
+                                                "locale": "en",
+                                                "save_image": false,
+                                                "style": "1",
+                                                "symbol": "{{ optional($bot->exchange_from?->pair->where('id', $bot->trading_pair_id)->first())->tv_symbol ?? '' }}",
+                                                "theme": "dark",
+                                                "timezone": "Etc/UTC",
+                                                "backgroundColor": "rgba(19, 19, 20, 1)",
+                                                "gridColor": "rgba(242, 242, 242, 0.06)",
+                                                "watchlist": [],
+                                                "withdateranges": false,
+                                                "compareSymbols": [],
+                                                "studies": [],
+                                                "autosize": true
+                                            }
+                                        </script>
+                                    </div>
+                                    <!-- TradingView Widget END -->
+                                    {{-- <div class="text-xs text-crypto-textMuted mb-2">
                                         2025/06/13 Open: <span class="text-gray-100">105694.1</span> High:
                                         <span class="text-gray-100">105912.0</span> Low:
                                         <span class="text-gray-100">102614.0</span> Close:
@@ -198,12 +246,42 @@
                                         Vol(BTC): <span class="text-gray-100">236.348K</span> Vol(USDT):
                                         <span class="text-gray-100">24.691B</span> 150.953K
                                         <span class="text-crypto-green">149.58K</span>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <!-- Chart 2 -->
-                                <div class="bg-crypto-accent rounded-lg p-4 border border-crypto-primary">
-                                    <div class="flex items-center justify-between text-sm mb-2">
+                                <div class="bg-crypto-accent">
+                                    <div class="tradingview-widget-container" style="height:100%;width:100%">
+                                        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+                                        {{-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div> --}}
+                                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                                            {
+                                                "allow_symbol_change": false,
+                                                "calendar": false,
+                                                "details": false,
+                                                "hide_side_toolbar": true,
+                                                "hide_top_toolbar": true,
+                                                "hide_legend": false,
+                                                "hide_volume": false,
+                                                "hotlist": false,
+                                                "interval": "D",
+                                                "locale": "en",
+                                                "save_image": false,
+                                                "style": "1",
+                                                "symbol": "{{ optional($bot->exchange_to?->pair->where('id', $bot->trading_pair_id)->first())->tv_symbol ?? '' }}",
+                                                "theme": "dark",
+                                                "timezone": "Etc/UTC",
+                                                "backgroundColor": "rgba(19, 19, 20, 1)",
+                                                "gridColor": "rgba(242, 242, 242, 0.06)",
+                                                "watchlist": [],
+                                                "withdateranges": false,
+                                                "compareSymbols": [],
+                                                "studies": [],
+                                                "autosize": true
+                                            }
+                                        </script>
+                                    </div>
+                                    {{-- <div class="flex items-center justify-between text-sm mb-2">
                                         <div class="flex items-center gap-2">
                                             <span class="font-medium">BTC/USDT</span>
                                             <span class="text-crypto-red">105414.17</span>
@@ -238,7 +316,7 @@
                                         Vol(BTC): <span class="text-gray-100">25.314K</span> Vol(USDT):
                                         <span class="text-gray-100">2.644B</span> 15.664K
                                         <span class="text-crypto-green">14.96%</span>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -248,7 +326,7 @@
                     </div>
                 </div>
 
-                <div class="bg-crypto-panel rounded-lg p-4 flex items-center justify-between text-sm">
+                <div class="bg-crypto-accent rounded-lg p-4 flex items-center justify-between text-sm">
                     <div class="mb-4 border-b border-crypto-primary">
                         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="running-tabs" data-tabs-toggle="#running-tabs-content" role="tablist">
                             <li class="me-2" role="presentation">
@@ -264,8 +342,8 @@
                                 </button>
                             </li>
                             <li class="me-2" role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary"
-                                    id="pnl-analysis-tab" data-tabs-target="#pnl-analysis" type="button" role="tab" aria-controls="pnl-analysis" aria-selected="false">
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary" id="pnl-analysis-tab"
+                                    data-tabs-target="#pnl-analysis" type="button" role="tab" aria-controls="pnl-analysis" aria-selected="false">
                                     PNL Analysis
                                 </button>
                             </li>
@@ -286,7 +364,7 @@
             </div>
 
             <!-- Right Sidebar -->
-            <div class="bg-crypto-panel rounded-lg p-4 flex flex-col gap-4">
+            <div class="bg-crypto-accent rounded-lg p-4 flex flex-col gap-4">
                 <div class="flex items-center justify-between text-crypto-textMuted">
                     <div class="flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home">
