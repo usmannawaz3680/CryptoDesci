@@ -118,7 +118,7 @@
 
             <!-- Main Content -->
             <div class="flex flex-col gap-4">
-                <div class="bg-crypto-accent rounded-lg">
+                <div class="bg-crypto-accent rounded-lg h-[78vh]">
                     <div class="flex items-center justify-start gap-3 text-sm mb-0 px-4 pt-3">
                         <div class="flex flex-col align-top gap-1">
                             {{-- <img src="{{ $item['icon'] }}" alt="{{ $item['name'] }}" width="20" height="20" /> --}}
@@ -176,16 +176,16 @@
                     </div>
                     <div id="default-tab-content">
                         <div class="hidden rounded-lg max-h-screen" id="chart" role="tabpanel" aria-labelledby="chart-tab">
-                            <div class="flex flex-col gap-4">
+                            <div class="flex flex-col gap-3">
                                 <!-- Chart 1 -->
-                                <div class="bg-crypto-accent rounded-lg">
-                                    <div class="flex items-center justify-between text-sm mb-2">
+                                <div class="bg-crypto-accent">
+                                    <div class="flex items-center justify-between text-sm mb-2 px-1">
                                         <div class="flex items-center gap-2">
                                             <span class="font-medium">BTCUSDT Perp</span>
                                             <span class="text-crypto-red">105375.4</span>
                                             <span class="text-crypto-red">-0.22%</span>
                                         </div>
-                                        {{-- <div class="flex items-center gap-2 text-crypto-textMuted">
+                                        {{-- <div class="flex items-center gap-2 text-gray-400">
                                             <span>15m</span>
                                             <span>1H</span>
                                             <span>4H</span>
@@ -214,7 +214,7 @@
                                                 "locale": "en",
                                                 "save_image": false,
                                                 "style": "1",
-                                                "symbol": "{{ optional($bot->exchange_from?->pair->where('id', $bot->trading_pair_id)->first())->tv_symbol ?? '' }}",
+                                                "symbol": "{{ $bot->exchange_from->tv_prefix . ':' . $bot->tradingPair->base_asset . $item->tradingPair->quote_asset }}",
                                                 "theme": "dark",
                                                 "timezone": "Etc/UTC",
                                                 "backgroundColor": "rgba(19, 19, 20, 1)",
@@ -268,7 +268,7 @@
                                                 "locale": "en",
                                                 "save_image": false,
                                                 "style": "1",
-                                                "symbol": "{{ optional($bot->exchange_to?->pair->where('id', $bot->trading_pair_id)->first())->tv_symbol ?? '' }}",
+                                                "symbol": "{{ $bot->exchange_to->tv_prefix . ':' . $bot->tradingPair->base_asset . $item->tradingPair->quote_asset }}",
                                                 "theme": "dark",
                                                 "timezone": "Etc/UTC",
                                                 "backgroundColor": "rgba(19, 19, 20, 1)",
@@ -281,42 +281,6 @@
                                             }
                                         </script>
                                     </div>
-                                    {{-- <div class="flex items-center justify-between text-sm mb-2">
-                                        <div class="flex items-center gap-2">
-                                            <span class="font-medium">BTC/USDT</span>
-                                            <span class="text-crypto-red">105414.17</span>
-                                            <span class="text-crypto-red">-0.24%</span>
-                                        </div>
-                                        <div class="flex items-center gap-2 text-crypto-textMuted">
-                                            <span>15m</span>
-                                            <span>1H</span>
-                                            <span>4H</span>
-                                            <span>1D</span>
-                                            <span>1W</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
-                                                <path d="m6 9 6 6 6-6" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="text-xs text-crypto-textMuted mb-2">
-                                        2025/06/13 Open: <span class="text-gray-100">105671.74</span> High:
-                                        <span class="text-gray-100">105981.00</span> Low:
-                                        <span class="text-gray-100">102664.31</span> Close:
-                                        <span class="text-gray-100">105414.17</span> CHANGE:
-                                        <span class="text-crypto-red">-0.24%</span> AMPLITUDE:
-                                        <span class="text-crypto-green">3.14%</span>
-                                    </div>
-                                    <div class="text-xs text-crypto-textMuted mb-4">
-                                        MA(7): <span class="text-crypto-yellowChart">107318.9</span> MA(25):
-                                        <span class="text-crypto-purpleChart">106860.91</span> MA(99):
-                                        <span class="text-crypto-blueChart">93831.87</span>
-                                    </div>
-                                    <img src="/placeholder.svg?height=200&width=800" alt="Chart 2" width="800" height="200" class="w-full h-auto object-cover rounded-md" />
-                                    <div class="text-xs text-crypto-textMuted mt-4">
-                                        Vol(BTC): <span class="text-gray-100">25.314K</span> Vol(USDT):
-                                        <span class="text-gray-100">2.644B</span> 15.664K
-                                        <span class="text-crypto-green">14.96%</span>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -325,128 +289,222 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="bg-crypto-accent rounded-lg p-4 flex items-center justify-between text-sm">
-                    <div class="mb-4 border-b border-crypto-primary">
-                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="running-tabs" data-tabs-toggle="#running-tabs-content" role="tablist">
-                            <li class="me-2" role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary" id="running-tab"
-                                    data-tabs-target="#running" type="button" role="tab" aria-controls="running" aria-selected="true">
-                                    Running (0)
-                                </button>
-                            </li>
-                            <li class="me-2" role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary" id="history-tab"
-                                    data-tabs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">
-                                    History
-                                </button>
-                            </li>
-                            <li class="me-2" role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary" id="pnl-analysis-tab"
-                                    data-tabs-target="#pnl-analysis" type="button" role="tab" aria-controls="pnl-analysis" aria-selected="false">
-                                    PNL Analysis
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="flex items-center gap-2 text-crypto-textMuted">
-                        <button type="button" class="text-crypto-textMuted hover:text-crypto-primary text-sm font-medium">
-                            Refresh Running list
-                        </button>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-more-horizontal">
-                            <circle cx="12" cy="12" r="1" />
-                            <circle cx="19" cy="12" r="1" />
-                            <circle cx="5" cy="12" r="1" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="text-xs text-crypto-textMuted text-right pr-4">* Maximum 10 Running Strategies</div>
             </div>
 
             <!-- Right Sidebar -->
             <div class="bg-crypto-accent rounded-lg p-4 flex flex-col gap-4">
-                <div class="flex items-center justify-between text-crypto-textMuted">
-                    <div class="flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home">
-                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                            <polyline points="9 22 9 12 15 12 15 22" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-more-horizontal">
-                            <circle cx="12" cy="12" r="1" />
-                            <circle cx="19" cy="12" r="1" />
-                            <circle cx="5" cy="12" r="1" />
-                        </svg>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M12 16v-4" />
-                        <path d="M12 8h.01" />
-                    </svg>
-                </div>
                 <div class="flex flex-col gap-3">
                     <h3 class="text-lg font-semibold">1. Portfolio</h3>
-                    <div class="flex items-center justify-between text-sm">
-                        <div class="flex items-center gap-2">
-                            <span class="text-crypto-red font-medium">S BTCUSDT Perp</span>
-                            <span class="text-crypto-textMuted">2x</span>
+                    <div class="flex justify-between gap-1 items-center">
+                        <div class="flex flex-col align-top gap-1">
+                            {{-- <img src="{{ $item['icon'] }}" alt="{{ $item['name'] }}" width="20" height="20" /> --}}
+                            <div class="flex items-center gap-1">
+                                <span class="bg-green-900 text-green-500 w-3 h-3 rounded text-xs inline-flex items-center content-center justify-center font-medium">S</span>
+                                <div class="font-medium">{{ $bot->tradingPair->base_asset . $item->tradingPair->quote_asset }}</div>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span class="bg-red-900 text-red-500 w-3 h-3 rounded text-xs inline-flex items-center content-center justify-center font-medium">B</span>
+                                <div class="font-medium">{{ $bot->tradingPair->base_asset . '/' . $item->tradingPair->quote_asset }}</div>
+                            </div>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-more-horizontal">
-                            <circle cx="12" cy="12" r="1" />
-                            <circle cx="19" cy="12" r="1" />
-                            <circle cx="5" cy="12" r="1" />
-                        </svg>
-                    </div>
-                    <div class="text-sm text-crypto-textMuted">B BTC/USDT</div>
-                    <div class="grid grid-cols-3 gap-2 text-center text-sm">
-                        <div>
-                            <div class="text-crypto-textMuted">3d APR</div>
-                            <div class="text-crypto-green">4.17%</div>
-                        </div>
-                        <div>
-                            <div class="text-crypto-textMuted">7d APR</div>
-                            <div class="text-crypto-green">3.37%</div>
-                        </div>
-                        <div>
-                            <div class="text-crypto-textMuted">30d APR</div>
-                            <div class="text-crypto-green">4.86%</div>
+                        <div class="text-right text-xs">
+                            <div class="text-gray-200">{{ $item->intervals->where('is_active', 1)->first()->apr_3d }}%</div>
+                            <div class="text-green-600">
+                                {{ $item->spread_rate }}%
+                            </div>
                         </div>
                     </div>
-                    <div class="text-sm text-crypto-textMuted">
-                        Next Funding: <span class="text-crypto-green">0.0011%</span>
+                    <div class="grid grid-cols-3 gap-2 items-center p-1 py-3 bg-zinc-800 rounded-lg text-center justify-between text-sm">
+                        <div>
+                            <div class="text-gray-400">3d APR</div>
+                            <div class="text-green-500">{{ $bot->intervals->first()->apr_3d }}%</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400">7d APR</div>
+                            <div class="text-green-500">{{ $bot->intervals->first()->apr_7d }}%</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400">30d APR</div>
+                            <div class="text-green-500">{{ $bot->intervals->first()->apr_30d }}%</div>
+                        </div>
                     </div>
-                    <div class="text-sm text-crypto-textMuted">
-                        Recommended min holding period: <span class="text-gray-100">31 days</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down inline-block ml-1">
-                            <path d="m6 9 6 6 6-6" />
-                        </svg>
+                    <div class="text-sm text-gray-400">
+                        Next Funding: <span class="text-green-500">{{ mt_rand($bot->intervals->first()->apr_3d * 10, $bot->intervals->first()->apr_30d * 10) / 100 }}%</span>
+                    </div>
+                    <div class="text-xs text-gray-400">
+                        Recommended min holding period: <span class="text-g6
+                        ray-100">{{ $bot->recommended_holding_period ?? '30' }} days</span>
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-3 mt-4">
+                <div class="flex flex-col gap-3">
                     <h3 class="text-lg font-semibold">2. Investment</h3>
-                    <div class="relative">
-                        <input type="text" placeholder="0.00" class="block w-full pr-16 py-2 rounded-lg bg-crypto-accent border border-crypto-primary text-gray-100 focus:border-crypto-primary focus:ring-crypto-primary" />
-                        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-crypto-textMuted">USDT</span>
-                    </div>
-                    <!-- Flowbite Range Slider -->
-                    <input id="default-range" type="range" value="50" class="w-full h-2 bg-crypto-border rounded-lg appearance-none cursor-pointer accent-crypto-primary" />
-                    <div class="flex items-center justify-between text-xs text-crypto-textMuted">
-                        <span>
-                            Available <span class="text-gray-100">0.00 USDT</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus inline-block">
-                                <path d="M12 5v14" />
-                                <path d="M5 12h14" />
-                            </svg>
-                        </span>
-                        <span>Est. Position Size</span>
-                    </div>
-                    <a href="#" class="text-sm text-crypto-primary hover:underline">
-                        Fee level
-                    </a>
-                    <button type="button" class="bg-crypto-primary text-crypto-accent hover:bg-[#e0a800] w-full py-2 rounded-md text-base font-medium mt-4">
-                        Create
-                    </button>
+                    <form method="POST" action="{{ route('arbitrage.subscription.store') }}" class="mt-3">
+                        @csrf
+                        <input type="hidden" name="arbitrage_bot_id" value="{{ $bot->id }}">
+                        <div class="relative mb-2">
+                            <label for="investmentAmount" class="block text-xs text-gray-400 mb-1">Investment Amount (USDT)</label>
+                            <input type="number" id="investmentAmount" name="amount" placeholder="0.00" class="block w-full pr-16 py-2 rounded-lg bg-crypto-accent border border-crypto-primary text-gray-100 focus:border-crypto-primary focus:ring-crypto-primary" min="0" step="0.01"
+                                required onblur="validateAmount()" />
+                            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">USDT</span>
+                        </div>
+                        <!-- Flowbite Range Slider -->
+                        <input id="default-range" type="range" value="50" class="w-full h-2 bg-crypto-border rounded-lg appearance-none cursor-pointer accent-crypto-primary mb-2" />
+                        <div class="mb-2">
+                            <label for="aprInterval" class="block text-xs text-gray-400 mb-1">APR Interval</label>
+                            <select id="aprInterval" name="apr_interval" class="w-full rounded bg-zinc-800 border border-crypto-primary text-gray-100 px-3 py-2" required>
+                                <option value="3d">3 Days</option>
+                                <option value="7d">7 Days</option>
+                                <option value="30d">30 Days</option>
+                            </select>
+                        </div>
+                        {{-- <button type="submit" class="bg-crypto-primary text-crypto-accent px-4 py-2 rounded font-semibold hover:bg-[#e0a800] w-full">Subscribe</button> --}}
+                        @auth
+                            <div class="flex items-center justify-between text-xs text-gray-400">
+                                <span>
+                                    Available <span class="text-gray-100">{{ number_format(auth()->user()->wallets->sum('balance'), 2) }} USDT</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus inline-block">
+                                        <path d="M12 5v14" />
+                                        <path d="M5 12h14" />
+                                    </svg>
+                                </span>
+                                <span>Est. Position Size</span>
+                            </div>
+                        @endauth
+                        <!-- Fee Level Modal Trigger -->
+                        <a href="#" class="text-sm text-crypto-primary hover:underline" data-modal-target="feeLevelModal" data-modal-toggle="feeLevelModal">
+                            Fee level
+                        </a>
+                        @auth
+                            <button type="submit" class="bg-crypto-primary text-crypto-accent hover:bg-[#e0a800] w-full py-2 rounded-md text-base font-medium mt-4">
+                                Create
+                            </button>
+                        @endauth
+                    </form>
+                    @if (auth('web')->guest())
+                        <a href="/login" class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Login/Signup</a>
+                    @endif
                 </div>
+
+                <!-- Fee Level Modal -->
+                <div id="feeLevelModal" tabindex="-1" aria-hidden="true" class="hidden fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/60 backdrop-blur-sm">
+                    <div class="relative w-full max-w-4xl max-h-full mx-auto">
+                        <div class="relative bg-crypto-accent rounded-xl shadow">
+                            <div class="flex items-center justify-between p-4 border-b rounded-t border-crypto-primary">
+                                <h3 class="text-lg font-semibold text-crypto-primary">APR & Fee Level Details</h3>
+                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-700 hover:text-white rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="feeLevelModal">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="p-4 flex items-start justify-center gap-2">
+                                <div class="grow">
+                                    <div class="grid grid-cols-1 gap-4 mb-4">
+                                        <div class="bg-zinc-800 rounded-lg p-4 border border-crypto-primary">
+                                            <h4 class="text-crypto-primary font-semibold mb-2">Funding APRs</h4>
+                                            <ul class="text-sm text-gray-200">
+                                                <li>3d APR: <span class="text-crypto-green font-bold">{{ $bot->intervals->first()->apr_3d }}%</span></li>
+                                                <li>7d APR: <span class="text-crypto-green font-bold">{{ $bot->intervals->first()->apr_7d }}%</span></li>
+                                                <li>30d APR: <span class="text-crypto-green font-bold">{{ $bot->intervals->first()->apr_30d }}%</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-zinc-800 rounded-lg p-4 border border-crypto-primary">
+                                            <h4 class="text-crypto-primary font-semibold mb-2">Fee Level Ranges</h4>
+                                            <ul class="text-sm text-gray-200">
+                                                <li>Maker Fee: <span class="text-crypto-yellow font-bold">0.02% - 0.05%</span></li>
+                                                <li>Taker Fee: <span class="text-crypto-yellow font-bold">0.04% - 0.07%</span></li>
+                                                @foreach ($bot->fees as $fee)
+                                                    <li>Arbitrage Fee: <span class="text-crypto-yellow font-bold">
+                                                            {{ number_format($fee->min_amount, 2) }} - {{ $fee->max_amount ? number_format($fee->max_amount, 2) : '∞' }} USDT: {{ number_format($fee->fee_percentage, 2) }}%
+                                                        </span></li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grow w-1/2">
+                                    <div class="bg-zinc-800 rounded-lg p-4 border border-crypto-primary mb-4">
+                                        <h4 class="text-crypto-primary font-semibold mb-2">Profit & Fee Calculator</h4>
+                                        <form id="profitCalcForm" class="space-y-3" method="POST" action="{{ route('arbitrage.subscription.store') }}">
+                                            @csrf
+                                            <input type="hidden" name="arbitrage_bot_id" value="{{ $bot->id }}">
+                                            <div>
+                                                <label for="calcAmount" class="block text-sm text-gray-300 mb-1">Investment Amount (USDT)</label>
+                                                <input type="number" id="calcAmount" name="amount" class="w-full rounded bg-zinc-800 border border-crypto-primary text-gray-100 px-3 py-2" min="0" step="0.01" value="1000" required>
+                                            </div>
+                                            <div>
+                                                <label for="aprPeriod" class="block text-sm text-gray-300 mb-1">APR Period</label>
+                                                <select id="aprPeriod" name="apr_interval" class="w-full rounded bg-zinc-800 border border-crypto-primary text-gray-100 px-3 py-2" required>
+                                                    <option value="3d">3 Days</option>
+                                                    <option value="7d">7 Days</option>
+                                                    <option value="30d">30 Days</option>
+                                                </select>
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <div>
+                                                    <label class="block text-xs text-gray-400">Estimated Profit</label>
+                                                    <div id="calcProfit" class="text-green-400 font-bold">0.00 USDT</div>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-xs text-gray-400">Estimated Fees</label>
+                                                    <div id="calcFees" class="text-yellow-400 font-bold">0.00 USDT</div>
+                                                </div>
+                                            </div>
+                                            <button type="button" onclick="calculateProfit()" class="bg-crypto-primary text-crypto-accent px-4 py-2 rounded font-semibold hover:bg-[#e0a800]">Calculate</button>
+                                            <button type="submit" class="bg-crypto-primary text-crypto-accent px-4 py-2 rounded font-semibold hover:bg-[#e0a800] ml-2">Subscribe</button>
+                                        </form>
+                                    </div>
+                                    <div class="bg-zinc-800 rounded-lg p-4 border border-crypto-primary">
+                                        <h4 class="text-crypto-primary font-semibold mb-2">Disclaimer & User Consent</h4>
+                                        <p class="text-xs text-gray-400 mb-2">This calculator provides only an estimate. Actual profits and fees may vary based on market conditions, exchange policies, and other factors. Please review all terms and risks before investing.</p>
+                                        <p class="text-xs text-gray-400">By using this tool, you acknowledge that you understand the risks associated with arbitrage trading and agree to our terms and conditions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Calculator Script -->
+                <script>
+                    function validateAmount() {
+                        const input = document.getElementById('investmentAmount');
+                        const maxBalance = {{ auth()->user() ? auth()->user()->wallets->sum('balance') : 0 }};
+                        let val = parseFloat(input.value) || 0;
+                        if (val > maxBalance) {
+                            input.value = 0;
+                            alert('Entered amount exceeds your available balance.');
+                        }
+                    }
+
+                    function calculateProfit() {
+                        const amount = parseFloat(document.getElementById('calcAmount').value) || 0;
+                        const period = document.getElementById('aprPeriod').value;
+                        let apr = 0;
+                        if (period === '3d') {
+                            apr = parseFloat({{ $bot->intervals->first()->apr_3d ?? 0 }});
+                        } else if (period === '7d') {
+                            apr = parseFloat({{ $bot->intervals->first()->apr_7d ?? 0 }});
+                        } else if (period === '30d') {
+                            apr = parseFloat({{ $bot->intervals->first()->apr_30d ?? 0 }});
+                        }
+
+                        // Find correct fee tier
+                        let feePercent = 0;
+                        @foreach ($bot->fees as $fee)
+                            if (amount >= {{ $fee->min_amount }} && ({{ $fee->max_amount ?? 'null' }} === null || amount <= {{ $fee->max_amount ?? 'null' }})) {
+                                feePercent = parseFloat({{ $fee->fee_percentage }});
+                            }
+                        @endforeach
+                        // Estimated profit
+                        const profit = amount * (apr / 100);
+                        // Estimated fees
+                        const fees = amount * (feePercent / 100);
+                        document.getElementById('calcProfit').innerText = profit.toFixed(2) + ' USDT';
+                        document.getElementById('calcFees').innerText = fees.toFixed(2) + ' USDT';
+                    }
+                </script>
             </div>
         </div>
     </section>

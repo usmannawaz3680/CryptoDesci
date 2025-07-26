@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Exchange;
 use App\Models\TradingPair;
 use App\Models\ArbitrageBot;
+use App\Models\ArbitrageSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -103,5 +104,11 @@ class ArbitrageController extends Controller
         }
     }
 
+
+    public function subscriptions()
+    {
+        $subscriptions = ArbitrageSubscription::paginate(10);
+        return view('admin.pages.arbitrage_subscriptions.index', compact('subscriptions'));
+    }
     // saveInterval and APR/Countdown/Interval logic removed as per new requirements
 }

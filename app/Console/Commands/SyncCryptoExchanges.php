@@ -26,13 +26,18 @@ class SyncCryptoExchanges extends Command
         $exchanges = $exchangeResponse->json();
 
         foreach (array_slice($exchanges, 0, 5) as $ex) { // Limit to top 5 for now
+            $tvOverrides = [
+                'gdax' => 'COINBASE',
+                // Add more as you discover issues
+            ];
+            $tvPrefix = $tvOverrides[$ex['id']] ?? strtoupper($ex['id']);
             $exchange = Exchange::updateOrCreate(
                 ['coingecko_id' => $ex['id']],
                 [
                     'name' => $ex['name'],
                     'country' => $ex['country'] ?? null,
                     'url' => $ex['url'] ?? null,
-                    'tv_prefix' => strtoupper($ex['id']), // You may refine this later
+                    'tv_prefix' => $tvPrefix, // You may refine this later
                 ]
             );
 
