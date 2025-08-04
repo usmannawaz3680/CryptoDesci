@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\WithdrawalController as AdminWithdrawalController
 use App\Http\Controllers\Admin\ExchangeController;
 use App\Http\Controllers\Admin\TradingPairController;
 use App\Http\Controllers\Admin\ArbitrageController;
+use App\Http\Controllers\Admin\CopyTraderController as AdminCopyTraderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
@@ -74,6 +75,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/arbitrage-bots/{id}/configure', [ArbitrageController::class, 'configure'])->name('admin.arbitrage.configure');
         Route::post('/arbitrage-bots/{id}/save-fees', [ArbitrageController::class, 'saveFees'])->name('admin.arbitrage-bots.saveFees');
         Route::post('/arbitrage-bots/{id}/save-interval', [ArbitrageController::class, 'saveInterval'])->name('admin.arbitrage-bots.saveInterval');
+        Route::controller(AdminCopyTraderController::class)->group(function() {
+           Route::get('copy-trader/create', 'create')->name('admin.copy-trader.create'); 
+        });
     });
 });
 

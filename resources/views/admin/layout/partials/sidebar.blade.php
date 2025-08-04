@@ -28,6 +28,10 @@
                         <i class="fas fa-money-bill-wave w-5 text-center text-crypto-primary"></i>
                         <span class="text-sm">Deposits</span>
                     </a>
+                    <a href="{{ route('withdrawals.index') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('withdrawals.index') ? 'bg-crypto-primary/20' : '' }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
+                        <i class="fas fa-money-bill-wave w-5 text-center text-crypto-primary"></i>
+                        <span class="text-sm">Withdrawals</span>
+                    </a>
                     <!-- Crypto Data Dropdown -->
                     <div x-data="{ open: false }">
                         <button @click="open = !open" class="w-full flex items-center gap-3 px-4 py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition text-left">
@@ -58,6 +62,24 @@
                                 View
                             </a>
                             <a href="{{ route('admin.arbitrage.subscriptions') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.arbitrage.subscriptions') ? 'bg-crypto-primary/20' : '' }}">
+                                Subscriptions
+                            </a>
+                        </div>
+                    </div>
+                    <div x-data="{ open: false }">
+                        <button @click="open = !open" class="w-full flex items-center gap-3 px-4 py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition text-left">
+                            <i class="fas fa-coins w-5 text-center text-crypto-primary"></i>
+                            <span class="text-sm flex-1">Copy Traders</span>
+                            <i :class="open ? 'fa-chevron-up' : 'fa-chevron-down'" class="fas text-xs"></i>
+                        </button>
+                        <div x-show="open" x-collapse class="mt-1 space-y-1 pl-9">
+                            <a href="{{ route('admin.copy-trader.create') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.copy-trader.create') ? 'bg-crypto-primary/20' : '' }}">
+                                Create
+                            </a>
+                            <a href="#" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.arbitrage.index') ? 'bg-crypto-primary/20' : '' }}">
+                                View
+                            </a>
+                            <a href="#" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.arbitrage.subscriptions') ? 'bg-crypto-primary/20' : '' }}">
                                 Subscriptions
                             </a>
                         </div>

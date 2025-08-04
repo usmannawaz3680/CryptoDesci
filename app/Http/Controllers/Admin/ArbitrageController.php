@@ -96,7 +96,6 @@ class ArbitrageController extends Controller
                     ]);
                 }
             });
-
             return back()->with('success', 'Fee tiers saved successfully!');
         } catch (\Throwable $e) {
             Log::error('ArbitrageController::saveFees failed', ['bot_id' => $id, 'msg' => $e->getMessage()]);
