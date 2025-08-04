@@ -57,6 +57,9 @@
                             <a href="{{ route('admin.arbitrage.index') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.arbitrage.index') ? 'bg-crypto-primary/20' : '' }}">
                                 View
                             </a>
+                            <a href="{{ route('admin.arbitrage.subscriptions') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.arbitrage.subscriptions') ? 'bg-crypto-primary/20' : '' }}">
+                                Subscriptions
+                            </a>
                         </div>
                     </div>
                     </a>

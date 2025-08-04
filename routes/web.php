@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\ArbitrageSubscriptionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\WithdrawlController;
@@ -22,6 +23,7 @@ Route::get('/copy-trading', [WebController::class, 'copyTrading'])->name('web.co
 Route::get('/trading-bots', [WebController::class, 'tradingBots'])->name('web.tradingbots');
 Route::get('/arbitrage-bots', [WebController::class, 'arbitrageBots'])->name('web.arbitragebots');
 Route::get('/arbitrage-bots/{id}', [WebController::class, 'arbitrageBotsDetail'])->name('web.arbitragebots.detail');
+Route::post('/arbitrage-subscriptions', [ArbitrageSubscriptionController::class, 'store'])->name('arbitrage.subscription.store');
 Route::get('/earn/overview', [WebController::class, 'earnOverview'])->name('web.earn.overview');
 Route::get('/markets', [WebController::class, 'markets'])->name('web.markets');
 // route('web.earn.overview')
@@ -67,6 +69,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/pairs', [TradingPairController::class, 'index'])->name('admin.pairs.index');
         Route::get('/arbitrage-bots/create', [ArbitrageController::class, 'create'])->name('admin.arbitrage.create');
         Route::get('/arbitrage-bots', [ArbitrageController::class, 'index'])->name('admin.arbitrage.index');
+        Route::get('/arbitrage-bots/subscription', [ArbitrageController::class, 'subscriptions'])->name('admin.arbitrage.subscriptions');
         Route::post('/arbitrage-bots', [ArbitrageController::class, 'store'])->name('admin.arbitrage-bots.store');
         Route::get('/arbitrage-bots/{id}/configure', [ArbitrageController::class, 'configure'])->name('admin.arbitrage.configure');
         Route::post('/arbitrage-bots/{id}/save-fees', [ArbitrageController::class, 'saveFees'])->name('admin.arbitrage-bots.saveFees');

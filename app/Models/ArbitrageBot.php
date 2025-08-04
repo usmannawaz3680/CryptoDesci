@@ -19,4 +19,12 @@ class ArbitrageBot extends Model
     {
         return $this->belongsTo(TradingPair::class);
     }
+    public function exchange_from()
+    {
+        return $this->belongsTo(Exchange::class, 'exchange_from_id');
+    }
+    public function exchange_to()
+    {
+        return $this->belongsTo(Exchange::class, 'exchange_to_id');
+    }
 }
