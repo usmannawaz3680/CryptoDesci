@@ -12,7 +12,7 @@
     @stack('style')
 </head>
 
-<body class="bg-black" @hasSection('sidebar')
+<body class="bg-black dark" @hasSection('sidebar')
     x-data="{
         sidebarCollapsed: false,
         mobileExpanded: false,

@@ -10,3 +10,6 @@ Artisan::command('inspire', function () {
 
 // ✅ Schedule the arbitrage:complete-subscriptions command to run daily
 Schedule::command('arbitrage:complete-subscriptions')->daily();
+
+// ✅ Schedule the sync:crypto-currencies command to run every 12 hours
+Schedule::command('sync:crypto-currencies')->twiceDaily();
