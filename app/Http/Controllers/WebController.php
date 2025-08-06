@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ArbitrageBot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Wallet;
 use App\Models\AssetCoin;
+use App\Models\CopyTrader;
 
 class WebController extends Controller
 {
@@ -41,7 +41,8 @@ class WebController extends Controller
     }
     public function copyTrading()
     {
-        return view('web.pages.copyTrading.index');
+        $copyTraders = CopyTrader::where('status', 'active')->orderBy('trades', 'desc')->get();
+        return view('web.pages.copyTrading.index', compact('copyTraders'));
     }
     public function tradingBots()
     {
