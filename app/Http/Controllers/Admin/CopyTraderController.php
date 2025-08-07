@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CopyTrader;
+use App\Models\CopyTraderFeeProfit;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\RedirectResponse;
 
 class CopyTraderController extends Controller
 {
@@ -98,11 +100,62 @@ class CopyTraderController extends Controller
 
         return redirect()->route('copy-traders.index')->with('success', 'Copy Trader created successfully.');
     }
-    public function index() {
+    public function index()
+    {
         $copyTraders = CopyTrader::all();
         return view('admin.pages.copy_traders.index', compact('copyTraders'));
     }
-    public function show(CopyTrader $copyTrader) {
+    public function show(CopyTrader $copyTrader)
+    {
         return view('admin.pages.copy_traders.show', compact('copyTrader'));
+    }
+    public function createFeeProfitRange($copyTraderId)
+    {
+        $copyTrader = CopyTrader::findOrFail($copyTraderId);
+        $existingRanges = $copyTrader->feeProfitRanges()->get();
+        return view('admin.pages.copy_traders.configure', compact('copyTrader', 'existingRanges'));
+    }
+
+    public function storeFeeProfitRange(Request $request, $copyTraderId)
+    {
+        $copyTrader = CopyTrader::findOrFail($copyTraderId);
+
+        $validated = $request->validate([
+            'ranges.*.min_amount' => 'required|numeric|min:0',
+            'ranges.*.max_amount' => 'required|numeric|gt:ranges.*.min_amount',
+            'ranges.*.fee_percentage' => 'required|numeric|min:0|max:100',
+            'ranges.*.min_profit_percentage' => 'required|numeric|min:0|max:100',
+            'ranges.*.max_profit_percentage' => 'required|numeric|gt:ranges.*.min_profit_percentage|max:100',
+        ]);
+
+        // Delete existing ranges if we're replacing them all
+        if (!$request->has('keep_existing')) {
+            $copyTrader->feeProfitRanges()->delete();
+        }
+
+        foreach ($validated['ranges'] as $range) {
+            CopyTraderFeeProfit::create([
+                'copy_trader_id' => $copyTraderId,
+                'min_amount' => $range['min_amount'],
+                'max_amount' => $range['max_amount'],
+                'fee_percentage' => $range['fee_percentage'],
+                'min_profit_percentage' => $range['min_profit_percentage'],
+                'max_profit_percentage' => $range['max_profit_percentage'],
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Fee and profit ranges updated successfully.');
+    }
+    
+    /**
+     * Delete a specific fee profit range
+     */
+    public function deleteFeeProfitRange(CopyTraderFeeProfit $feeProfit): RedirectResponse
+    {
+        $copyTraderId = $feeProfit->copy_trader_id;
+        $feeProfit->delete();
+        
+        return redirect()->route('admin.copy-traders.create-fee-profit-range', $copyTraderId)
+            ->with('success', 'Fee profit range deleted successfully.');
     }
 }

@@ -65,6 +65,9 @@
                                     <a href="{{ route('copy-traders.edit', $trader->id) }}" class="text-blue-400 hover:text-blue-300">
                                         <i class="fas fa-edit"></i>
                                     </a>
+                                    <a href="{{ route('admin.copy-traders.create-fee-profit-range', $trader->id) }}" class="text-green-400 hover:text-green-300">
+                                        <i class="fas fa-gears"></i>
+                                    </a>
                                     <a href="{{ route('copy-traders.show', $trader->id) }}" class="text-green-400 hover:text-green-300">
                                         <i class="fas fa-eye"></i>
                                     </a>

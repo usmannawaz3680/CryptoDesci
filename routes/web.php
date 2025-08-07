@@ -76,6 +76,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/arbitrage-bots/{id}/save-fees', [ArbitrageController::class, 'saveFees'])->name('admin.arbitrage-bots.saveFees');
         Route::post('/arbitrage-bots/{id}/save-interval', [ArbitrageController::class, 'saveInterval'])->name('admin.arbitrage-bots.saveInterval');
         Route::resource('copy-traders', AdminCopyTraderController::class);
+        Route::get('copy-traders/{copyTrader}/fee-profit-ranges/create', [\App\Http\Controllers\Admin\CopyTraderController::class, 'createFeeProfitRange'])->name('admin.copy-traders.create-fee-profit-range');
+        Route::post('copy-traders/{copyTrader}/fee-profit-ranges', [\App\Http\Controllers\Admin\CopyTraderController::class, 'storeFeeProfitRange'])->name('admin.copy-traders.store-fee-profit-range');
+        Route::delete('copy-traders/fee-profit-ranges/{feeProfit}', [\App\Http\Controllers\Admin\CopyTraderController::class, 'deleteFeeProfitRange'])->name('admin.copy-traders.delete-fee-profit-range');
     });
 });
 
