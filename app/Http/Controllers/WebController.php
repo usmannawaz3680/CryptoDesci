@@ -44,6 +44,64 @@ class WebController extends Controller
         $copyTraders = CopyTrader::where('status', 'active')->orderBy('trades', 'desc')->get();
         return view('web.pages.copyTrading.index', compact('copyTraders'));
     }
+    public function copyTraderProfile($username)
+    {
+        $trader = CopyTrader::where('username', $username)->firstOrFail();
+        if ($trader->status !== 'active') {
+            abort(404);
+        }
+        $trader->load('feeProfitRanges');
+
+        // Example Position History (or use $trader->position_history if available)
+        $positionHistory = $trader->position_history ?? [
+            [
+                'symbol' => 'ETHUSDT',
+                'type' => 'Perp',
+                'side' => 'Cross Long',
+                'status' => 'Closed',
+                'opened' => '2025-08-11 19:40:29',
+                'entry_price' => '4,290.69 USDT',
+                'avg_close_price' => '4,271.00 USDT',
+                'max_open_interest' => '11.553 ETH',
+                'closed_vol' => '11.553 ETH',
+                'closing_pnl' => '-227.43 USDT',
+                'closed_at' => '2025-08-11 19:49:18',
+            ],
+            [
+                'symbol' => 'ETHUSDT',
+                'type' => 'Perp',
+                'side' => 'Cross Long',
+                'status' => 'Closed',
+                'opened' => '2025-08-11 18:52:23',
+                'entry_price' => '4,268.08 USDT',
+                'avg_close_price' => '4,280.37 USDT',
+                'max_open_interest' => '10.574 ETH',
+                'closed_vol' => '10.574 ETH',
+                'closing_pnl' => '+129.95 USDT',
+                'closed_at' => '2025-08-11 19:00:44',
+            ],
+        ];
+
+        // Example Latest Records
+        $latestRecords = [
+            ['date' => '2025-08-11', 'action' => 'Closed Position', 'details' => 'ETHUSDT Long', 'pnl' => '+129.95 USDT'],
+            ['date' => '2025-08-11', 'action' => 'Closed Position', 'details' => 'ETHUSDT Short', 'pnl' => '+299.58 USDT'],
+        ];
+
+        // Example Transfer History
+        $transferHistory = [
+            ['time' => '2025-08-10 17:40:27', 'coin' => 'USDT', 'amount' => '10,000.00000000', 'from' => 'Fiat and Spot', 'to' => 'Lead Trading'],
+            ['time' => '2025-08-10 11:05:55', 'coin' => 'BNB', 'amount' => '0.14888825', 'from' => 'Fiat and Spot', 'to' => 'Lead Trading'],
+        ];
+
+        // Example Copy Traders
+        $copyTraders = [
+            ['user_id' => 'Tra********uto', 'margin_balance' => '158,031.58 USDT', 'total_pnl' => '+8,031.58 USDT', 'total_roi' => '+5.35%', 'duration' => '1 Days'],
+            ['user_id' => 'Use****efc', 'margin_balance' => '5,409.61 USDT', 'total_pnl' => '+2,652.23 USDT', 'total_roi' => '+115.78%', 'duration' => '9 Days'],
+        ];
+
+        return view('web.pages.copyTrading.detail', compact('trader', 'positionHistory', 'latestRecords', 'transferHistory', 'copyTraders'));
+    }
     public function tradingBots()
     {
         return view('web.pages.tradingBots.index');
