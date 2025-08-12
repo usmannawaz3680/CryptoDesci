@@ -1,5 +1,5 @@
 @extends('web.layout.app')
-@section('title', 'Copy Trader - ' . $trader->username)
+@section('title', 'Copy Trader | ' . $trader->username)
 @section('content')
 <div class="container mx-auto px-4 py-6 mb-20 max-w-7xl">
     <div class="mb-6">
@@ -88,9 +88,9 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col gap-3">
-                <button class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 font-medium">Mock Copy</button>
-                <button class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 font-medium">Compare</button>
+            <div class="flex flex-col items-center justify-center h-full gap-3">
+                <a href="{{ route('web.copytrading.create', $trader->username) }}" class="px-6 py-2 bg-crypto-primary text-black rounded-lg hover:bg-crypto-primary/80 font-medium">Copy Trader</a>
+                {{-- <button class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 font-medium">Compare</button> --}}
             </div>
         </div>
     </div>
@@ -436,7 +436,7 @@
             document.getElementById('roiButton').classList.add('text-gray-400', 'hover:text-white');
             document.getElementById('pnlButton').classList.remove('bg-gray-600', 'text-white');
             document.getElementById('pnlButton').classList.add('text-gray-400', 'hover:text-white');
-            
+
             if (type === 'roi') {
                 document.getElementById('roiButton').classList.add('bg-gray-600', 'text-white');
                 document.getElementById('roiButton').classList.remove('text-gray-400', 'hover:text-white');

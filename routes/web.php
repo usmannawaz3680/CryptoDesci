@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ExchangeController;
 use App\Http\Controllers\Admin\TradingPairController;
 use App\Http\Controllers\Admin\ArbitrageController;
 use App\Http\Controllers\Admin\CopyTraderController as AdminCopyTraderController;
+use App\Http\Controllers\UserCopyTraderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
@@ -22,6 +23,8 @@ Route::get('/nft/profile', [WebController::class, 'nftProfile'])->name('web.nft.
 Route::get('/nft/collection', [WebController::class, 'nftCollection'])->name('web.nft.collection');
 Route::get('/copy-trading', [WebController::class, 'copyTrading'])->name('web.copytrading');
 Route::get('/copy-trading/trader/{username}', [WebController::class, 'copyTraderProfile'])->name('web.copytrading.detail');
+Route::get('copy-trader/{username}/invest', [UserCopyTraderController::class, 'create'])->name('web.copytrading.create');
+Route::post('copy-trader/{id}/invest', [UserCopyTraderController::class, 'invest'])->name('web.copytrading.invest');
 Route::get('/trading-bots', [WebController::class, 'tradingBots'])->name('web.tradingbots');
 Route::get('/arbitrage-bots', [WebController::class, 'arbitrageBots'])->name('web.arbitragebots');
 Route::get('/arbitrage-bots/{id}', [WebController::class, 'arbitrageBotsDetail'])->name('web.arbitragebots.detail');
