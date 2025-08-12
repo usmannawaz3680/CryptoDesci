@@ -21,6 +21,7 @@ Route::get('/nft-home', [WebController::class, 'nftHome'])->name('web.nft.home')
 Route::get('/nft/profile', [WebController::class, 'nftProfile'])->name('web.nft.profile');
 Route::get('/nft/collection', [WebController::class, 'nftCollection'])->name('web.nft.collection');
 Route::get('/copy-trading', [WebController::class, 'copyTrading'])->name('web.copytrading');
+Route::get('/copy-trading/trader/{username}', [WebController::class, 'copyTraderProfile'])->name('web.copytrading.detail');
 Route::get('/trading-bots', [WebController::class, 'tradingBots'])->name('web.tradingbots');
 Route::get('/arbitrage-bots', [WebController::class, 'arbitrageBots'])->name('web.arbitragebots');
 Route::get('/arbitrage-bots/{id}', [WebController::class, 'arbitrageBotsDetail'])->name('web.arbitragebots.detail');
@@ -76,9 +77,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/arbitrage-bots/{id}/save-fees', [ArbitrageController::class, 'saveFees'])->name('admin.arbitrage-bots.saveFees');
         Route::post('/arbitrage-bots/{id}/save-interval', [ArbitrageController::class, 'saveInterval'])->name('admin.arbitrage-bots.saveInterval');
         Route::resource('copy-traders', AdminCopyTraderController::class);
-        Route::get('copy-traders/{copyTrader}/fee-profit-ranges/create', [\App\Http\Controllers\Admin\CopyTraderController::class, 'createFeeProfitRange'])->name('admin.copy-traders.create-fee-profit-range');
-        Route::post('copy-traders/{copyTrader}/fee-profit-ranges', [\App\Http\Controllers\Admin\CopyTraderController::class, 'storeFeeProfitRange'])->name('admin.copy-traders.store-fee-profit-range');
-        Route::delete('copy-traders/fee-profit-ranges/{feeProfit}', [\App\Http\Controllers\Admin\CopyTraderController::class, 'deleteFeeProfitRange'])->name('admin.copy-traders.delete-fee-profit-range');
+        Route::get('copy-traders/{copyTrader}/fee-profit-ranges/create', [AdminCopyTraderController::class, 'createFeeProfitRange'])->name('admin.copy-traders.create-fee-profit-range');
+        Route::post('copy-traders/{copyTrader}/fee-profit-ranges', [AdminCopyTraderController::class, 'storeFeeProfitRange'])->name('admin.copy-traders.store-fee-profit-range');
+        Route::delete('copy-traders/fee-profit-ranges/{feeProfit}', [AdminCopyTraderController::class, 'deleteFeeProfitRange'])->name('admin.copy-traders.delete-fee-profit-range');
     });
 });
 
