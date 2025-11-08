@@ -55,7 +55,7 @@
                                     </th>
                                     <th scope="row" class="px-6 py-4">
                                         @if ($deposit->status == 'pending')
-                                            <span class="text-yellow-500 font-semibold">Pending</span>
+                                            <span class="text-crypto-primary font-semibold">Pending</span>
                                         @elseif ($deposit->status == 'approved')
                                             <span class="text-green-500 font-semibold">Approved</span>
                                         @else

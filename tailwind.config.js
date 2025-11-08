@@ -12,7 +12,7 @@ export default {
         extend: {
             colors: {
                 crypto: {
-                    primary: "#f0bb0b",
+                    primary: "#dfff00",
                     accent: "#131314",
                 },
             },

@@ -219,9 +219,9 @@
 
                         <div class="warning-box mt-4">
                             <div class="flex items-start">
-                                <i class="fas fa-exclamation-triangle text-yellow-500 mt-1 mr-3"></i>
+                                <i class="fas fa-exclamation-triangle text-crypto-primary mt-1 mr-3"></i>
                                 <div>
-                                    <p class="font-medium text-yellow-500 mb-1">Important Notice</p>
+                                    <p class="font-medium text-crypto-primary mb-1">Important Notice</p>
                                     <p class="text-sm text-gray-300">Make sure to select the correct network. Sending funds to the wrong network may result in permanent loss.</p>
                                 </div>
                             </div>
@@ -261,7 +261,7 @@
                             <div class="deposit-address mb-4">
                                 <div class="flex items-center justify-between">
                                     <span class="text-sm" id="deposit-address">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</span>
-                                    <button type="button" class="text-yellow-500 hover:text-yellow-400 ml-2" onclick="copyAddress()">
+                                    <button type="button" class="text-crypto-primary hover:text-crypto-primary ml-2" onclick="copyAddress()">
                                         <i class="fas fa-copy"></i>
                                     </button>
                                 </div>
@@ -343,8 +343,8 @@
                             <div class="file-upload-area" id="file-upload-area">
                                 <input type="file" id="receipt_image" name="receipt_image" accept="image/*" class="hidden">
                                 <div id="upload-content">
-                                    <i class="fas fa-cloud-upload-alt text-4xl text-yellow-500 mb-4"></i>
-                                    <p class="text-lg font-medium mb-2">Drop your image here or <span class="text-yellow-500 cursor-pointer">browse</span></p>
+                                    <i class="fas fa-cloud-upload-alt text-4xl text-crypto-primary mb-4"></i>
+                                    <p class="text-lg font-medium mb-2">Drop your image here or <span class="text-crypto-primary cursor-pointer">browse</span></p>
                                     <p class="text-sm text-gray-400">PNG, JPG, JPEG up to 10MB</p>
                                 </div>
                                 <div id="file-preview" class="hidden">

@@ -40,7 +40,7 @@
                     <h2 class="text-2xl font-bold">High ROI</h2>
                     <p class="text-gray-400 text-sm">Elite traders with the highest ROI</p>
                 </div>
-                <button class="text-crypto-primary hover:text-yellow-400 text-sm font-medium">More</button>
+                <button class="text-crypto-primary hover:text-crypto-primary text-sm font-medium">More</button>
             </div>
 
             <!-- Traders Grid -->
@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="flex space-x-2">
-                                <a href="{{ route('web.copytrading.detail', $trader->username) }}" class="flex-1 bg-crypto-primary text-center text-black py-2 px-4 rounded text-sm font-medium hover:bg-yellow-400 transition-colors">
+                                <a href="{{ route('web.copytrading.detail', $trader->username) }}" class="flex-1 bg-crypto-primary text-center text-black py-2 px-4 rounded text-sm font-medium hover:bg-crypto-primary transition-colors">
                                     Copy
                                 </a>
                                 <button class="px-3 py-2 border border-gray-600 rounded text-sm hover:border-gray-500 transition-colors" data-modal-target="copy-{{ $trader->id }}-modal" data-modal-toggle="copy-{{ $trader->id }}-modal">
@@ -160,7 +160,7 @@
                             </div>
 
                             <div class="flex space-x-2">
-                                <button class="flex-1 bg-crypto-primary text-black py-2 px-4 rounded text-sm font-medium hover:bg-yellow-400 transition-colors">
+                                <button class="flex-1 bg-crypto-primary text-black py-2 px-4 rounded text-sm font-medium hover:bg-crypto-primary transition-colors">
                                     Copy
                                 </button>
                                 <button class="px-3 py-2 border border-gray-600 rounded text-sm hover:border-gray-500 transition-colors" data-modal-target="trademaster-modal" data-modal-toggle="trademaster-modal">
@@ -183,7 +183,7 @@
                     <h2 class="text-2xl font-bold">High Yields</h2>
                     <p class="text-gray-400 text-sm">Elite traders with the highest Yields</p>
                 </div>
-                <button class="text-crypto-primary hover:text-yellow-400 text-sm font-medium">More</button>
+                <button class="text-crypto-primary hover:text-crypto-primary text-sm font-medium">More</button>
             </div>
 
             <!-- Traders Grid -->
@@ -234,7 +234,7 @@
                             </div>
 
                             <div class="flex space-x-2">
-                                <button class="flex-1 bg-crypto-primary text-black py-2 px-4 rounded text-sm font-medium hover:bg-yellow-400 transition-colors">
+                                <button class="flex-1 bg-crypto-primary text-black py-2 px-4 rounded text-sm font-medium hover:bg-crypto-primary transition-colors">
                                     Copy
                                 </button>
                                 <button class="px-3 py-2 border border-gray-600 rounded text-sm hover:border-gray-500 transition-colors" data-modal-target="happytrading-modal" data-modal-toggle="happytrading-modal">
@@ -293,7 +293,7 @@
                             </div>
 
                             <div class="flex space-x-2">
-                                <button class="flex-1 bg-crypto-primary text-black py-2 px-4 rounded text-sm font-medium hover:bg-yellow-400 transition-colors">
+                                <button class="flex-1 bg-crypto-primary text-black py-2 px-4 rounded text-sm font-medium hover:bg-crypto-primary transition-colors">
                                     Copy
                                 </button>
                                 <button class="px-3 py-2 border border-gray-600 rounded text-sm hover:border-gray-500 transition-colors" data-modal-target="trademaster-modal" data-modal-toggle="trademaster-modal">
@@ -432,7 +432,7 @@
                         </div>
                         <!-- Action Buttons -->
                         <div class="flex space-x-4 mt-8">
-                            <button class="flex-1 bg-crypto-primary text-black py-3 px-6 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">
+                            <button class="flex-1 bg-crypto-primary text-black py-3 px-6 rounded-lg font-semibold hover:bg-crypto-primary transition-colors">
                                 Copy This Trader
                             </button>
                             <button class="px-6 py-3 border border-gray-600 rounded-lg hover:border-gray-500 transition-colors">
@@ -570,7 +570,7 @@
 
                     <!-- Action Buttons -->
                     <div class="flex space-x-4 mt-8">
-                        <button class="flex-1 bg-crypto-primary text-black py-3 px-6 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">
+                        <button class="flex-1 bg-crypto-primary text-black py-3 px-6 rounded-lg font-semibold hover:bg-crypto-primary transition-colors">
                             Copy This Trader
                         </button>
                         <button class="px-6 py-3 border border-gray-600 rounded-lg hover:border-gray-500 transition-colors">

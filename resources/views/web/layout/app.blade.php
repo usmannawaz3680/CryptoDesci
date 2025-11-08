@@ -89,7 +89,7 @@
                 <div class="hidden xl:flex items-center space-x-4 ml-auto">
                     <a href="#"><i class="fas fa-search text-white hover:text-crypto-primary text-lg"></i></a>
                     @auth('web')
-                        <button onclick="location.href='{{ route('deposit') }}'" class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Deposit</button>
+                        <button onclick="location.href='{{ route('deposit') }}'" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Deposit</button>
                         <div class="relative group">
                             <button class="flex items-center focus:outline-none">
                                 <i class="fas fa-user text-white hover:text-crypto-primary text-lg"></i>
@@ -116,7 +116,7 @@
                             <button @click="open = !open" class="relative focus:outline-none">
                                 <i class="fas fa-bell text-white hover:text-crypto-primary text-lg"></i>
                                 @if (auth()->user()->unreadNotifications->count() > 0)
-                                    <span class="absolute top-0 right-0 h-2 w-2 bg-yellow-400 rounded-full animate-ping"></span>
+                                    <span class="absolute top-0 right-0 h-2 w-2 bg-crypto-primary rounded-full animate-ping"></span>
                                 @endif
                             </button>
 
@@ -153,7 +153,7 @@
 
                     @endauth
                     @if (auth('web')->guest())
-                        <a href="/login" class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Login/Signup</a>
+                        <a href="/login" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Login/Signup</a>
                     @endif
                     <a href="#"><i class="fas fa-globe text-white hover:text-crypto-primary text-lg"></i></a>
                     <a href="#"><i class="fas fa-moon text-white hover:text-crypto-primary text-lg"></i></a>
@@ -189,7 +189,7 @@
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-8">
             <!-- Company Info -->
             <div>
-                <h3 class="text-lg font-semibold text-yellow-400 mb-4">CryptoApp</h3>
+                <h3 class="text-lg font-semibold text-crypto-primary mb-4">CryptoApp</h3>
                 <p class="text-gray-400 text-sm">Your trusted platform for automated crypto solutions, offering copy trading, bots, earning opportunities, and secure wallet management.</p>
                 <p class="text-gray-400 text-sm mt-2">Email: support@cryptoapp.com</p>
             </div>
@@ -197,47 +197,47 @@
             <div>
                 <h3 class="text-lg font-semibold mb-4">Services</h3>
                 <ul class="space-y-2">
-                    <li><a href="/copy-trading" class="text-gray-400 hover:text-yellow-400">Copy Trading</a></li>
-                    <li><a href="/trading-bots" class="text-gray-400 hover:text-yellow-400">Trading Bots</a></li>
-                    <li><a href="/earn/overview" class="text-gray-400 hover:text-yellow-400">Earn</a></li>
-                    <li><a href="/wallet" class="text-gray-400 hover:text-yellow-400">Wallet</a></li>
+                    <li><a href="/copy-trading" class="text-gray-400 hover:text-crypto-primary">Copy Trading</a></li>
+                    <li><a href="/trading-bots" class="text-gray-400 hover:text-crypto-primary">Trading Bots</a></li>
+                    <li><a href="/earn/overview" class="text-gray-400 hover:text-crypto-primary">Earn</a></li>
+                    <li><a href="/wallet" class="text-gray-400 hover:text-crypto-primary">Wallet</a></li>
                 </ul>
             </div>
             <!-- Support -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Support</h3>
                 <ul class="space-y-2">
-                    <li><a href="/faq" class="text-gray-400 hover:text-yellow-400">FAQ</a></li>
-                    <li><a href="/help" class="text-gray-400 hover:text-yellow-400">Help Center</a></li>
-                    <li><a href="/contact" class="text-gray-400 hover:text-yellow-400">Contact Us</a></li>
+                    <li><a href="/faq" class="text-gray-400 hover:text-crypto-primary">FAQ</a></li>
+                    <li><a href="/help" class="text-gray-400 hover:text-crypto-primary">Help Center</a></li>
+                    <li><a href="/contact" class="text-gray-400 hover:text-crypto-primary">Contact Us</a></li>
                 </ul>
             </div>
             <!-- Legal -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Legal</h3>
                 <ul class="space-y-2">
-                    <li><a href="/terms" class="text-gray-400 hover:text-yellow-400">Terms of Service</a></li>
-                    <li><a href="/privacy" class="text-gray-400 hover:text-yellow-400">Privacy Policy</a></li>
-                    <li><a href="/disclaimer" class="text-gray-400 hover:text-yellow-400">Disclaimer</a></li>
+                    <li><a href="/terms" class="text-gray-400 hover:text-crypto-primary">Terms of Service</a></li>
+                    <li><a href="/privacy" class="text-gray-400 hover:text-crypto-primary">Privacy Policy</a></li>
+                    <li><a href="/disclaimer" class="text-gray-400 hover:text-crypto-primary">Disclaimer</a></li>
                 </ul>
             </div>
             <!-- Social Media -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
                 <div class="flex space-x-4">
-                    <a href="https://twitter.com/cryptoapp" class="text-gray-400 hover:text-yellow-400">
+                    <a href="https://twitter.com/cryptoapp" class="text-gray-400 hover:text-crypto-primary">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 14.008-7.496 14.008-13.985 0-.266-.006-.531-.018-.797.962-.695 1.8-1.562 2.457-2.549z" />
                         </svg>
                     </a>
-                    <a href="https://facebook.com/cryptoapp" class="text-gray-400 hover:text-yellow-400">
+                    <a href="https://facebook.com/cryptoapp" class="text-gray-400 hover:text-crypto-primary">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.129 22 16.991 22 12z" />
                         </svg>
                     </a>
-                    <a href="https://telegram.org/cryptoapp" class="text-gray-400 hover:text-yellow-400">
+                    <a href="https://telegram.org/cryptoapp" class="text-gray-400 hover:text-crypto-primary">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
                         </svg>
@@ -275,7 +275,7 @@
             <span class="text-sm font-medium" x-text="message"></span>
         </div>
         <div x-show="type === 'warning'" class="flex items-center w-full max-w-xs p-4 mb-4 text-yellow-800 bg-yellow-100 rounded-lg shadow" role="alert">
-            <svg class="w-5 h-5 me-2 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 h-5 me-2 text-crypto-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M8.257 3.099c.366-.773 1.396-.773 1.762 0l7.071 14.918c.33.695-.161 1.483-.881 1.483H2.067c-.72 0-1.211-.788-.881-1.483L8.257 3.1zM11 14a1 1 0 11-2 0 1 1 0 012 0zm-1-2a1 1 0 01-1-1V9a1 1 0 012 0v2a1 1 0 01-1 1z" clip-rule="evenodd" />
             </svg>
             <span class="text-sm font-medium" x-text="message"></span>

@@ -389,7 +389,7 @@
                     @endauth
                 </form>
                 @if (auth('web')->guest())
-                    <a href="/login" class="bg-yellow-400 text-black font-semibold px-3 py-1 rounded hover:bg-yellow-500 transition">Login/Signup</a>
+                    <a href="/login" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Login/Signup</a>
                 @endif
             </div>
 
@@ -455,7 +455,7 @@
                                             </div>
                                             <div>
                                                 <label class="block text-xs text-gray-400">Estimated Fees</label>
-                                                <div id="calcFees" class="text-yellow-400 font-bold">0.00 USDT</div>
+                                                <div id="calcFees" class="text-crypto-primary font-bold">0.00 USDT</div>
                                             </div>
                                         </div>
                                         <button type="button" onclick="calculateProfit()" class="bg-crypto-primary text-crypto-accent px-4 py-2 rounded font-semibold hover:bg-[#e0a800]">Calculate</button>

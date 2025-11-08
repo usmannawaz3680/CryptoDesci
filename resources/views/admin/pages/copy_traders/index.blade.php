@@ -10,7 +10,7 @@
         <div class="p-4 md:p-6 bg-crypto-accent rounded-xl text-white">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-semibold text-crypto-primary">Copy Traders</h2>
-                <a href="{{ route('copy-traders.create') }}" class="bg-crypto-primary text-black px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors">
+                <a href="{{ route('copy-traders.create') }}" class="bg-crypto-primary text-black px-4 py-2 rounded-lg hover:bg-crypto-primary transition-colors">
                     <i class="fas fa-plus mr-2"></i> Add New Trader
                 </a>
             </div>
@@ -43,7 +43,7 @@
                                     @if($trader->risk_level == 'low')
                                         <span class="bg-green-500/20 text-green-400 text-xs font-medium px-2.5 py-0.5 rounded">Low</span>
                                     @elseif($trader->risk_level == 'medium')
-                                        <span class="bg-yellow-500/20 text-yellow-400 text-xs font-medium px-2.5 py-0.5 rounded">Medium</span>
+                                        <span class="bg-yellow-500/20 text-crypto-primary text-xs font-medium px-2.5 py-0.5 rounded">Medium</span>
                                     @else
                                         <span class="bg-red-500/20 text-red-400 text-xs font-medium px-2.5 py-0.5 rounded">High</span>
                                     @endif

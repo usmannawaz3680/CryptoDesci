@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="grid grid-cols-2 gap-4 mb-6">
-                        <button class="bg-crypto-primary text-black py-3 px-6 rounded-lg font-semibold hover:bg-yellow-500 transition-colors">
+                        <button class="bg-crypto-primary text-black py-3 px-6 rounded-lg font-semibold hover:bg-crypto-primary/80 transition-colors">
                             Buy now
                         </button>
                         <button class="border border-gray-600 py-3 px-6 rounded-lg font-semibold hover:border-gray-500 transition-colors">
@@ -271,7 +271,7 @@
                                     <input type="number" placeholder="Min" class="flex-1 bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-crypto-primary">
                                     <input type="number" placeholder="Max" class="flex-1 bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-crypto-primary">
                                 </div>
-                                <button class="w-full bg-crypto-primary text-black py-2 rounded font-semibold hover:bg-yellow-500">Apply</button>
+                                <button class="w-full bg-crypto-primary text-black py-2 rounded font-semibold hover:bg-crypto-primary/80">Apply</button>
                             </div>
                         </div>
 

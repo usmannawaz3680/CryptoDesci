@@ -21,11 +21,7 @@ return new class extends Migration
             $table->string('level');
             $table->string('trading_style')->nullable();
             $table->enum('status', ['active', 'inactive', 'suspended', 'full'])->nullable();
-            $table->json('badges')->default(json_encode([
-                'top_performer' => false,
-                'trading_expert' => false,
-                'risk_awareness' => false,
-            ]))->nullable();
+            $table->json('badges')->nullable();
             $table->integer('followers')->default(0);
             $table->integer('copiers')->default(rand(1001, 3024));
             $table->integer('trades');

@@ -36,7 +36,7 @@
                                     <td class="px-6 py-4">{{ $withdrawal->coin->symbol }}</td>
                                     <td class="px-6 py-4">
                                         @if ($withdrawal->status == 'pending')
-                                            <span class="text-yellow-500 font-semibold">Pending</span>
+                                            <span class="text-crypto-primary font-semibold">Pending</span>
                                         @elseif ($withdrawal->status == 'completed')
                                             <span class="text-green-500 font-semibold">Completed</span>
                                         @elseif ($withdrawal->status == 'processing')

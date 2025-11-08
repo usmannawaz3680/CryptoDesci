@@ -986,7 +986,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-xl font-bold">FAQ</h2>
-                <a href="#" class="text-crypto-primary hover:text-yellow-400 text-sm font-medium">All FAQs →</a>
+                <a href="#" class="text-crypto-primary hover:text-crypto-primary text-sm font-medium">All FAQs →</a>
             </div>
 
             <!-- FAQ Accordion with Exact Questions -->
