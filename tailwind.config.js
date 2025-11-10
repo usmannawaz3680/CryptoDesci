@@ -13,6 +13,7 @@ export default {
             colors: {
                 crypto: {
                     primary: "#dfff00",
+                    // primary: "#f0bb0b",
                     accent: "#131314",
                 },
             },

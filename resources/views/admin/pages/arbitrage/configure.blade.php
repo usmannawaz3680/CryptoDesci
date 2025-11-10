@@ -43,6 +43,26 @@
                 </div>
             </form>
         </div>
+        <div class="p-4 md:p-6 bg-crypto-accent rounded-xl text-white">
+
+        <form action="{{ route('admin.arbitrage-bots.saveInterval', $bot->id) }}" method="POST">
+                    @csrf
+                    <h3 class="text-lg font-medium text-white mb-3">Set APR Interval</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input type="text" name="apr_3d" placeholder="3 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        <input type="text" name="apr_7d" placeholder="7 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        <input type="text" name="apr_30d" placeholder="30 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        {{-- <input type="datetime-local" name="starts_at" required class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        <input type="datetime-local" name="ends_at" required class="p-2 rounded bg-zinc-800 border border-gray-600 text-white"> --}}
+                    </div>
+
+                    <div class="text-end mt-4">
+                        <button type="submit" class="bg-crypto-primary text-black font-medium py-2 px-6 rounded hover:brightness-110 transition">
+                            Save Interval
+                        </button>
+                    </div>
+                </form>
+        </div>
     </div>
 </div>
 

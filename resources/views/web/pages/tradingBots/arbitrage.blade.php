@@ -50,7 +50,7 @@
                         $countdownId = 'countdown-' . $bot->id;
                     @endphp
 
-                    <div class="bg-crypto-accent p-4 rounded-lg border border-gray-700 hover:border-crypto-primary flex flex-col justify-between">
+                    <div class="bg-crypto-accent p-4 duration-200 rounded-lg border border-gray-700 hover:border-crypto-primary flex flex-col justify-between">
                         <div class="flex justify-between items-center mb-2">
                             <div>
                                 <span class="text-lg font-bold">{{ $bot->tradingPair->base_asset . $bot->tradingPair->quote_asset }}

@@ -153,7 +153,7 @@
 
                     @endauth
                     @if (auth('web')->guest())
-                        <a href="/login" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Login/Signup</a>
+                        <a href="/login" class="bg-crypto-primary text-black font-normal px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Login/Signup</a>
                     @endif
                     <a href="#"><i class="fas fa-globe text-white hover:text-crypto-primary text-lg"></i></a>
                     <a href="#"><i class="fas fa-moon text-white hover:text-crypto-primary text-lg"></i></a>
@@ -170,7 +170,7 @@
         @endif
 
         <!-- Main Content Area -->
-        <main class="flex-1 overflow-y-auto bg-black custom-scrollbar transition-all duration-300 ease-in-out @hasSection('sidebar')
+        <main class="flex-1 overflow-y-auto bg-crypto-accent custom-scrollbar transition-all duration-300 ease-in-out @hasSection('sidebar')
 @else
 
 @endif" @hasSection('sidebar')

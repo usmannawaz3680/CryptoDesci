@@ -2,7 +2,7 @@
 @section('title', 'Home')
 @section('content')
     <section>
-        <div class="min-h-screen w-full bg-black">
+        <div class="min-h-screen w-full">
             <div class="max-w-7xl mx-auto py-12">
                 <!-- TradingView Widget BEGIN -->
                 {{-- <div class="tradingview-widget-container">
@@ -226,7 +226,7 @@
         </div>
     </section>
     <section>
-        <div class="min-h-screen bg-black">
+        <div class="min-h-screen">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <!-- Tab Navigation -->
                 <div class="mb-12">
@@ -457,7 +457,7 @@
             </div>
         </div>
     </section>
-    <section class="min-h-screen bg-black relative">
+    <section class="min-h-screen  relative">
         <!-- Background gradient overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-bitget-dark/50 to-black"></div>
 
@@ -617,7 +617,7 @@
             </div>
         </div>
     </section>
-    <section class="min-h-screen bg-black py-16">
+    <section class="min-h-screen  py-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- FAQ Header -->
             <div class="text-center mb-12">

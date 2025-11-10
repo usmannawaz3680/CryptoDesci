@@ -41,7 +41,7 @@
     </div>
 
     <!-- Trader Profile Section -->
-    <div class="bg-crypto-accent rounded-lg p-6 mb-6">
+    <div class="bg-crypto-accent border border-gray-600 rounded-lg p-6 mb-6">
         <div class="flex items-start justify-between">
             <div class="flex items-start gap-4">
                 <div class="relative">
@@ -98,7 +98,7 @@
     <!-- Performance and Chart Section -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <!-- Performance Stats -->
-        <div class="bg-crypto-accent rounded-lg p-6">
+        <div class="bg-crypto-accent border border-gray-600 rounded-lg p-6">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="text-lg font-semibold text-white">Performance</h3>
                 <div class="flex bg-gray-700 rounded-lg p-1">
@@ -146,7 +146,7 @@
         </div>
 
         <!-- Performance Chart -->
-        <div class="bg-crypto-accent rounded-lg p-6">
+        <div class="bg-crypto-accent border border-gray-600 rounded-lg p-6">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex bg-gray-700 rounded-lg p-1">
                     <button id="roiButton" class="px-3 py-1 text-xs bg-gray-600 text-white rounded" onclick="showChart('roi')">ROI</button>
@@ -165,7 +165,7 @@
     <!-- Lead Trader Overview and Asset Preferences -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <!-- Lead Trader Overview -->
-        <div class="bg-crypto-accent rounded-lg p-6">
+        <div class="bg-crypto-accent border border-gray-600 rounded-lg p-6">
             <h3 class="text-lg font-semibold text-white mb-6">Lead Trader Overview</h3>
             <div class="space-y-4">
                 <div class="flex justify-between items-center">
@@ -192,7 +192,7 @@
         </div>
 
         <!-- Asset Preferences -->
-        <div class="bg-crypto-accent rounded-lg p-6">
+        <div class="bg-crypto-accent border border-gray-600 rounded-lg p-6">
             <h3 class="text-lg font-semibold text-white mb-6">Asset Preferences</h3>
             <div class="md:flex gap-10 items-center grow justify-center mx-auto px-3">
                 <div class="h-44 mb-4">
@@ -211,7 +211,7 @@
     </div>
 
     <!-- Navigation Tabs -->
-    <div class="bg-crypto-accent rounded-lg">
+    <div class="bg-crypto-accent border border-gray-600 rounded-lg">
         <div class="flex border-b border-gray-700">
             <button class="px-6 py-4 text-white border-b-2 border-crypto-primary font-medium" onclick="showTab('positions')">Positions</button>
             <button class="px-6 py-4 text-gray-400 hover:text-white" onclick="showTab('positionHistory')">Position History</button>
