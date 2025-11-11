@@ -49,13 +49,13 @@
                     @csrf
                     <h3 class="text-lg font-medium text-white mb-3">Set APR Interval</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <input type="text" value="{{ old('apr_3d', $bot->intervals->first()?->apr_3d) }}" name="apr_3d" placeholder="3 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
-                        <input type="text" value="{{ old('apr_7d', $bot->intervals->first()?->apr_7d) }}" name="apr_7d" placeholder="7 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
-                        <input type="text" value="{{ old('apr_30d', $bot->intervals->first()?->apr_30d) }}" name="apr_30d" placeholder="30 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        <input type="text" value="{{ old('apr_3d', $bot->interval?->apr_3d) }}" name="apr_3d" placeholder="3 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        <input type="text" value="{{ old('apr_7d', $bot->interval?->apr_7d) }}" name="apr_7d" placeholder="7 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        <input type="text" value="{{ old('apr_30d', $bot->interval?->apr_30d) }}" name="apr_30d" placeholder="30 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
                         {{-- <input type="datetime-local" name="starts_at" required class="p-2 rounded bg-zinc-800 border border-gray-600 text-white"> --}}
-                        <input type="text" value="{{ old('next_rate', $bot->intervals->first()?->next_rate) }}" name="next_rate" placeholder="Next Funding rate %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        <input type="text" value="{{ old('next_rate', $bot->interval?->next_rate) }}" name="next_rate" placeholder="Next Funding rate %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
                     
-                        <input type="datetime-local" value="{{ old('ends_at', $bot->intervals->first()?->ends_at) }}" name="ends_at" required class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        <input type="datetime-local" value="{{ old('ends_at', $bot->interval?->ends_at) }}" name="ends_at" required class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
                     </div>
 
                     <div class="text-end mt-4">

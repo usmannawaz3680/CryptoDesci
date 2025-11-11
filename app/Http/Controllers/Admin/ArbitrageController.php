@@ -10,6 +10,7 @@ use App\Models\ArbitrageSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\Admin\SaveIntervalRequest;
 
 class ArbitrageController extends Controller
 {
@@ -111,32 +112,20 @@ class ArbitrageController extends Controller
     }
     // saveInterval and APR/Countdown/Interval logic removed as per new requirements
 
-    public function saveInterval(Request $request, $id)
+    public function saveInterval(SaveIntervalRequest $request, $id)
     {
         try {
             $bot = ArbitrageBot::findOrFail($id);
 
-            $validated = $request->validate([
-                'apr_3d' => 'nullable|numeric|min:0',
-                'apr_7d' => 'nullable|numeric|min:0',
-                'apr_30d' => 'nullable|numeric|min:0',
-                // 'starts_at'  => 'required|date',
-                'ends_at' => 'nullable|date|min:',
-                'next_rate' => 'nullable|numeric|min:0',
-            ]);
+            $validated = $request->validated();
 
             DB::transaction(function () use ($bot, $validated) {
-                // $bot->intervals()
-                //     ->where('is_active', true)
-                //     ->where('ends_at', '>=', $validated['starts_at'])
-                //     ->update(['is_active' => false]);
-
                 $bot->intervals()->create([
-                    'apr_3d' => $validated['apr_3d'],
-                    'apr_7d' => $validated['apr_7d'],
-                    'apr_30d' => $validated['apr_30d'],
-                    'ends_at' => $request->ends_at ?? null,
-                    'next_funding_rate' => $request->next_rate ?? null,
+                    'apr_3d' => $validated['apr_3d'] ?? null,
+                    'apr_7d' => $validated['apr_7d'] ?? null,
+                    'apr_30d' => $validated['apr_30d'] ?? null,
+                    'ends_at' => $validated['ends_at'] ?? null,
+                    'next_funding_rate' => $validated['next_rate'] ?? null,
                     'is_active' => true,
                 ]);
             });

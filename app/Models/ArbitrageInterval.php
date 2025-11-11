@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArbitrageInterval extends Model
 {
+    protected $table = 'arbitrage_intervals';
     protected $guarded = [];
 
 }

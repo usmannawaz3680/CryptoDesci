@@ -16,8 +16,8 @@ class CompleteArbitrageSubscriptions extends Command
     public function handle()
     {
         $now = Carbon::now();
-        // $subs = ArbitrageSubscription::where('status', 'active')->where('end_at', '<=', $now)->get();
-        $subs = ArbitrageSubscription::where('status', 'active')->get();
+        $subs = ArbitrageSubscription::where('status', 'active')->where('end_at', '<=', $now)->get();
+        // $subs = ArbitrageSubscription::where('status', 'active')->get();
         foreach ($subs as $sub) {
             DB::beginTransaction();
             try {

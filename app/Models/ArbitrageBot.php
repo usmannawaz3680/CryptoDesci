@@ -11,9 +11,13 @@ class ArbitrageBot extends Model
     {
         return $this->hasMany(ArbitrageFee::class, 'arbitrage_bot_id', 'id');
     }
+    public function interval()
+    {
+        return $this->hasOne(ArbitrageInterval::class);
+    }
     public function intervals()
     {
-        return $this->hasMany(ArbitrageInterval::class, 'arbitrage_bot_id', 'id');
+        return $this->hasMany(ArbitrageInterval::class);
     }
     public function tradingPair()
     {

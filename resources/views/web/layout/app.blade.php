@@ -89,7 +89,8 @@
                     <div class="hidden xl:flex items-center space-x-3 ml-auto">
                         <a href="#"><i class="fas fa-search text-white hover:text-crypto-primary text-lg"></i></a>
                         @auth('web')
-                            <button onclick="location.href='{{ route('deposit') }}'" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Deposit</button>
+                            <!-- <button onclick="location.href='{{ route('deposit') }}'" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Deposit</button> -->
+                            <a href="{{ route('deposit') }}" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Deposit</a>
                             <div class="relative group">
                                 <button class="flex items-center focus:outline-none">
                                     <i class="fas fa-user text-white hover:text-crypto-primary text-lg"></i>

@@ -112,12 +112,12 @@ class WebController extends Controller
     }
     public function arbitrageBots()
     {
-        $bots = ArbitrageBot::with(['intervals', 'fees', 'tradingPair'])->where('is_active', 1)->get();
+        $bots = ArbitrageBot::with(['interval', 'fees', 'tradingPair'])->where('is_active', 1)->get();
         return view('web.pages.tradingBots.arbitrage', compact('bots'));
     }
     public function arbitrageBotsDetail($id)
     {
-        $bots = ArbitrageBot::with(['intervals', 'fees', 'tradingPair', 'exchange_from', 'exchange_to'])->where('is_active', 1)->get();
+        $bots = ArbitrageBot::with(['interval', 'fees', 'tradingPair', 'exchange_from', 'exchange_to'])->where('is_active', 1)->get();
         $bot = $bots->where('id', $id)->first();
         // dd($bot);
         return view('web.pages.tradingBots.arbitrage-detail', compact('bot', 'bots'));
