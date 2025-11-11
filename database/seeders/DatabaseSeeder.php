@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
         ]);
-        // $this->call([
-        //     AssetCoinSeeder::class,
-        // ]);
+        $this->call([
+            AssetCoinSeeder::class,
+        ]);
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

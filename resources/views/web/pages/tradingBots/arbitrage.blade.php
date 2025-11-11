@@ -46,7 +46,7 @@
                 @foreach ($bots as $bot)
                     @php
                         $activeInterval = $bot->intervals->where('is_active', 1)->first();
-                        $fundingTime = optional($activeInterval)->ends_at ?? now()->addHour(); // fallback if no active
+                        // $fundingTime = optional($activeInterval)->ends_at ?? now()->addHour(); // fallback if no active
                         $countdownId = 'countdown-' . $bot->id;
                     @endphp
 

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,9 +17,8 @@ return new class extends Migration
             $table->decimal('apr_3d', 5, 2)->nullable();
             $table->decimal('apr_7d', 5, 2)->nullable();
             $table->decimal('apr_30d', 5, 2)->nullable();
-
-            $table->dateTime('starts_at');
-            $table->dateTime('ends_at');
+            $table->decimal('next_funding_rate', 5, 2)->nullable();
+            $table->dateTime('ends_at')->nullable();
 
             $table->boolean('is_active')->default(true);
             $table->timestamps();

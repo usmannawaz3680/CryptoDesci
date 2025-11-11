@@ -23,7 +23,7 @@ return new class extends Migration
             $table->decimal('max_profit_percentage', 5, 2); // Max daily profit % from range
             $table->dateTime('start_date')->default(now());
             $table->enum('status', ['active', 'closed', 'pending'])->default('pending');
-            $table->integer('period_days')->after('start_date')->nullable()->comment('Duration of investment in days (e.g., 7, 10, 30)');
+            $table->integer('period_days')->nullable()->comment('Duration of investment in days (e.g., 7, 10, 30)');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

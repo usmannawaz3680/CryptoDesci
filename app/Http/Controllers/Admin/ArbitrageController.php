@@ -36,23 +36,23 @@ class ArbitrageController extends Controller
     {
         try {
             $validated = $request->validate([
-                'trading_pair_id'   => 'required|exists:trading_pairs,id',
-                'exchange_from_id'  => 'required|exists:exchanges,id|different:exchange_to_id',
-                'exchange_to_id'    => 'required|exists:exchanges,id',
-                'category'          => 'required|in:USDT,COIN-M',
-                'type'              => 'required|in:1,2',
-                'spread_rate'       => 'required|numeric',
-                'is_active'         => 'nullable',
+                'trading_pair_id' => 'required|exists:trading_pairs,id',
+                'exchange_from_id' => 'required|exists:exchanges,id|different:exchange_to_id',
+                'exchange_to_id' => 'required|exists:exchanges,id',
+                'category' => 'required|in:USDT,COIN-M',
+                'type' => 'required|in:1,2',
+                'spread_rate' => 'required|numeric',
+                'is_active' => 'nullable',
             ]);
 
             $bot = ArbitrageBot::create([
-                'trading_pair_id'   => $validated['trading_pair_id'],
-                'exchange_from_id'  => $validated['exchange_from_id'],
-                'exchange_to_id'    => $validated['exchange_to_id'],
-                'category'          => $validated['category'],
-                'type'              => $validated['type'],
-                'spread_rate'       => $validated['spread_rate'],
-                'is_active'         => $request->has('is_active'),
+                'trading_pair_id' => $validated['trading_pair_id'],
+                'exchange_from_id' => $validated['exchange_from_id'],
+                'exchange_to_id' => $validated['exchange_to_id'],
+                'category' => $validated['category'],
+                'type' => $validated['type'],
+                'spread_rate' => $validated['spread_rate'],
+                'is_active' => $request->has('is_active'),
             ]);
 
             return redirect()->route('admin.arbitrage.configure', $bot->id)
@@ -82,7 +82,7 @@ class ArbitrageController extends Controller
             $request->validate([
                 'min_amount.*' => 'required|numeric|min:0',
                 'max_amount.*' => 'nullable|numeric|min:0',
-                'fee.*'        => 'required|numeric|min:0',
+                'fee.*' => 'required|numeric|min:0',
             ]);
 
             DB::transaction(function () use ($bot, $request) {
@@ -90,8 +90,8 @@ class ArbitrageController extends Controller
 
                 foreach ($request->min_amount as $index => $min) {
                     $bot->fees()->create([
-                        'min_amount'     => $min,
-                        'max_amount'     => $request->max_amount[$index] ?? null,
+                        'min_amount' => $min,
+                        'max_amount' => $request->max_amount[$index] ?? null,
                         'fee_percentage' => $request->fee[$index],
                     ]);
                 }
@@ -117,11 +117,12 @@ class ArbitrageController extends Controller
             $bot = ArbitrageBot::findOrFail($id);
 
             $validated = $request->validate([
-                'apr_3d'     => 'nullable|numeric|min:0',
-                'apr_7d'     => 'nullable|numeric|min:0',
-                'apr_30d'    => 'nullable|numeric|min:0',
+                'apr_3d' => 'nullable|numeric|min:0',
+                'apr_7d' => 'nullable|numeric|min:0',
+                'apr_30d' => 'nullable|numeric|min:0',
                 // 'starts_at'  => 'required|date',
-                // 'ends_at'    => 'required|date|after:starts_at',
+                'ends_at' => 'nullable|date|min:',
+                'next_rate' => 'nullable|numeric|min:0',
             ]);
 
             DB::transaction(function () use ($bot, $validated) {
@@ -131,11 +132,11 @@ class ArbitrageController extends Controller
                 //     ->update(['is_active' => false]);
 
                 $bot->intervals()->create([
-                    'apr_3d'    => $validated['apr_3d'],
-                    'apr_7d'    => $validated['apr_7d'],
-                    'apr_30d'   => $validated['apr_30d'],
-                    'starts_at' => now(),
-                    'ends_at'   => now(),
+                    'apr_3d' => $validated['apr_3d'],
+                    'apr_7d' => $validated['apr_7d'],
+                    'apr_30d' => $validated['apr_30d'],
+                    'ends_at' => $request->ends_at ?? null,
+                    'next_funding_rate' => $request->next_rate ?? null,
                     'is_active' => true,
                 ]);
             });

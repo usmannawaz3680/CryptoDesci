@@ -10,8 +10,8 @@ class CreateTradingPairsTable extends Migration
         Schema::create('trading_pairs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('exchange_id')->constrained('exchanges')->onDelete('cascade');
-            $table->string('base_asset');   // e.g., "BTC"
-            $table->string('quote_asset');  // e.g., "USDT"
+            $table->string('base_asset', 100);   // e.g., "BTC"
+            $table->string('quote_asset', 100);  // e.g., "USDT"
             $table->string('tv_symbol');    // e.g., "BINANCE:BTCUSDT"
             $table->timestamps();
 
