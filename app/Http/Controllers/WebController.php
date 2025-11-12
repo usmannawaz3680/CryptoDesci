@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ArbitrageBot;
+use App\Models\ArbitrageSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AssetCoin;
@@ -119,8 +120,23 @@ class WebController extends Controller
     {
         $bots = ArbitrageBot::with(['interval', 'fees', 'tradingPair', 'exchange_from', 'exchange_to'])->where('is_active', 1)->get();
         $bot = $bots->where('id', $id)->first();
-        // dd($bot);
-        return view('web.pages.tradingBots.arbitrage-detail', compact('bot', 'bots'));
+        
+        // Get user's subscriptions for this bot
+        $runningSubscriptions = ArbitrageSubscription::with(['arbitrageBot', 'wallet'])
+            ->where('user_id', Auth::id())
+            ->where('arbitrage_bot_id', $id)
+            ->where('status', 'active')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        
+        $historySubscriptions = ArbitrageSubscription::with(['arbitrageBot', 'wallet'])
+            ->where('user_id', Auth::id())
+            ->where('arbitrage_bot_id', $id)
+            ->whereIn('status', ['completed', 'cancelled', 'closed'])
+            ->orderBy('updated_at', 'desc')
+            ->get();
+        
+        return view('web.pages.tradingBots.arbitrage-detail', compact('bot', 'bots', 'runningSubscriptions', 'historySubscriptions'));
     }
     public function nftProfile()
     {

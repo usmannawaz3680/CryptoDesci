@@ -19,14 +19,14 @@
     </style>
 @endpush
 @section('content')
-    <section class="min-h-screen bg-zinc-950 text-gray-100 grid grid-cols-[1fr_320px] max-w-screen-2xl mx-auto justify-center">
+    <section class="min-h-screen bg-zinc-950 my-5 text-gray-100 grid grid-cols-[1fr_320px] items-start max-w-screen-2xl mx-auto justify-center">
         <div>
-            <div class="bg-crypto-accent rounded-xl p-3  m-1">
+            <div class="bg-crypto-accent rounded-sm p-3  m-1">
                 <h2 class="text-xl font-bold">Welcome To Arbitrage Bot</h2>
             </div>
-            <div class="flex-1 grid grid-cols-1 lg:grid-cols-[310px_1fr] gap-1 mb-2 mx-1 items-start">
+            <div class="flex-1 grid grid-cols-1 lg:grid-cols-[310px_1fr] flex-wrap mx-1 items-start">
                 <!-- Left Sidebar -->
-                <div class="bg-crypto-accent h-[600px] rounded-xl flex flex-col gap-3">
+                <div class="bg-crypto-accent h-[75vh] max-h-[600px] rounded-xl flex flex-col gap-3">
                     {{-- <h2 class="text-lg font-semibold text-crypto-primary">Welcome to Arbitrage Bot</h2> --}}
                     <div class="relative mt-5 mx-2">
                         <div class="absolute left-0 top-0 m-2 text-gray-400">
@@ -118,8 +118,8 @@
                 </div>
 
                 <!-- Main Content -->
-                <div class="flex flex-col gap-4">
-                    <div class="bg-crypto-accent rounded-lg">
+                <div class="flex flex-col gap-4 min-h-[75vh]">
+                    <div class="bg-crypto-accent rounded-lg h-full">
                         <div class="flex items-center justify-start gap-3 text-sm mb-0 px-4 pt-3">
                             <div class="flex flex-col align-top gap-1">
                                 {{-- <img src="{{ $item['icon'] }}" alt="{{ $item['name'] }}" width="20" height="20" /> --}}
@@ -159,23 +159,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-4 border-b border-crypto-primary">
+                        <div class="mb-4 border-b h-full h border-gray-700">
                             <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" data-tabs-active-classes="text-crypto-primary border-crypto-primary" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                                 <li class="me-2" role="presentation">
-                                    <button class="inline-block p-4 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary" id="chart-tab"
+                                    <button class="inline-block px-3 py-2 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary" id="chart-tab"
                                         data-tabs-target="#chart" type="button" role="tab" aria-controls="chart" aria-selected="true">
                                         Chart
                                     </button>
                                 </li>
                                 <li class="me-2" role="presentation">
-                                    <button class="inline-block p-4 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary"
+                                    <button class="inline-block px-3 py-2 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary"
                                         id="funding-rate-history-tab" data-tabs-target="#funding-rate-history" type="button" role="tab" aria-controls="funding-rate-history" aria-selected="false">
                                         Funding Rate History
                                     </button>
                                 </li>
                             </ul>
                         </div>
-                        <div id="default-tab-content">
+                        <div id="default-tab-content" class="h-full">
                             <div class="hidden rounded-lg" id="chart" role="tabpanel" aria-labelledby="chart-tab">
                                 <div class="flex flex-col gap-3">
                                     <!-- Chart 1 -->
@@ -301,10 +301,152 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-span-2 p-1 py-2">
+                    <div class="bg-crypto-accent rounded-t-lg border-b border-gray-800">
+                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" data-tabs-active-classes="text-crypto-primary border-crypto-primary" id="default-tab" data-tabs-toggle="#running-tab-content" role="tablist">
+                            <li class="me-2" role="presentation">
+                                <button class="inline-block px-3 py-2 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary" id="running-tab"
+                                    data-tabs-target="#running" type="button" role="tab" aria-controls="running" aria-selected="true">
+                                    Running ({{ count($runningSubscriptions) }})
+                                </button>
+                            </li>
+                            <li class="me-2" role="presentation">
+                                <button class="inline-block px-3 py-2 border-b-2 rounded-t-lg data-[tabs-active]:text-crypto-primary data-[tabs-active]:border-crypto-primary data-[tabs-active]:bg-crypto-primary/20 text-gray-100 hover:text-crypto-primary hover:border-crypto-primary"
+                                    id="history-tab" data-tabs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">
+                                    History ({{ count($historySubscriptions) }})
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-crypto-accent rounded-b-lg p-5 min-h-[50vh]">
+                        <div id="running-tab-content" class="h-full">
+                            <div class="" id="running" role="tabpanel">
+                                @if(count($runningSubscriptions) > 0)
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-sm text-left text-gray-300">
+                                            <thead class="text-xs text-gray-400 border-b border-gray-700">
+                                                <tr>
+                                                    <th class="px-4 py-3 font-semibold">Investment</th>
+                                                    <th class="px-4 py-3 font-semibold">APR Period</th>
+                                                    <th class="px-4 py-3 font-semibold">APR Rate</th>
+                                                    <th class="px-4 py-3 font-semibold">Profit</th>
+                                                    <th class="px-4 py-3 font-semibold">Fee Deducted</th>
+                                                    <th class="px-4 py-3 font-semibold">Start Date</th>
+                                                    <th class="px-4 py-3 font-semibold">End Date</th>
+                                                    <th class="px-4 py-3 font-semibold">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($runningSubscriptions as $subscription)
+                                                    <tr class="border-b border-gray-700 hover:bg-crypto-primary/10 transition-colors cursor-pointer">
+                                                        <td class="px-4 py-3 font-medium">
+                                                            <span class="text-crypto-primary">{{ number_format($subscription->amount, 2) }}</span> USDT
+                                                        </td>
+                                                        <td class="px-4 py-3">{{ strtoupper($subscription->apr_interval) }}</td>
+                                                        <td class="px-4 py-3 text-green-500">{{ $subscription->apr_percentage }}%</td>
+                                                        <td class="px-4 py-3 text-crypto-primary font-medium">
+                                                            +{{ number_format($subscription->profit ?? 0, 2) }} USDT
+                                                        </td>
+                                                        <td class="px-4 py-3 text-red-400">
+                                                            -{{ number_format($subscription->fee_deducted ?? 0, 2) }} USDT
+                                                        </td>
+                                                        <td class="px-4 py-3 text-xs text-gray-400">
+                                                            {{ $subscription->start_at ? \Carbon\Carbon::parse($subscription->start_at)->format('M d, Y') : 'N/A' }}
+                                                        </td>
+                                                        <td class="px-4 py-3 text-xs text-gray-400">
+                                                            {{ $subscription->end_at ? \Carbon\Carbon::parse($subscription->end_at)->format('M d, Y') : 'N/A' }}
+                                                        </td>
+                                                        <td class="px-4 py-3">
+                                                            <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-900/30 text-green-400">
+                                                                Active
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @else
+                                    <div class="flex flex-col items-center justify-center py-12 text-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <p class="text-gray-400 text-lg">No active subscriptions yet</p>
+                                        <p class="text-gray-500 text-sm mt-2">Start investing in this arbitrage bot to see your running subscriptions here</p>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="hidden" id="history" role="tabpanel">
+                                @if(count($historySubscriptions) > 0)
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-sm text-left text-gray-300">
+                                            <thead class="text-xs text-gray-400 border-b border-gray-700">
+                                                <tr>
+                                                    <th class="px-4 py-3 font-semibold">Investment</th>
+                                                    <th class="px-4 py-3 font-semibold">APR Period</th>
+                                                    <th class="px-4 py-3 font-semibold">APR Rate</th>
+                                                    <th class="px-4 py-3 font-semibold">Total Profit</th>
+                                                    <th class="px-4 py-3 font-semibold">Fee Deducted</th>
+                                                    <th class="px-4 py-3 font-semibold">Start Date</th>
+                                                    <th class="px-4 py-3 font-semibold">End Date</th>
+                                                    <th class="px-4 py-3 font-semibold">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($historySubscriptions as $subscription)
+                                                    <tr class="border-b border-gray-700 hover:bg-crypto-primary/10 transition-colors cursor-pointer">
+                                                        <td class="px-4 py-3 font-medium">
+                                                            <span class="text-crypto-primary">{{ number_format($subscription->amount, 2) }}</span> USDT
+                                                        </td>
+                                                        <td class="px-4 py-3">{{ strtoupper($subscription->apr_interval) }}</td>
+                                                        <td class="px-4 py-3 text-green-500">{{ $subscription->apr_percentage }}%</td>
+                                                        <td class="px-4 py-3 font-medium {{ $subscription->profit > 0 ? 'text-green-400' : 'text-red-400' }}">
+                                                            {{ $subscription->profit > 0 ? '+' : '' }}{{ number_format($subscription->profit ?? 0, 2) }} USDT
+                                                        </td>
+                                                        <td class="px-4 py-3 text-red-400">
+                                                            -{{ number_format($subscription->fee_deducted ?? 0, 2) }} USDT
+                                                        </td>
+                                                        <td class="px-4 py-3 text-xs text-gray-400">
+                                                            {{ $subscription->start_at ? \Carbon\Carbon::parse($subscription->start_at)->format('M d, Y') : 'N/A' }}
+                                                        </td>
+                                                        <td class="px-4 py-3 text-xs text-gray-400">
+                                                            {{ $subscription->end_at ? \Carbon\Carbon::parse($subscription->end_at)->format('M d, Y') : 'N/A' }}
+                                                        </td>
+                                                        <td class="px-4 py-3">
+                                                            <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full 
+                                                                @if($subscription->status === 'completed')
+                                                                    bg-blue-900/30 text-blue-400
+                                                                @elseif($subscription->status === 'cancelled')
+                                                                    bg-yellow-900/30 text-yellow-400
+                                                                @else
+                                                                    bg-gray-900/30 text-gray-400
+                                                                @endif
+                                                            ">
+                                                                {{ ucfirst($subscription->status) }}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @else
+                                    <div class="flex flex-col items-center justify-center py-12 text-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <p class="text-gray-400 text-lg">No subscription history</p>
+                                        <p class="text-gray-500 text-sm mt-2">Completed and cancelled subscriptions will appear here</p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Right Sidebar -->
-        <div class="bg-crypto-accent rounded-lg p-4 flex flex-col gap-4 m-1">
+        <div class="bg-crypto-accent rounded-lg p-4 flex flex-col gap-4 m-1 h-full">
             <div class="flex flex-col gap-3">
                 <h3 class="text-sm fw-semibold">1. Portfolio</h3>
                 <div class="flex justify-between gap-1 items-center">
@@ -389,7 +531,7 @@
                     @endauth
                 </form>
                 @if (auth('web')->guest())
-                    <a href="/login" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Login/Signup</a>
+                    <a href="/login?intended_url={{ url()->current() }}" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Login/Signup</a>
                 @endif
             </div>
 

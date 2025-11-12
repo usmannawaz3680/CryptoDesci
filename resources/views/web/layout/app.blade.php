@@ -45,27 +45,28 @@
                                     class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 dark:text-white md:dark:hover:text-crypto-primary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Markets</a>
                             </li>
                             <li>
-                                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" data-dropdown-trigger='hover' data-dropdown-delay=100
-                                    class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 md:w-auto dark:text-white md:dark:hover:text-crypto-primary dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Trade
+                                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" data-dropdown-trigger='hover' data-dropdown-delay=50
+                                    class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-crypto-primary md:p-0 md:w-auto dark:text-white md:dark:hover:text-crypto-primary dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                                    Trade
                                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                     </svg>
                                 </button>
-                                <div id="dropdownNavbar" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-45 dark:bg-neutral-800 dark:divide-gray-600 p-4">
-                                    <div class="text-gray-400 text-sm font-medium space-y-2">
-                                        <a href="{{ route('web.tradingbots') }}" class="hover:text-crypto-primary">
+                                <div id="dropdownNavbar" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-sm shadow-sm max-w-xs dark:bg-neutral-800 dark:divide-gray-600 p-4">
+                                    <div class="text-sm font-medium space-y-3 px-2">
+                                        <a href="{{ route('web.tradingbots') }}" class="hover:text-crypto-primary group">
                                             <div class="flex items-center space-x-2 py-1 flex-wrap">
                                                 <i class="fa-solid fa-robot text-crypto-primary text-lg"></i>
-                                                <span>Trading Bots</span>
+                                                <span class="text-white">Trading Bots</span>
                                             </div>
-                                            <span class="text-gray-500 text-xs">Trade smarter with our various automated strategies - easy, fast and reliable</span>
+                                            <span class="text-gray-500 text-xs duration-75  group-hover:text-crypto-primary">Trade smarter with our various automated strategies - easy, fast and reliable</span>
                                         </a>
-                                        <a href="{{ route('web.copytrading') }}" class="hover:text-crypto-primary">
+                                        <a href="{{ route('web.copytrading') }}" class="hover:text-crypto-primary group">
                                             <div class="flex items-center space-x-2 py-1 flex-wrap">
                                                 <i class="fa-solid fa-clone text-crypto-primary text-lg"></i>
-                                                <span>Copy Trading</span>
+                                                <span class="text-white">Copy Trading</span>
                                             </div>
-                                            <span class="text-gray-500 text-xs">Follow the most popular traders</span>
+                                            <span class="text-gray-500 text-xs duration-75  group-hover:text-crypto-primary">Follow the most popular traders</span>
                                         </a>
                                     </div>
                                 </div>
@@ -87,7 +88,12 @@
                     </div>
                     <!-- Icon Group -->
                     <div class="hidden xl:flex items-center space-x-3 ml-auto">
-                        <a href="#"><i class="fas fa-search text-white hover:text-crypto-primary text-lg"></i></a>
+                        <div>
+                            <form action="{{ url('/') }}" method="get">
+                                <input type="search" value="{{ request()->input('search', '') }}" name="search" id="search" class="flex-1 w-full text-sm bg-crypto-accent/70 border text-crypto-accent border-gray-700 rounded-md ps-3 pe-5 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-crypto-primary focus:ring-1 focus:ring-crypto-primary">
+                            </form>
+                        </div>
+                        <label for="search" class="cursor-pointer"><i class="fas fa-search text-white hover:text-crypto-primary text-lg"></i></label>
                         @auth('web')
                             <!-- <button onclick="location.href='{{ route('deposit') }}'" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Deposit</button> -->
                             <a href="{{ route('deposit') }}" class="bg-crypto-primary text-black font-semibold px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Deposit</a>
