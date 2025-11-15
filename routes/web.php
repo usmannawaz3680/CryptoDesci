@@ -83,6 +83,13 @@ Route::prefix('admin')->group(function () {
         Route::get('copy-traders/{copyTrader}/fee-profit-ranges/create', [AdminCopyTraderController::class, 'createFeeProfitRange'])->name('admin.copy-traders.create-fee-profit-range');
         Route::post('copy-traders/{copyTrader}/fee-profit-ranges', [AdminCopyTraderController::class, 'storeFeeProfitRange'])->name('admin.copy-traders.store-fee-profit-range');
         Route::delete('copy-traders/fee-profit-ranges/{feeProfit}', [AdminCopyTraderController::class, 'deleteFeeProfitRange'])->name('admin.copy-traders.delete-fee-profit-range');
+
+        // Copy trading subscriptions management
+        Route::get('/copy-trading/subscriptions', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'index'])->name('admin.copytrade-subscriptions.index');
+        Route::get('/copy-trading/subscriptions/export', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'export'])->name('admin.copytrade-subscriptions.export');
+        Route::post('/copy-trading/subscriptions/{investment}/pause', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'pause'])->name('admin.copytrade-subscriptions.pause');
+        Route::post('/copy-trading/subscriptions/{investment}/resume', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'resume'])->name('admin.copytrade-subscriptions.resume');
+        Route::post('/copy-trading/subscriptions/{investment}/terminate', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'terminate'])->name('admin.copytrade-subscriptions.terminate');
     });
 });
 

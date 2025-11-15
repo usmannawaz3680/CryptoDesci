@@ -10,16 +10,15 @@
         <div class="p-4 md:p-6 bg-crypto-accent rounded-xl text-white">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-semibold text-crypto-primary">Copy Traders</h2>
-                <a href="{{ route('copy-traders.create') }}" class="bg-crypto-primary text-black px-4 py-2 rounded-lg hover:bg-crypto-primary transition-colors">
-                    <i class="fas fa-plus mr-2"></i> Add New Trader
-                </a>
-            </div>
-
-            @if(session('success'))
-                <div class="bg-green-500/20 border border-green-500 text-green-400 px-4 py-3 rounded mb-4">
-                    {{ session('success') }}
+                <div class="flex gap-2">
+                    <a href="{{ route('admin.copytrade-subscriptions.index') }}" class="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-table mr-2"></i> Subscriptions
+                    </a>
+                    <a href="{{ route('copy-traders.create') }}" class="bg-crypto-primary text-black px-4 py-2 rounded-lg hover:bg-crypto-primary transition-colors">
+                        <i class="fas fa-plus mr-2"></i> Add New Trader
+                    </a>
                 </div>
-            @endif
+            </div>
 
             <div class="overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-300">
@@ -65,9 +64,12 @@
                                     <a href="{{ route('copy-traders.edit', $trader->id) }}" class="text-blue-400 hover:text-blue-300">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="{{ route('admin.copy-traders.create-fee-profit-range', $trader->id) }}" class="text-green-400 hover:text-green-300">
+                                    <a href="{{ route('admin.copy-traders.create-fee-profit-range', $trader->id) }}" class="text-green-400 hover:text-green-300" title="Configure Fees">
                                         <i class="fas fa-gears"></i>
                                     </a>
+                                    {{-- <a href="{{ route('copy-traders.edit', $trader->id) }}" class="text-blue-400 hover:text-blue-300" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a> --}}
                                     <a href="{{ route('copy-traders.show', $trader->id) }}" class="text-green-400 hover:text-green-300">
                                         <i class="fas fa-eye"></i>
                                     </a>

@@ -13,3 +13,6 @@ Schedule::command('arbitrage:complete-subscriptions')->daily();
 
 // ✅ Schedule the sync:crypto-currencies command to run every 12 hours
 Schedule::command('sync:crypto-currencies')->twiceDaily();
+
+// ✅ Schedule the arbitrage intervals processor to run every minute
+Schedule::command('arbitrage:process-intervals')->everyMinute();

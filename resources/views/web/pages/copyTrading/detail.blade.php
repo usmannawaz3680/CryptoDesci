@@ -5,7 +5,7 @@
     <div class="mb-6">
         <div class="flex items-center gap-4 mb-4">
             <div class="flex bg-crypto-accent rounded-lg p-1">
-                <h4 class="px-4 py-2 rounded-md font-medium">Futures Copy</h4>
+                <h4 class="px-4 py-2 rounded-md font-medium">Spot Copy</h4>
                 <button class="px-4 py-2 bg-crypto-primary rounded-md font-medium text-black hover:text-white">{{ $trader->status === 'public' ? 'Public' : 'Private' }}</button>
             </div>
             <div class="ml-auto flex items-center gap-3">

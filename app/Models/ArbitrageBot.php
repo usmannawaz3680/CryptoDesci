@@ -31,4 +31,9 @@ class ArbitrageBot extends Model
     {
         return $this->belongsTo(Exchange::class, 'exchange_to_id');
     }
+
+    public function getPairAttribute()
+    {
+        return $this->tradingPair->base_asset . '/' . $this->tradingPair->quote_asset;
+    }
 }

@@ -131,7 +131,7 @@ class WebController extends Controller
         
         $historySubscriptions = ArbitrageSubscription::with(['arbitrageBot', 'wallet'])
             ->where('user_id', Auth::id())
-            ->where('arbitrage_bot_id', $id)
+            // ->where('arbitrage_bot_id', $id)
             ->whereIn('status', ['completed', 'cancelled', 'closed'])
             ->orderBy('updated_at', 'desc')
             ->get();

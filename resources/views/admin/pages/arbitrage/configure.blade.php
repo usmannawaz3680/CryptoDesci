@@ -53,7 +53,7 @@
                         <input type="text" value="{{ old('apr_7d', $bot->interval?->apr_7d) }}" name="apr_7d" placeholder="7 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
                         <input type="text" value="{{ old('apr_30d', $bot->interval?->apr_30d) }}" name="apr_30d" placeholder="30 Day APR %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
                         {{-- <input type="datetime-local" name="starts_at" required class="p-2 rounded bg-zinc-800 border border-gray-600 text-white"> --}}
-                        <input type="text" value="{{ old('next_rate', $bot->interval?->next_rate) }}" name="next_rate" placeholder="Next Funding rate %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
+                        <input type="text" value="{{ old('next_rate', $bot->interval?->next_funding_rate) }}" name="next_rate" placeholder="Next Funding rate %" step="0.01" class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
                     
                         <input type="datetime-local" value="{{ old('ends_at', $bot->interval?->ends_at) }}" name="ends_at" required class="p-2 rounded bg-zinc-800 border border-gray-600 text-white">
                     </div>

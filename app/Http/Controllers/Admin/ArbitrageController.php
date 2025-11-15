@@ -29,7 +29,7 @@ class ArbitrageController extends Controller
             return view('admin.pages.arbitrage.create', compact('tradingPairs', 'exchanges'));
         } catch (\Throwable $e) {
             Log::error('ArbitrageController::create failed', ['msg' => $e->getMessage()]);
-            return back()->with('danger', 'Failed to load create page.');
+            return back()->with('error', 'Failed to load create page.');
         }
     }
 
@@ -60,7 +60,7 @@ class ArbitrageController extends Controller
                 ->with('success', 'Bot created! Now set Fee Tiers and APR Intervals.');
         } catch (\Throwable $e) {
             Log::error('ArbitrageController::store failed', ['msg' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
-            return back()->with('danger', 'Could not create bot. Please try again.')->withInput();
+            return back()->with('error', 'Could not create bot. Please try again. ' . $e->getMessage())->withInput();
         }
     }
 
@@ -71,7 +71,7 @@ class ArbitrageController extends Controller
             return view('admin.pages.arbitrage.configure', compact('bot'));
         } catch (\Throwable $e) {
             Log::error('ArbitrageController::configure failed', ['bot_id' => $id, 'msg' => $e->getMessage()]);
-            return redirect()->route('admin.arbitrage.index')->with('danger', 'Could not load configuration page.');
+            return redirect()->route('admin.arbitrage.index')->with('error', 'Could not load configuration page.');
         }
     }
 
@@ -100,7 +100,7 @@ class ArbitrageController extends Controller
             return back()->with('success', 'Fee tiers saved successfully!');
         } catch (\Throwable $e) {
             Log::error('ArbitrageController::saveFees failed', ['bot_id' => $id, 'msg' => $e->getMessage()]);
-            return back()->with('danger', 'Failed to save fee tiers.')->withInput();
+            return back()->with('error', 'Failed to save fee tiers.')->withInput();
         }
     }
 
@@ -133,7 +133,7 @@ class ArbitrageController extends Controller
             return back()->with('success', 'APR interval saved & activated!');
         } catch (\Throwable $e) {
             Log::error('ArbitrageController::saveInterval failed', ['bot_id' => $id, 'msg' => $e->getMessage()]);
-            return back()->with('danger', 'Failed to save APR interval.')->withInput();
+            return back()->with('error', 'Failed to save APR interval.')->withInput();
         }
     }
 }
