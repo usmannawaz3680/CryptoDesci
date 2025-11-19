@@ -335,11 +335,11 @@
                                         <table class="w-full text-sm text-left text-gray-300">
                                             <thead class="text-xs text-gray-400 border-b border-gray-700">
                                                 <tr>
-                                                    <th class="px-4 py-3 font-semibold">Investment</th>
+                                                    <th class="px-4 py-3 font-semibold">Total Investment</th>
                                                     <th class="px-4 py-3 font-semibold">APR Period</th>
                                                     <th class="px-4 py-3 font-semibold">APR Rate</th>
                                                     <th class="px-4 py-3 font-semibold">Profit</th>
-                                                    <th class="px-4 py-3 font-semibold">Fee Deducted</th>
+                                                    <th class="px-4 py-3 font-semibold">Total Funding Fee</th>
                                                     <th class="px-4 py-3 font-semibold">Start Date</th>
                                                     <th class="px-4 py-3 font-semibold">End Date</th>
                                                     <th class="px-4 py-3 font-semibold">Status</th>
@@ -400,11 +400,11 @@
                                         <table class="w-full text-sm text-left text-gray-300">
                                             <thead class="text-xs text-gray-400 border-b border-gray-700">
                                                 <tr>
-                                                    <th class="px-4 py-3 font-semibold">Investment</th>
+                                                    <th class="px-4 py-3 font-semibold">Total Investment</th>
                                                     <th class="px-4 py-3 font-semibold">APR Period</th>
                                                     <th class="px-4 py-3 font-semibold">APR Rate</th>
                                                     <th class="px-4 py-3 font-semibold">Total Profit</th>
-                                                    <th class="px-4 py-3 font-semibold">Fee Deducted</th>
+                                                    <th class="px-4 py-3 font-semibold">Total Funding Fee</th>
                                                     <th class="px-4 py-3 font-semibold">Start Date</th>
                                                     <th class="px-4 py-3 font-semibold">End Date</th>
                                                     <th class="px-4 py-3 font-semibold">Status</th>
