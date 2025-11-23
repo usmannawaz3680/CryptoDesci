@@ -13,14 +13,12 @@
                 <div class="space-y-4">
                     <div class="flex items-center gap-4">
                         <div class="flex">
-                            <button
-                                class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-crypto-primary text-crypto-accent">
+                            <button class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-crypto-primary text-crypto-accent">
                                 Fixed Ratio
                             </button>
                         </div>
                         <div class="flex">
-                            <button
-                                class="px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-crypto-primary hover:text-crypto-accent bg-crypto-accent/80 text-white">
+                            <button class="px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-crypto-primary hover:text-crypto-accent bg-crypto-accent/80 text-white">
                                 Fixed Amount
                             </button>
                         </div>
@@ -37,10 +35,7 @@
                     @csrf
                     <label class="text-sm font-medium">Copy Amount</label>
                     <div class="relative">
-                        <input type="number" step="0.01" name="investment_amount"
-                            max="@auth{{ auth()->user()->wallets->where('asset_coin_id', 1)->first()->balance }} @endauth"
-                            required
-                            class="bg-crypto-accent/90 rounded-md border-gray-700 text-white md:w-3/6 inline-block w-full"
+                        <input type="number" step="0.01" name="investment_amount" max="@auth{{ auth()->user()->wallets->where('asset_coin_id', 1)->first()->balance }} @endauth" required class="bg-crypto-accent/90 rounded-md border-gray-700 text-white md:w-3/6 inline-block w-full"
                             placeholder="Enter amount" />
                         <div class="px-2 py-1 flex items-center gap-2">
                             <span class="text-gray-400 text-sm"> {{ number_format($trader->max_copy_amount) }} USDT</span>
@@ -52,19 +47,28 @@
                     @enderror
 
                     <!-- Investment Period -->
+                    <!-- Investment Package -->
                     <div class="space-y-3">
-                        <label class="text-sm font-medium block">Investment Period</label>
-                        <select name="period_days" required
-                            class="bg-crypto-accent/90 rounded-md border-gray-700 text-white md:w-3/6 inline-block w-full">
-                            <option value="" disabled selected>Choose Period</option>
-                            <option value="7">7 Days</option>
-                            <option value="10">10 Days</option>
-                            <option value="30">30 Days</option>
+                        <label class="text-sm font-medium block">Investment Package</label>
+                        <select name="copy_trader_package_id" required class="bg-crypto-accent/90 rounded-md border-gray-800 text-white md:w-3/6 inline-block w-full">
+                            <option value="" disabled selected>Choose Package</option>
+                            @foreach ($packages as $tp)
+                                <option value="{{ $tp->id }}">
+                                    {{ $tp->copyTradingPackage->name }}
+                                    ({{ $tp->copyTradingPackage->duration_days }} days,
+                                    loss on day {{ $tp->loss_day }})
+                                </option>
+                            @endforeach
                         </select>
+                        <p class="text-xs text-gray-400 md:w-3/6">
+                            On the loss day, the system will apply a negative return between the configured min and max loss percentage
+                            for this trader's package.
+                        </p>
                     </div>
-                    @error('period_days')
+                    @error('copy_trader_package_id')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
+
                     @auth
                         <!-- Terms Agreement -->
                         <div class="flex items-center space-x-2">
@@ -78,8 +82,7 @@
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
                         <!-- Copy Button -->
-                        <button type="submit"
-                            class="md:w-1/2 bg-crypto-primary hover:bg-crypto-primary/80 rounded-md text-black font-semibold py-3 text-base">
+                        <button type="submit" class="md:w-1/2 bg-crypto-primary hover:bg-crypto-primary/80 rounded-md text-black font-semibold py-3 text-base">
                             Copy
                         </button>
                     @endauth
@@ -87,8 +90,7 @@
                 <!-- Not Authenticated Message -->
                 @guest
                     <div>
-                        <a href="{{ route('login') }}"
-                            class="w-full bg-[#f0bb0b] hover:bg-[#f0bb0b]/90 text-black font-semibold py-3 px-3 rounded-md">Login
+                        <a href="{{ route('login') }}" class="w-full bg-[#f0bb0b] hover:bg-[#f0bb0b]/90 text-black font-semibold py-3 px-3 rounded-md">Login
                             / Signup</a>
                     </div>
                 @endguest
@@ -99,8 +101,7 @@
                 <div class="bg-crypto-accent border-gray-800 p-6 rounded-xl">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-crypto-primary rounded-full flex items-center justify-center">
-                            <span
-                                class="text-black font-bold text-lg">{{ strtoupper(substr($trader->username, 0, 1)) }}</span>
+                            <span class="text-black font-bold text-lg">{{ strtoupper(substr($trader->username, 0, 1)) }}</span>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">

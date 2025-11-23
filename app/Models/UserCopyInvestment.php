@@ -10,9 +10,20 @@ class UserCopyInvestment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'copy_trader_id', 'investment_amount', 'fee_percentage', 'fee_amount',
-        'net_investment', 'min_profit_percentage', 'max_profit_percentage', 'start_date', 'status',
+        'user_id',
+        'copy_trader_id',
+        'copy_trader_package_id', 
+        'investment_amount',
+        'fee_percentage',
+        'fee_amount',
+        'net_investment',
+        'min_profit_percentage',
+        'max_profit_percentage',
+        'start_date',
+        'period_days',
+        'status',
     ];
+
 
     public function user()
     {
@@ -34,4 +45,9 @@ class UserCopyInvestment extends Model
     {
         return $this->transactions()->sum('amount');
     }
+    public function copyTraderPackage()
+    {
+        return $this->belongsTo(CopyTraderPackage::class, 'copy_trader_package_id');
+    }
+
 }

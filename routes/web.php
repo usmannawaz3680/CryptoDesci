@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\TradingPairController;
 use App\Http\Controllers\Admin\ArbitrageController;
 use App\Http\Controllers\Admin\CopyTraderController as AdminCopyTraderController;
 use App\Http\Controllers\UserCopyTraderController;
+use App\Http\Controllers\Admin\CopyTradingPackageController;
+use App\Http\Controllers\Admin\CopyTraderPackageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
@@ -61,6 +63,17 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/copy-trading-packages', [CopyTradingPackageController::class, 'index'])
+            ->name('admin.copy-trading-packages.index');
+        Route::post('/copy-trading-packages', [CopyTradingPackageController::class, 'store'])
+            ->name('admin.copy-trading-packages.store');
+        Route::delete('/copy-trading-packages/{copyTradingPackage}', [CopyTradingPackageController::class, 'destroy'])
+            ->name('admin.copy-trading-packages.destroy');
+        Route::post('/copy-traders/{copyTrader}/packages', [CopyTraderPackageController::class, 'store'])
+            ->name('admin.copy-traders.packages.store');
+
+        Route::delete('/copy-traders/{copyTrader}/packages/{copyTraderPackage}', [CopyTraderPackageController::class, 'destroy'])
+            ->name('admin.copy-traders.packages.destroy');
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
         Route::get('/deposits', [AdminDepositController::class, 'index'])->name('admin.deposits');
         Route::get('/deposits/{id}', [AdminDepositController::class, 'show'])->name('admin.deposits.show');

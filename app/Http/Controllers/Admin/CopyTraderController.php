@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CopyTrader;
 use App\Models\CopyTraderFeeProfit;
+use App\Models\CopyTradingPackage;
 use Illuminate\Http\RedirectResponse;
 
 class CopyTraderController extends Controller
@@ -180,8 +181,21 @@ class CopyTraderController extends Controller
     public function createFeeProfitRange($copyTraderId)
     {
         $copyTrader = CopyTrader::findOrFail($copyTraderId);
-        $existingRanges = $copyTrader->feeProfitRanges()->get();
-        return view('admin.pages.copy_traders.configure', compact('copyTrader', 'existingRanges'));
+        $existingRanges = $copyTrader->feeProfitRanges()->orderBy('min_amount')->get();
+
+        $globalPackages = CopyTradingPackage::where('is_active', true)
+            ->orderBy('duration_days')
+            ->get();
+
+        $traderPackages = $copyTrader->availablePackages()
+            ->with('copyTradingPackage')
+            ->get();
+        return view('admin.pages.copy_traders.configure', compact(
+            'copyTrader',
+            'existingRanges',
+            'globalPackages',
+            'traderPackages'
+        ));
     }
 
     public function storeFeeProfitRange(Request $request, $copyTraderId)
@@ -214,7 +228,7 @@ class CopyTraderController extends Controller
 
         return redirect()->back()->with('success', 'Fee and profit ranges updated successfully.');
     }
-    
+
     /**
      * Delete a specific fee profit range
      */
@@ -222,7 +236,7 @@ class CopyTraderController extends Controller
     {
         $copyTraderId = $feeProfit->copy_trader_id;
         $feeProfit->delete();
-        
+
         return redirect()->route('admin.copy-traders.create-fee-profit-range', $copyTraderId)
             ->with('success', 'Fee profit range deleted successfully.');
     }

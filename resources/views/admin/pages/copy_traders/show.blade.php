@@ -173,6 +173,25 @@
                     @else
                         <p class="text-zinc-400">No fee/profit ranges configured.</p>
                     @endif
+
+                     <hr class="my-4 border-zinc-700">
+
+                    <p class="text-sm text-zinc-400 mb-2">Active Packages</p>
+                    @php $packages = $copyTrader->availablePackages()->get(); @endphp
+                    @if($packages->count())
+                        <div class="space-y-2">
+                            @foreach($packages as $package)
+                                <div class="bg-zinc-800/60 rounded-lg p-3">
+                                    <div class="text-sm text-white">{{ $package->copyTradingPackage->name }}</div>
+                                    <div class="text-xs text-zinc-300">Duration: {{ $package->copyTradingPackage->duration_days }} days</div>
+                                </div>
+                            @endforeach
+                            </div>
+                    @else
+                        <p class="text-zinc-400">No active packages available.</p>
+                    @endif
+                     
+
                 </div>
             </div>
         </div>

@@ -109,11 +109,11 @@
                 <div class="space-y-4">
                     <div class="flex justify-between items-center">
                         <span class="text-gray-400 text-sm">ROI</span>
-                        <span class="text-green-400 font-medium">{{ number_format($trader->roi, 2) }}%</span>
+                        <span class="text-crypto-primary font-medium">{{ number_format($trader->roi, 2) }}%</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-gray-400 text-sm">Copier PnL</span>
-                        <span class="text-green-400 font-medium">{{ number_format($trader->pnl, 2) }} USDT</span>
+                        <span class="text-crypto-primary font-medium">{{ number_format($trader->pnl, 2) }} USDT</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-gray-400 text-sm">Sharpe Ratio</span>
@@ -139,7 +139,7 @@
                 <div class="space-y-4">
                     <div class="flex justify-between items-center">
                         <span class="text-gray-400 text-sm">PnL</span>
-                        <span class="text-green-400 font-medium">{{ number_format($trader->pnl, 2) }}</span>
+                        <span class="text-crypto-primary font-medium">{{ number_format($trader->pnl, 2) }}</span>
                     </div>
                 </div>
             </div>
@@ -236,7 +236,7 @@
                         <div class="flex justify-between">
                             <div>
                                 <span class="font-bold text-white">{{ $position['symbol'] }}</span>
-                                <span class="text-green-400 ml-2">{{ $position['side'] }}</span>
+                                <span class="text-crypto-primary ml-2">{{ $position['side'] }}</span>
                                 <span class="text-gray-400 ml-2">{{ $position['status'] }}</span>
                             </div>
                             <div>
@@ -319,8 +319,8 @@
                             <tr class="border-b border-gray-700">
                                 <td class="px-4 py-2 text-white">{{ $ct['user_id'] }}</td>
                                 <td class="px-4 py-2 text-white">{{ $ct['margin_balance'] }}</td>
-                                <td class="px-4 py-2 text-green-400">{{ $ct['total_pnl'] }}</td>
-                                <td class="px-4 py-2 text-green-400">{{ $ct['total_roi'] }}</td>
+                                <td class="px-4 py-2 text-crypto-primary">{{ $ct['total_pnl'] }}</td>
+                                <td class="px-4 py-2 text-crypto-primary">{{ $ct['total_roi'] }}</td>
                                 <td class="px-4 py-2 text-white">{{ $ct['duration'] }}</td>
                             </tr>
                         @endforeach
