@@ -214,9 +214,9 @@
 
                         <div class="warning-box mt-4">
                             <div class="flex items-start">
-                                <i class="fas fa-exclamation-triangle text-yellow-500 mt-1 mr-3"></i>
+                                <i class="fas fa-exclamation-triangle text-crypto-primary mt-1 mr-3"></i>
                                 <div>
-                                    <p class="font-medium text-yellow-500 mb-1">Important Notice</p>
+                                    <p class="font-medium text-crypto-primary mb-1">Important Notice</p>
                                     <p class="text-sm text-gray-300">Make sure to select the correct network. Sending funds to the wrong network may result in permanent loss.</p>
                                 </div>
                             </div>

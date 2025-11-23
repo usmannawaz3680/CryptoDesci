@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desci - @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     @stack('style')
@@ -20,11 +22,13 @@
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Desci</span>
                 </a>
                 <button data-collapse-toggle="navbar-dropdown" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown"
-                    aria-expanded="false">
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-dropdown" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
                 {{-- <div class="hidden w-full justify-between items-center md:flex md:w-auto" id="navbar-dropdown">
@@ -195,58 +199,84 @@
                 <div class="hidden xl:flex items-center space-x-4 ml-auto">
 
 
-                    <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none dark:hover:text-white dark:text-gray-400" type="button">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                    <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification"
+                        class="relative inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none dark:hover:text-white dark:text-gray-400"
+                        type="button">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 14 20">
                             <path
                                 d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
                         </svg>
-                        @if(auth()->user()->unreadNotifications->count() > 0)
-                        <div class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 dark:border-gray-900"></div>
+                        @if (auth()->user()->unreadNotifications->count() > 0)
+                            <div
+                                class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 dark:border-gray-900">
+                            </div>
                         @endif
                     </button>
 
                     <!-- Dropdown menu -->
-                    <div id="dropdownNotification" class="z-20 hidden w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-zinc-800 dark:divide-gray-700" aria-labelledby="dropdownNotificationButton">
-                        <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:dark:bg-zinc-800 dark:text-white">
+                    <div id="dropdownNotification"
+                        class="z-20 hidden w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-zinc-800 dark:divide-gray-700"
+                        aria-labelledby="dropdownNotificationButton">
+                        <div
+                            class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:dark:bg-zinc-800 dark:text-white">
                             Notifications
                         </div>
                         <div class="divide-y divide-gray-100 dark:divide-gray-700">
                             @forelse (Auth::guard('admin')->user()->unreadNotifications as $notification)
                                 <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <div class="shrink-0">
-                                    <div class="w-11 h-11 bg-crypto-accent/80 rounded-full flex items-center justify-center"><i class="fas fa-bell"></i></div>
-                                    <div class="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-crypto-primary border border-white rounded-full dark:border-gray-800">
-                                        <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-                                            <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
-                                            <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="w-full ps-3">
-                                    <div class="text-gray-500 text-sm mb-1 dark:text-gray-400">{{ $notification->data['message'] }}</div>
-                                    @if ($notification->type === 'App\Notifications\DepositSubmitted' || $notification->type === 'App\Notifications\WithdrawalRequested')
-                                        <div class="text-sm text-gray-900 dark:text-white flex flex-col gap-1">
-                                            <div>
-                                                <span class="font-semibold">{{ $notification->type === 'App\Notifications\DepositSubmitted' ? 'Deposit' : 'Withdraw'}} Amount:</span> {{ $notification->data['amount'] }} </span>
-                                            </div>
-                                            <div>
-                                                <span class="font-semibold">{{ $notification->type === 'App\Notifications\DepositSubmitted' ? 'Trx ID' : 'Wallet Address'}}</span> {{ $notification->type === 'App\Notifications\DepositSubmitted' ? $notification->data['trx_id'] : $notification->data['address']}}</span>
-                                            </div>
+                                    <div class="shrink-0">
+                                        <div
+                                            class="w-11 h-11 bg-crypto-accent/80 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-bell"></i></div>
+                                        <div
+                                            class="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-crypto-primary border border-white rounded-full dark:border-gray-800">
+                                            <svg class="w-2 h-2 text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 18 18">
+                                                <path
+                                                    d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
+                                                <path
+                                                    d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
+                                            </svg>
                                         </div>
-                                    @endif
-                                    <div class="text-xs text-crypto-primary">{{ $notification->created_at->diffForHumans() }}</div>
-                                </div>
-                            </a>
+                                    </div>
+                                    <div class="w-full ps-3">
+                                        <div class="text-gray-500 text-sm mb-1 dark:text-gray-400">
+                                            {{ $notification->data['message'] }}</div>
+                                        @if (
+                                            $notification->type === 'App\Notifications\DepositSubmitted' ||
+                                                $notification->type === 'App\Notifications\WithdrawalRequested')
+                                            <div class="text-sm text-gray-900 dark:text-white flex flex-col gap-1">
+                                                <div>
+                                                    <span
+                                                        class="font-semibold">{{ $notification->type === 'App\Notifications\DepositSubmitted' ? 'Deposit' : 'Withdraw' }}
+                                                        Amount:</span> {{ $notification->data['amount'] }} </span>
+                                                </div>
+                                                <div>
+                                                    <span
+                                                        class="font-semibold">{{ $notification->type === 'App\Notifications\DepositSubmitted' ? 'Trx ID' : 'Wallet Address' }}</span>
+                                                    {{ $notification->type === 'App\Notifications\DepositSubmitted' ? $notification->data['trx_id'] : $notification->data['address'] }}</span>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        <div class="text-xs text-crypto-primary">
+                                            {{ $notification->created_at->diffForHumans() }}</div>
+                                    </div>
+                                </a>
                             @empty
-                            <div class="px-4 py-3 text-center text-gray-500 dark:text-gray-400">
-                                No new notifications
-                            </div>
+                                <div class="px-4 py-3 text-center text-gray-500 dark:text-gray-400">
+                                    No new notifications
+                                </div>
                             @endforelse
                         </div>
-                        <a href="{{ route('notifications.markAsRead') }}" class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 dark:dark:bg-zinc-800 dark:hover:bg-gray-700 dark:text-white">
+                        <a href="{{ route('notifications.markAsRead') }}"
+                            class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 dark:dark:bg-zinc-800 dark:hover:bg-gray-700 dark:text-white">
                             <div class="inline-flex items-center ">
-                                <svg class="w-4 h-4 me-2 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
-                                    <path d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
+                                <svg class="w-4 h-4 me-2 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
+                                    <path
+                                        d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
                                 </svg>
                                 Mark as Read
                             </div>
@@ -256,19 +286,23 @@
                     <div class="relative group">
                         <button class="flex items-center focus:outline-none">
                             <i class="fas fa-user text-white hover:text-crypto-primary text-lg"></i>
-                            <svg class="w-3 h-3 ml-1 text-white group-hover:text-crypto-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
+                            <svg class="w-3 h-3 ml-1 text-white group-hover:text-crypto-primary" fill="none"
+                                stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
                                 <path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
-                        <div class="absolute -right-10 w-44 bg-white rounded-md shadow-lg z-20 hidden group-hover:block dark:bg-neutral-800">
+                        <div
+                            class="absolute -right-10 w-44 bg-white rounded-md shadow-lg z-20 hidden group-hover:block dark:bg-neutral-800">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
                                 <li>
-                                    <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
+                                    <a href="/profile"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
                                 </li>
                                 <li>
                                     <form method="POST" action="{{ route('admin.logout') }}">
                                         @csrf
-                                        <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Logout</button>
+                                        <button type="submit"
+                                            class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Logout</button>
                                     </form>
                                 </li>
                             </ul>
@@ -283,11 +317,31 @@
         @hasSection('sidebar')
             @yield('sidebar')
         @endif
-        <main class="@hasSection('sidebar')
+        <main
+            class="@hasSection('sidebar')
 md:pe-5
 @else
 md:px-10
 @endif flex-1 px-5 lg:px-0 overflow-y-auto bg-black custom-scrollbar">
+            @if (session('success'))
+                <div class="bg-green-500/20 border m-4 md:m-6 border-green-500 text-green-400 px-4 py-3 rounded mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="bg-red-500/20 border m-4 md:m-6 border-red-500 text-red-400 px-4 py-3 rounded mb-4">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if (count($errors) > 0)
+                <div class="bg-red-500/20 border m-4 md:m-6 border-red-500 text-red-400 px-4 py-3 rounded mb-4">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>

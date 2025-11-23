@@ -516,7 +516,7 @@
     
                     <!-- View More Button -->
                     <div class="text-center py-6 border-t border-cypto-accent">
-                        <button class="text-crypto-primary hover:text-yellow-400 font-medium transition-colors">
+                        <button class="text-crypto-primary hover:text-crypto-primary font-medium transition-colors">
                             View More
                         </button>
                     </div>
@@ -653,7 +653,7 @@
     
                 <!-- View More FAQ -->
                 <div class="text-center mt-8">
-                    <button class="text-crypto-primary hover:text-yellow-400 font-medium transition-colors">
+                    <button class="text-crypto-primary hover:text-crypto-primary font-medium transition-colors">
                         View More
                     </button>
                 </div>

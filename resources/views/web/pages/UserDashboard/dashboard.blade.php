@@ -94,7 +94,7 @@
                 <!-- Steps Content -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     <!-- Step 1: Verification Failed -->
-                    <div class="border border-yellow-600 rounded-lg p-4 md:p-6 bg-crypto-accent/80 relative overflow-hidden">
+                    <div class="border border-crypto-primary rounded-lg p-4 md:p-6 bg-crypto-accent/80 relative overflow-hidden">
                         <h3 class="text-red-400 text-lg md:text-xl font-medium mb-2">Verification Failed</h3>
                         <p class="text-gray-400 text-sm md:text-base mb-16 md:mb-20">Please view the reasons and resubmit when you are ready.</p>
 
@@ -168,7 +168,7 @@
                     <div>
                         <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
                             <ul class="flex flex-wrap -mb-px text-sm font-medium text-center gap-3" id="markets-tab" data-tabs-toggle="#markets-tab-content"
-                                data-tabs-active-classes="text-yellow-600 hover:text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-500 border-yellow-600 dark:border-yellow-500"
+                                data-tabs-active-classes="text-crypto-primary hover:text-crypto-primary dark:text-crypto-primary dark:hover:text-crypto-primary border-crypto-primary dark:border-crypto-primary"
                                 data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
 
                                 <li class="me-2" role="presentation">
@@ -212,7 +212,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -233,7 +233,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -254,7 +254,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -292,7 +292,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -313,7 +313,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -334,7 +334,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -372,7 +372,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -393,7 +393,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -414,7 +414,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -452,7 +452,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -473,7 +473,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -494,7 +494,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -532,7 +532,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -553,7 +553,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -574,7 +574,7 @@
                                                     <span class="text-gray-500 text-sm">0.00%</span>
                                                 </td>
                                                 <td class="py-4 px-6"><span>📈</span> 0.00%</td>
-                                                <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                     <a href="#" class="hover:underline">Cash In</a>
                                                 </td>
                                             </tr>
@@ -593,7 +593,7 @@
                         <div>
                             <div class="mb-0">
                                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center gap-3" id="markets-tab" data-tabs-toggle="#markets-tab-content"
-                                    data-tabs-active-classes="text-yellow-600 hover:text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-500 border-yellow-600 dark:border-yellow-500"
+                                    data-tabs-active-classes="text-crypto-primary hover:text-crypto-primary dark:text-crypto-primary dark:hover:text-crypto-primary border-crypto-primary dark:border-crypto-primary"
                                     data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
 
                                     <li class="me-2" role="presentation">
@@ -630,7 +630,7 @@
                                                         10.88% - 10.88%
                                                     </td>
                                                     <td class="py-4 px-6">Flexible</td>
-                                                    <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                    <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                         <a href="#" class="hover:underline">Subscribe</a>
                                                     </td>
                                                 </tr>
@@ -669,7 +669,7 @@
                                                         12,657.37
                                                     </td>
                                                     <td class="py-4 px-6">38.33%</td>
-                                                    <td class="py-4 px-6 text-yellow-500 font-semibold">
+                                                    <td class="py-4 px-6 text-crypto-primary font-semibold">
                                                         <a href="#" class="hover:underline px-2">Mock</a>
                                                         <a href="#" class="hover:underline px-2">Copy</a>
                                                     </td>
@@ -687,12 +687,12 @@
                         <h3 class="text-white text-lg md:text-xl font-medium mb-2">Announcements</h3>
                         <ul class="space-y-2">
                             <li>
-                                <a href="#" class="text-white block hover:text-yellow-400">Announcement 1
+                                <a href="#" class="text-white block hover:text-crypto-primary">Announcement 1
                                 </a>
                                 <small class="text-gray-500 text-xs ml-2">16-01-2023</small>
                             </li>
                             <li>
-                                <a href="#" class="text-white block hover:text-yellow-400">Announcement 2
+                                <a href="#" class="text-white block hover:text-crypto-primary">Announcement 2
                                 </a>
                                 <small class="text-gray-500 text-xs ml-2">19-01-2025</small>
                             </li>
@@ -706,7 +706,7 @@
                     <div>
                         <div class="mb-0">
                             <ul class="flex flex-wrap -mb-px text-sm font-medium text-center gap-3" id="square-tab" data-tabs-toggle="#square-tab-content"
-                                data-tabs-active-classes="text-yellow-600 hover:text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-500 border-yellow-600 dark:border-yellow-500"
+                                data-tabs-active-classes="text-crypto-primary hover:text-crypto-primary dark:text-crypto-primary dark:hover:text-crypto-primary border-crypto-primary dark:border-crypto-primary"
                                 data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
                                 <li class="me-2" role="presentation">
                                     <button class="inline-block py-2 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="news-tab" data-tabs-target="#news" type="button" role="tab" aria-controls="news" aria-selected="false">News</button>
@@ -721,15 +721,15 @@
                             <div class="hidden rounded-lg" id="news" role="tabpanel" aria-labelledby="news-tab">
                                 <p class="text-gray-500 text-sm pt-3">Stay updated with the latest crypto news and market trends.</p>
                                 <ul class="mt-4 space-y-2">
-                                    <li><a href="#" class="text-yellow-500 hover:underline">Crypto Market Surge: What to Expect</a></li>
-                                    <li><a href="#" class="text-yellow-500 hover:underline">New Regulation Updates</a></li>
+                                    <li><a href="#" class="text-crypto-primary hover:underline">Crypto Market Surge: What to Expect</a></li>
+                                    <li><a href="#" class="text-crypto-primary hover:underline">New Regulation Updates</a></li>
                                 </ul>
                             </div>
                             <div class="hidden rounded-lg" id="suggested" role="tabpanel" aria-labelledby="suggested-tab">
                                 <p class="text-gray-500 text-sm pt-3">Personalized suggestions based on your activity.</p>
                                 <ul class="mt-4 space-y-2">
-                                    <li><a href="#" class="text-yellow-500 hover:underline">Top Copy Trading Strategies</a></li>
-                                    <li><a href="#" class="text-yellow-500 hover:underline">Recommended Earning Plans</a></li>
+                                    <li><a href="#" class="text-crypto-primary hover:underline">Top Copy Trading Strategies</a></li>
+                                    <li><a href="#" class="text-crypto-primary hover:underline">Recommended Earning Plans</a></li>
                                 </ul>
                             </div>
                         </div>

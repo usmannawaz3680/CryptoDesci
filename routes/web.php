@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\ArbitrageSubscriptionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\WithdrawlController;
@@ -11,6 +12,10 @@ use App\Http\Controllers\Admin\WithdrawalController as AdminWithdrawalController
 use App\Http\Controllers\Admin\ExchangeController;
 use App\Http\Controllers\Admin\TradingPairController;
 use App\Http\Controllers\Admin\ArbitrageController;
+use App\Http\Controllers\Admin\CopyTraderController as AdminCopyTraderController;
+use App\Http\Controllers\UserCopyTraderController;
+use App\Http\Controllers\Admin\CopyTradingPackageController;
+use App\Http\Controllers\Admin\CopyTraderPackageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
@@ -19,9 +24,13 @@ Route::get('/nft-home', [WebController::class, 'nftHome'])->name('web.nft.home')
 Route::get('/nft/profile', [WebController::class, 'nftProfile'])->name('web.nft.profile');
 Route::get('/nft/collection', [WebController::class, 'nftCollection'])->name('web.nft.collection');
 Route::get('/copy-trading', [WebController::class, 'copyTrading'])->name('web.copytrading');
+Route::get('/copy-trading/trader/{username}', [WebController::class, 'copyTraderProfile'])->name('web.copytrading.detail');
+Route::get('copy-trader/{username}/invest', [UserCopyTraderController::class, 'create'])->name('web.copytrading.create');
+Route::post('copy-trader/{id}/invest', [UserCopyTraderController::class, 'invest'])->name('web.copytrading.invest');
 Route::get('/trading-bots', [WebController::class, 'tradingBots'])->name('web.tradingbots');
 Route::get('/arbitrage-bots', [WebController::class, 'arbitrageBots'])->name('web.arbitragebots');
 Route::get('/arbitrage-bots/{id}', [WebController::class, 'arbitrageBotsDetail'])->name('web.arbitragebots.detail');
+Route::post('/arbitrage-subscriptions', [ArbitrageSubscriptionController::class, 'store'])->name('arbitrage.subscription.store');
 Route::get('/earn/overview', [WebController::class, 'earnOverview'])->name('web.earn.overview');
 Route::get('/markets', [WebController::class, 'markets'])->name('web.markets');
 // route('web.earn.overview')
@@ -54,6 +63,17 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/copy-trading-packages', [CopyTradingPackageController::class, 'index'])
+            ->name('admin.copy-trading-packages.index');
+        Route::post('/copy-trading-packages', [CopyTradingPackageController::class, 'store'])
+            ->name('admin.copy-trading-packages.store');
+        Route::delete('/copy-trading-packages/{copyTradingPackage}', [CopyTradingPackageController::class, 'destroy'])
+            ->name('admin.copy-trading-packages.destroy');
+        Route::post('/copy-traders/{copyTrader}/packages', [CopyTraderPackageController::class, 'store'])
+            ->name('admin.copy-traders.packages.store');
+
+        Route::delete('/copy-traders/{copyTrader}/packages/{copyTraderPackage}', [CopyTraderPackageController::class, 'destroy'])
+            ->name('admin.copy-traders.packages.destroy');
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
         Route::get('/deposits', [AdminDepositController::class, 'index'])->name('admin.deposits');
         Route::get('/deposits/{id}', [AdminDepositController::class, 'show'])->name('admin.deposits.show');
@@ -67,10 +87,22 @@ Route::prefix('admin')->group(function () {
         Route::get('/pairs', [TradingPairController::class, 'index'])->name('admin.pairs.index');
         Route::get('/arbitrage-bots/create', [ArbitrageController::class, 'create'])->name('admin.arbitrage.create');
         Route::get('/arbitrage-bots', [ArbitrageController::class, 'index'])->name('admin.arbitrage.index');
+        Route::get('/arbitrage-bots/subscription', [ArbitrageController::class, 'subscriptions'])->name('admin.arbitrage.subscriptions');
         Route::post('/arbitrage-bots', [ArbitrageController::class, 'store'])->name('admin.arbitrage-bots.store');
         Route::get('/arbitrage-bots/{id}/configure', [ArbitrageController::class, 'configure'])->name('admin.arbitrage.configure');
         Route::post('/arbitrage-bots/{id}/save-fees', [ArbitrageController::class, 'saveFees'])->name('admin.arbitrage-bots.saveFees');
         Route::post('/arbitrage-bots/{id}/save-interval', [ArbitrageController::class, 'saveInterval'])->name('admin.arbitrage-bots.saveInterval');
+        Route::resource('copy-traders', AdminCopyTraderController::class);
+        Route::get('copy-traders/{copyTrader}/fee-profit-ranges/create', [AdminCopyTraderController::class, 'createFeeProfitRange'])->name('admin.copy-traders.create-fee-profit-range');
+        Route::post('copy-traders/{copyTrader}/fee-profit-ranges', [AdminCopyTraderController::class, 'storeFeeProfitRange'])->name('admin.copy-traders.store-fee-profit-range');
+        Route::delete('copy-traders/fee-profit-ranges/{feeProfit}', [AdminCopyTraderController::class, 'deleteFeeProfitRange'])->name('admin.copy-traders.delete-fee-profit-range');
+
+        // Copy trading subscriptions management
+        Route::get('/copy-trading/subscriptions', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'index'])->name('admin.copytrade-subscriptions.index');
+        Route::get('/copy-trading/subscriptions/export', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'export'])->name('admin.copytrade-subscriptions.export');
+        Route::post('/copy-trading/subscriptions/{investment}/pause', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'pause'])->name('admin.copytrade-subscriptions.pause');
+        Route::post('/copy-trading/subscriptions/{investment}/resume', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'resume'])->name('admin.copytrade-subscriptions.resume');
+        Route::post('/copy-trading/subscriptions/{investment}/terminate', [\App\Http\Controllers\Admin\CopyTradeSubscriptionController::class, 'terminate'])->name('admin.copytrade-subscriptions.terminate');
     });
 });
 

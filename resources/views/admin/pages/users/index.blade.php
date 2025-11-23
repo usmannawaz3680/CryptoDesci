@@ -73,7 +73,7 @@
                                         @if ($user->kyc_status === 'verified')
                                             <span class="text-green-500">Verified</span>
                                         @elseif ($user->kyc_status === 'pending')
-                                            <span class="text-yellow-500">Pending</span>
+                                            <span class="text-crypto-primary">Pending</span>
                                         @else
                                             <span class="text-red-500">Not Verified</span>
                                         @endif

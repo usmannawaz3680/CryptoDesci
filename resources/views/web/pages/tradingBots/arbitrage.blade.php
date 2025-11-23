@@ -45,12 +45,12 @@
                 <!-- Example Arbitrage Card -->
                 @foreach ($bots as $bot)
                     @php
-                        $activeInterval = $bot->intervals->where('is_active', 1)->first();
-                        $fundingTime = optional($activeInterval)->ends_at ?? now()->addHour(); // fallback if no active
+                        $activeInterval = $bot->interval;
+                        // $fundingTime = optional($activeInterval)->ends_at ?? now()->addHour(); // fallback if no active
                         $countdownId = 'countdown-' . $bot->id;
                     @endphp
 
-                    <div class="bg-crypto-accent p-4 rounded-lg border border-gray-700 hover:border-crypto-primary flex flex-col justify-between">
+                    <div class="bg-crypto-accent p-4 duration-200 rounded-lg border border-gray-700 hover:border-crypto-primary flex flex-col justify-between">
                         <div class="flex justify-between items-center mb-2">
                             <div>
                                 <span class="text-lg font-bold">{{ $bot->tradingPair->base_asset . $bot->tradingPair->quote_asset }}
@@ -101,37 +101,7 @@
                             <div><span class="text-gray-400">Spread Rate</span><br>{{ $bot->spread_rate }}%</div>
                         </div>
 
-                        <div class="flex justify-between text-xs text-gray-400">
-                            <div>Next Funding<br><span class="text-white">{{ $activeInterval->funding_rate ?? '0.0011' }}%</span></div>
-                            <div>Countdown<br><span id="{{ $countdownId }}" class="text-white">--:--:--</span></div>
-                        </div>
                     </div>
-
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            const countdownEl{{ $bot->id }} = document.getElementById('{{ $countdownId }}');
-                            const targetTime{{ $bot->id }} = new Date("{{ \Carbon\Carbon::parse($fundingTime)->toIso8601String() }}").getTime();
-
-                            function updateCountdown{{ $bot->id }}() {
-                                const now = new Date().getTime();
-                                const distance = targetTime{{ $bot->id }} - now;
-
-                                if (distance < 0) {
-                                    countdownEl{{ $bot->id }}.innerText = "00:00:00";
-                                    return;
-                                }
-
-                                const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                                const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-                                const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-
-                                countdownEl{{ $bot->id }}.innerText = `${hours}:${minutes}:${seconds}`;
-                                setTimeout(updateCountdown{{ $bot->id }}, 1000);
-                            }
-
-                            updateCountdown{{ $bot->id }}();
-                        });
-                    </script>
                 @endforeach
                 <!-- Repeat for more cards as needed -->
             </div>

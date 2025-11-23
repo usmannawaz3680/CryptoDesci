@@ -1,4 +1,4 @@
-        <aside id="sidebar" class="fixed top-15 z-30 h-[calc(100vh-3.5rem)] w-72 bg-crypto-accent/90 text-white border-r border-gray-800 transition-transform -translate-x-full md:translate-x-0 md:static md:flex-shrink-0">
+<aside id="sidebar" class="fixed top-15 z-30 h-[calc(100vh-3.5rem)] w-72 bg-crypto-accent/90 text-white border-r border-gray-800 transition-transform -translate-x-full md:translate-x-0 md:static md:flex-shrink-0">
             <!-- Mobile Toggle Button -->
             <div class="md:hidden flex justify-end p-2">
                 <button id="closeSidebar" class="text-white hover:text-gray-300">
@@ -27,6 +27,10 @@
                     <a href="{{ route('admin.deposits') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('admin.deposits') ? 'bg-crypto-primary/20' : '' }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
                         <i class="fas fa-money-bill-wave w-5 text-center text-crypto-primary"></i>
                         <span class="text-sm">Deposits</span>
+                    </a>
+                    <a href="{{ route('withdrawals.index') }}" class="flex items-center gap-3 px-4 {{ url()->current() == route('withdrawals.index') ? 'bg-crypto-primary/20' : '' }} py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition">
+                        <i class="fas fa-money-bill-wave w-5 text-center text-crypto-primary"></i>
+                        <span class="text-sm">Withdrawals</span>
                     </a>
                     <!-- Crypto Data Dropdown -->
                     <div x-data="{ open: false }">
@@ -57,9 +61,26 @@
                             <a href="{{ route('admin.arbitrage.index') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.arbitrage.index') ? 'bg-crypto-primary/20' : '' }}">
                                 View
                             </a>
+                            <a href="{{ route('admin.arbitrage.subscriptions') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('admin.arbitrage.subscriptions') ? 'bg-crypto-primary/20' : '' }}">
+                                Subscriptions
+                            </a>
                         </div>
                     </div>
-                    </a>
+                    <div x-data="{ open: false }">
+                        <button @click="open = !open" class="w-full flex items-center gap-3 px-4 py-3 rounded rounded-e-xl hover:bg-crypto-primary/20 transition text-left">
+                            <i class="fas fa-coins w-5 text-center text-crypto-primary"></i>
+                            <span class="text-sm flex-1">Copy Traders</span>
+                            <i :class="open ? 'fa-chevron-up' : 'fa-chevron-down'" class="fas text-xs"></i>
+                        </button>
+                        <div x-show="open" x-collapse class="mt-1 space-y-1 pl-9">
+                            <a href="{{ route('copy-traders.create') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('copy-traders.create') ? 'bg-crypto-primary/20' : '' }}">
+                                Create
+                            </a>
+                            <a href="{{ route('copy-traders.index') }}" class="block text-sm py-2 px-2 rounded hover:bg-crypto-primary/20 {{ request()->routeIs('copy-traders.index') ? 'bg-crypto-primary/20' : '' }}">
+                                View
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </nav>
         </aside>

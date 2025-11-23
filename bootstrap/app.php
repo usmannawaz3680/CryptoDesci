@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,6 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\Admin::class,
         ]);
+    })
+    ->withSchedule(function (Schedule $schedule) {
+        // $schedule->command('arbitrage:run')->everyMinute();
+        $schedule->command('profits:calculate-daily')->daily();
+        $schedule->command('copy:process-auto-invest')->everyFifteenMinutes();
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

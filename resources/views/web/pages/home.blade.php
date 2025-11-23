@@ -2,7 +2,7 @@
 @section('title', 'Home')
 @section('content')
     <section>
-        <div class="min-h-screen w-full bg-black">
+        <div class="min-h-screen w-full">
             <div class="max-w-7xl mx-auto py-12">
                 <!-- TradingView Widget BEGIN -->
                 {{-- <div class="tradingview-widget-container">
@@ -24,7 +24,7 @@
                     <div class="lg:col-span-5 space-y-8">
                         <div>
                             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                                Trade with 100 million users on Desci
+                                Trade with 100 million users on {{ env('APP_NAME') }}
                             </h1>
                             <p class="text-lg text-gray-300 mb-8">
                                 Sign up now to claim a welcome pack worth <span class="text-crypto-primary font-semibold">$200 USDT!</span>
@@ -226,7 +226,7 @@
         </div>
     </section>
     <section>
-        <div class="min-h-screen bg-black">
+        <div class="min-h-screen">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <!-- Tab Navigation -->
                 <div class="mb-12">
@@ -431,17 +431,17 @@
 
                                 <div class="space-y-6">
                                     <div>
-                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">Desci Wallet</h3>
+                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">{{ env('APP_NAME') }} Wallet</h3>
                                         <p class="text-gray-300">Discover a safer, decentralized experience with a Web3 wallet.</p>
                                     </div>
 
                                     <div>
-                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">Desci Swap</h3>
+                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">{{ env('APP_NAME') }} Swap</h3>
                                         <p class="text-gray-300">Cross-chain swap with flexible price limits.</p>
                                     </div>
 
                                     <div>
-                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">Desci NFT</h3>
+                                        <h3 class="text-xl font-semibold mb-2 text-crypto-primary">{{ env('APP_NAME') }} NFT</h3>
                                         <p class="text-gray-300">Place batch orders and buy NFTs with any coin.</p>
                                     </div>
 
@@ -457,7 +457,7 @@
             </div>
         </div>
     </section>
-    <section class="min-h-screen bg-black relative">
+    <section class="min-h-screen  relative">
         <!-- Background gradient overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-bitget-dark/50 to-black"></div>
 
@@ -489,7 +489,7 @@
                             <!-- Shield glow effect -->
                             <div class="absolute inset-0 bg-gradient-to-b from-crypto-primary/20 to-transparent"></div>
 
-                            <!-- Desci logo/symbol -->
+                            <!-- {{ env('APP_NAME') }}logo/symbol -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <svg class="w-12 h-12 text-crypto-primary" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -617,12 +617,12 @@
             </div>
         </div>
     </section>
-    <section class="min-h-screen bg-black py-16">
+    <section class="min-h-screen  py-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- FAQ Header -->
             <div class="text-center mb-12">
                 <h2 class="text-4xl md:text-5xl font-bold text-white">
-                    Desci FAQ
+                    {{ env('APP_NAME') }}FAQ
                 </h2>
             </div>
 
@@ -642,7 +642,7 @@
                 <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed">
-                            A cryptocurrency exchange is a digital platform that allows users to buy, sell, and trade cryptocurrencies. It serves as a marketplace where users can exchange digital assets for other cryptocurrencies or traditional fiat currencies. Desci is a leading cryptocurrency exchange
+                            A cryptocurrency exchange is a digital platform that allows users to buy, sell, and trade cryptocurrencies. It serves as a marketplace where users can exchange digital assets for other cryptocurrencies or traditional fiat currencies. {{ env('APP_NAME') }}is a leading cryptocurrency exchange
                             that offers spot trading, futures trading, and various other financial services in the crypto space.
                         </p>
                     </div>
@@ -652,7 +652,7 @@
                 <h2 id="accordion-flush-heading-2">
                     <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
                         aria-controls="accordion-flush-body-2">
-                        <span class="text-lg md:text-xl">What products does Desci offer?</span>
+                        <span class="text-lg md:text-xl">What products does {{ env('APP_NAME') }} offer?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
                         </svg>
@@ -661,7 +661,7 @@
                 <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Desci offers a comprehensive suite of cryptocurrency trading and financial products:
+                            {{ env('APP_NAME') }}offers a comprehensive suite of cryptocurrency trading and financial products:
                         </p>
                         <ul class="text-gray-300 space-y-2 ml-4">
                             <li class="flex items-start">
@@ -701,7 +701,7 @@
                 <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Desci provides multiple ways to track cryptocurrency prices in real-time:
+                            {{ env('APP_NAME') }} provides multiple ways to track cryptocurrency prices in real-time:
                         </p>
                         <ul class="text-gray-300 space-y-2 ml-4">
                             <li class="flex items-start">
@@ -728,7 +728,7 @@
                 <h2 id="accordion-flush-heading-4">
                     <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-4" aria-expanded="false"
                         aria-controls="accordion-flush-body-4">
-                        <span class="text-lg md:text-xl">How to trade cryptocurrencies on Desci?</span>
+                        <span class="text-lg md:text-xl">How to trade cryptocurrencies on {{ env('APP_NAME') }}?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
                         </svg>
@@ -737,7 +737,7 @@
                 <div id="accordion-flush-body-4" class="hidden" aria-labelledby="accordion-flush-heading-4">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Trading cryptocurrencies on Desci is simple and straightforward:
+                            Trading cryptocurrencies on {{ env('APP_NAME') }} is simple and straightforward:
                         </p>
                         <ol class="text-gray-300 space-y-3 ml-4">
                             <li class="flex items-start">
@@ -768,7 +768,7 @@
                 <h2 id="accordion-flush-heading-5">
                     <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-5" aria-expanded="false"
                         aria-controls="accordion-flush-body-5">
-                        <span class="text-lg md:text-xl">How to earn with crypto on Desci?</span>
+                        <span class="text-lg md:text-xl">How to earn with crypto on {{ env('APP_NAME') }}?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
                         </svg>
@@ -777,7 +777,7 @@
                 <div id="accordion-flush-body-5" class="hidden" aria-labelledby="accordion-flush-heading-5">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Desci offers multiple ways to earn passive income with your cryptocurrency:
+                            {{ env('APP_NAME') }} offers multiple ways to earn passive income with your cryptocurrency:
                         </p>
                         <ul class="text-gray-300 space-y-2 ml-4">
                             <li class="flex items-start">
@@ -808,7 +808,7 @@
                 <h2 id="accordion-flush-heading-6">
                     <button type="button" class="flex items-center justify-between w-full py-6 font-medium text-left text-white border-b border-gray-800 hover:text-crypto-primary transition-colors duration-200" data-accordion-target="#accordion-flush-body-6" aria-expanded="false"
                         aria-controls="accordion-flush-body-6">
-                        <span class="text-lg md:text-xl">Why choose Desci as your cryptocurrency exchange?</span>
+                        <span class="text-lg md:text-xl">Why choose {{ env('APP_NAME') }}as your cryptocurrency exchange?</span>
                         <svg data-accordion-icon class="w-6 h-6 shrink-0 text-gray-400 hover:text-crypto-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
                         </svg>
@@ -817,7 +817,7 @@
                 <div id="accordion-flush-body-6" class="hidden" aria-labelledby="accordion-flush-heading-6">
                     <div class="py-6 border-b border-gray-800">
                         <p class="text-gray-300 leading-relaxed mb-4">
-                            Desci stands out as a leading cryptocurrency exchange for several key reasons:
+                            {{ env('APP_NAME') }} stands out as a leading cryptocurrency exchange for several key reasons:
                         </p>
                         <ul class="text-gray-300 space-y-2 ml-4">
                             <li class="flex items-start">
