@@ -2,7 +2,7 @@ name: Laravel CI/CD Pipeline
 
 on:
   push:
-    branches: [ master ]  # ✅ Your current branch
+    branches: [ imagine ]  # ✅ Your current branch
 
 jobs:
   laravel:
