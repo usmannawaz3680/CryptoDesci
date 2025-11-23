@@ -12,8 +12,11 @@ class UserCopyInvestment extends Model
     protected $fillable = [
         'user_id',
         'copy_trader_id',
-        'copy_trader_package_id', 
+        'copy_trader_package_id',
+        'mode',
         'investment_amount',
+        'copy_amount',
+        'cost_per_order',
         'fee_percentage',
         'fee_amount',
         'net_investment',
@@ -22,6 +25,13 @@ class UserCopyInvestment extends Model
         'start_date',
         'period_days',
         'status',
+    ];
+
+    protected $casts = [
+        'start_date'        => 'datetime',
+        'investment_amount' => 'decimal:8',
+        'copy_amount'       => 'decimal:8',
+        'cost_per_order'    => 'decimal:8',
     ];
 
 

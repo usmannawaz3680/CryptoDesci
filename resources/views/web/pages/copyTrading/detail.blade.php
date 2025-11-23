@@ -101,8 +101,8 @@
         <div class="bg-crypto-accent border border-gray-600 rounded-lg p-6">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="text-lg font-semibold text-white">Performance</h3>
-                <div class="flex bg-gray-700 rounded-lg p-1">
-                    <button class="px-3 py-1 text-xs bg-gray-600 text-white rounded">30 Days</button>
+                <div class="flex bg-crypto-accent rounded-lg p-1">
+                    <button class="px-3 py-1 text-xs bg-crypto-primary text-crypto-accent rounded">30 Days</button>
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-4">
@@ -148,12 +148,12 @@
         <!-- Performance Chart -->
         <div class="bg-crypto-accent border border-gray-600 rounded-lg p-6">
             <div class="flex items-center justify-between mb-6">
-                <div class="flex bg-gray-700 rounded-lg p-1">
-                    <button id="roiButton" class="px-3 py-1 text-xs bg-gray-600 text-white rounded" onclick="showChart('roi')">ROI</button>
-                    <button id="pnlButton" class="px-3 py-1 text-xs text-gray-400 hover:text-white" onclick="showChart('pnl')">PnL</button>
+                <div class="flex bg-crypto-accent rounded-lg p-1">
+                    <button id="roiButton" class="px-3 py-1 text-xs bg-crypto-primary text-crypto-accent rounded" onclick="showChart('roi')">ROI</button>
+                    <button id="pnlButton" class="px-3 py-1 text-xs text-gray-400 rounded hover:text-white" onclick="showChart('pnl')">PnL</button>
                 </div>
-                <div class="flex bg-gray-700 rounded-lg p-1">
-                    <button class="px-3 py-1 text-xs bg-gray-600 text-white rounded">30 Days</button>
+                <div class="flex bg-crypto-accent rounded-lg p-1">
+                    <button class="px-3 py-1 text-xs bg-crypto-primary text-crypto-accent rounded">30 Days</button>
                 </div>
             </div>
             <div class="h-64">
@@ -432,17 +432,17 @@
 
         // Chart switching logic
         function showChart(type) {
-            document.getElementById('roiButton').classList.remove('bg-gray-600', 'text-white');
+            document.getElementById('roiButton').classList.remove('bg-crypto-primary', 'text-crypto-accent');
             document.getElementById('roiButton').classList.add('text-gray-400', 'hover:text-white');
-            document.getElementById('pnlButton').classList.remove('bg-gray-600', 'text-white');
+            document.getElementById('pnlButton').classList.remove('bg-crypto-primary', 'text-crypto-accent');
             document.getElementById('pnlButton').classList.add('text-gray-400', 'hover:text-white');
 
             if (type === 'roi') {
-                document.getElementById('roiButton').classList.add('bg-gray-600', 'text-white');
+                document.getElementById('roiButton').classList.add('bg-crypto-primary', 'text-crypto-accent');
                 document.getElementById('roiButton').classList.remove('text-gray-400', 'hover:text-white');
                 performanceChart.data = roiData;
             } else {
-                document.getElementById('pnlButton').classList.add('bg-gray-600', 'text-white');
+                document.getElementById('pnlButton').classList.add('bg-crypto-primary', 'text-crypto-accent');
                 document.getElementById('pnlButton').classList.remove('text-gray-400', 'hover:text-white');
                 performanceChart.data = pnlData;
             }

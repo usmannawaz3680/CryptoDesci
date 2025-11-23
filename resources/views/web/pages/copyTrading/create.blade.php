@@ -8,97 +8,160 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Left Column -->
-            <div class="lg:col-span-2 space-y-6 bg-crypto-accent border-gray-800 p-6 rounded-xl">
-                <!-- Fixed Ratio / Fixed Amount -->
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4">
-                        <div class="flex">
-                            <button class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-crypto-primary text-crypto-accent">
+            <div class="lg:col-span-2 space-y-6 bg-crypto-accent border border-gray-800 p-6 rounded-xl">
+                <form action="{{ route('web.copytrading.invest', $trader->id) }}" method="POST" class="space-y-6">
+                    @csrf
+
+                    <!-- Tabs: Fixed Ratio / Fixed Amount -->
+                    <div>
+                        <div class="flex items-center gap-4 border-b border-gray-700 mb-4">
+                            <button type="button"
+                                    class="mode-tab px-3 pb-2 text-sm font-medium border-b-2 border-crypto-primary text-white"
+                                    data-mode="fixed_ratio">
                                 Fixed Ratio
                             </button>
-                        </div>
-                        <div class="flex">
-                            <button class="px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-crypto-primary hover:text-crypto-accent bg-crypto-accent/80 text-white">
+                            <button type="button"
+                                    class="mode-tab px-3 pb-2 text-sm font-medium border-b-2 border-transparent text-gray-400 hover:text-white"
+                                    data-mode="fixed_amount">
                                 Fixed Amount
                             </button>
                         </div>
-                        {{-- <span class="w-4 h-4 text-gray-500">[?]</span> --}}
-                    </div>
-                    <p class="text-sm ms-3 text-gray-400 lg:w-3/5">
-                        * The copy ratio is calculated based on the margin used for the opening order as a percentage of the
-                        lead trader's total margin balance.
-                    </p>
-                </div>
 
-                <!-- Copy Amount -->
-                <form action="{{ route('web.copytrading.invest', $trader->id) }}" method="POST" class="space-y-3 ms-3 mb-2">
-                    @csrf
-                    <label class="text-sm font-medium">Copy Amount</label>
-                    <div class="relative">
-                        <input type="number" step="0.01" name="investment_amount" max="@auth{{ auth()->user()->wallets->where('asset_coin_id', 1)->first()->balance }} @endauth" required class="bg-crypto-accent/90 rounded-md border-gray-700 text-white md:w-3/6 inline-block w-full"
-                            placeholder="Enter amount" />
-                        <div class="px-2 py-1 flex items-center gap-2">
-                            <span class="text-gray-400 text-sm"> {{ number_format($trader->max_copy_amount) }} USDT</span>
-                            <span class="text-[#f0bb0b] text-sm font-medium">MAX</span>
+                        <input type="hidden" name="mode" id="mode-input" value="fixed_ratio">
+
+                        {{-- Fixed Ratio block --}}
+                        <div id="fixed-ratio-block" class="space-y-4">
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium block">Copy Amount</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" name="amount" step="0.01"
+                                           class="flex-1 bg-zinc-900 border border-gray-700 rounded-md px-3 py-2 text-sm text-white"
+                                           placeholder="Enter amount">
+                                    <span class="text-sm text-gray-300">USDT</span>
+                                    <button type="button" class="text-xs text-crypto-primary">Max</button>
+                                </div>
+                                <p class="text-xs text-gray-500">
+                                    Each order will be purchased proportionally based on trader's positions.
+                                </p>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium block">Duration</label>
+                                <select name="period_days"
+                                        class="bg-zinc-900 border border-gray-700 rounded-md px-3 py-2 text-sm text-white w-full md:w-1/2">
+                                    <option value="" disabled selected>Select duration</option>
+                                    <option value="7">7 Days</option>
+                                    <option value="14">14 Days</option>
+                                    <option value="30">30 Days</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        {{-- Fixed Amount block --}}
+                        <div id="fixed-amount-block" class="space-y-4 hidden">
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium block">Cost Per Order</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" name="cost_per_order" step="0.01"
+                                           class="flex-1 bg-zinc-900 border border-gray-700 rounded-md px-3 py-2 text-sm text-white"
+                                           placeholder="10 - 1,000">
+                                    <span class="text-sm text-gray-300">USDT</span>
+                                </div>
+                                <p class="text-xs text-gray-500">
+                                    Each day (each order), this amount will be used to calculate profit / loss.
+                                </p>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium block">Copy Amount</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" name="copy_amount" step="0.01"
+                                           class="flex-1 bg-zinc-900 border border-gray-700 rounded-md px-3 py-2 text-sm text-white"
+                                           placeholder="10 - 100,000">
+                                    <span class="text-sm text-gray-300">USDT</span>
+                                    <button type="button" class="text-xs text-crypto-primary">Max</button>
+                                </div>
+                                <p class="text-xs text-gray-500">
+                                    Total amount locked for this copy. Cost per order will be deducted from this daily.
+                                </p>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium block">Duration</label>
+                                <select name="period_days"
+                                        class="bg-zinc-900 border border-gray-700 rounded-md px-3 py-2 text-sm text-white w-full md:w-1/2">
+                                    <option value="" disabled selected>Select duration</option>
+                                    <option value="7">7 Days</option>
+                                    <option value="14">14 Days</option>
+                                    <option value="30">30 Days</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    @error('investment_amount')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
 
-                    <!-- Investment Period -->
-                    <!-- Investment Package -->
-                    <div class="space-y-3">
-                        <label class="text-sm font-medium block">Investment Package</label>
-                        <select name="copy_trader_package_id" required class="bg-crypto-accent/90 rounded-md border-gray-800 text-white md:w-3/6 inline-block w-full">
-                            <option value="" disabled selected>Choose Package</option>
-                            @foreach ($packages as $tp)
-                                <option value="{{ $tp->id }}">
-                                    {{ $tp->copyTradingPackage->name }}
-                                    ({{ $tp->copyTradingPackage->duration_days }} days,
-                                    loss on day {{ $tp->loss_day }})
-                                </option>
-                            @endforeach
-                        </select>
-                        <p class="text-xs text-gray-400 md:w-3/6">
-                            On the loss day, the system will apply a negative return between the configured min and max loss percentage
-                            for this trader's package.
-                        </p>
-                    </div>
-                    @error('copy_trader_package_id')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-
-                    @auth
-                        <!-- Terms Agreement -->
-                        <div class="flex items-center space-x-2">
-                            <input type="checkbox" name="terms" id="terms" class="border-gray-600" required />
-                            <label for="terms" class="text-sm">
-                                I have read and I agree to the <span class="text-crypto-primary underline cursor-pointer">User
-                                    Service Agreement</span>
+                    <!-- Auto Invest -->
+                    <div class="border border-gray-700 rounded-lg p-4 bg-zinc-900/60 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-white">Auto-Invest</p>
+                                <p class="text-xs text-gray-400">
+                                    Automatically create new subscriptions using a fixed amount on your chosen frequency.
+                                </p>
+                            </div>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" name="auto_invest_enabled" id="auto-invest-toggle"
+                                       class="sr-only" value="1">
+                                <span class="w-10 h-5 bg-gray-600 rounded-full flex items-center transition-all">
+                                    <span class="dot w-4 h-4 bg-white rounded-full ml-1 transition-transform"></span>
+                                </span>
                             </label>
                         </div>
+
+                        <div id="auto-invest-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4 opacity-40 pointer-events-none">
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium block">Amount</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" step="0.01" name="auto_invest_amount"
+                                           class="flex-1 bg-zinc-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white"
+                                           placeholder="100">
+                                    <span class="text-sm text-gray-300">USDT</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium block">Frequency</label>
+                                <select name="auto_invest_frequency"
+                                        class="bg-zinc-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white w-full">
+                                    <option value="everyday">Everyday</option>
+                                    <option value="7d">7 Days</option>
+                                    <option value="14d">14 Days</option>
+                                    <option value="30d">30 Days</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms & Submit -->
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-2 text-sm">
+                            <input type="checkbox" name="terms" value="1"
+                                   class="bg-zinc-900 border border-gray-700 rounded">
+                            <span>I have read and I agree to the User Agreement</span>
+                        </label>
                         @error('terms')
-                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        <p class="text-xs text-red-400">{{ $message }}</p>
                         @enderror
-                        <!-- Copy Button -->
-                        <button type="submit" class="md:w-1/2 bg-crypto-primary hover:bg-crypto-primary/80 rounded-md text-black font-semibold py-3 text-base">
+
+                        <button type="submit"
+                                class="w-full md:w-1/2 bg-crypto-primary hover:bg-crypto-primary/80 rounded-md text-black font-semibold py-3 text-base">
                             Copy
                         </button>
-                    @endauth
-                </form>
-                <!-- Not Authenticated Message -->
-                @guest
-                    <div>
-                        <a href="{{ route('login') }}" class="w-full bg-[#f0bb0b] hover:bg-[#f0bb0b]/90 text-black font-semibold py-3 px-3 rounded-md">Login
-                            / Signup</a>
                     </div>
-                @endguest
+                </form>
             </div>
 
             <!-- Right Column -->
             <div class="space-y-6">
-                <div class="bg-crypto-accent border-gray-800 p-6 rounded-xl">
+                <div class="bg-crypto-accent border border-gray-800 p-6 rounded-xl">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-crypto-primary rounded-full flex items-center justify-center">
                             <span class="text-black font-bold text-lg">{{ strtoupper(substr($trader->username, 0, 1)) }}</span>
@@ -106,12 +169,6 @@
                         <div>
                             <div class="flex items-center gap-2">
                                 <h3 class="font-semibold">{{ $trader->name }}</h3>
-                                {{-- @if (json_decode($trader->badges, true)['top_performer'])
-                <div class="flex items-center gap-1">
-                  <span class="w-4 h-4 bg-[#f0bb0b]">★</span>
-                  <span class="text-xs text-gray-400">Top Performer</span>
-                </div>
-              @endif --}}
                             </div>
                         </div>
                     </div>
@@ -131,4 +188,50 @@
             </div>
         </div>
     </div>
+
+  
 @endsection
+  @push('scripts')
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const modeInput   = document.getElementById('mode-input');
+        const tabs        = document.querySelectorAll('.mode-tab');
+        const ratioBlock  = document.getElementById('fixed-ratio-block');
+        const amountBlock = document.getElementById('fixed-amount-block');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const mode = tab.dataset.mode;
+                modeInput.value = mode;
+
+                tabs.forEach(t => t.classList.remove('border-crypto-primary', 'text-white'));
+                tabs.forEach(t => t.classList.add('border-transparent', 'text-gray-400'));
+
+                tab.classList.remove('border-transparent', 'text-gray-400');
+                tab.classList.add('border-crypto-primary', 'text-white');
+
+                if (mode === 'fixed_ratio') {
+                    ratioBlock.classList.remove('hidden');
+                    amountBlock.classList.add('hidden');
+                } else {
+                    ratioBlock.classList.add('hidden');
+                    amountBlock.classList.remove('hidden');
+                }
+            });
+        });
+
+        const toggle           = document.getElementById('auto-invest-toggle');
+        const autoFields       = document.getElementById('auto-invest-fields');
+        const autoFieldsInputs = autoFields.querySelectorAll('input, select');
+
+        toggle.addEventListener('change', function () {
+            const enabled = this.checked;
+            if (enabled) {
+                autoFields.classList.remove('opacity-40', 'pointer-events-none');
+            } else {
+                autoFields.classList.add('opacity-40', 'pointer-events-none');
+            }
+        });
+    });
+    </script>
+    @endpush
