@@ -25,20 +25,20 @@ Route::get('/nft/profile', [WebController::class, 'nftProfile'])->name('web.nft.
 Route::get('/nft/collection', [WebController::class, 'nftCollection'])->name('web.nft.collection');
 Route::get('/copy-trading', [WebController::class, 'copyTrading'])->name('web.copytrading');
 Route::get('/copy-trading/trader/{username}', [WebController::class, 'copyTraderProfile'])->name('web.copytrading.detail');
-Route::get('copy-trader/{username}/invest', [UserCopyTraderController::class, 'create'])->name('web.copytrading.create');
-Route::post('copy-trader/{id}/invest', [UserCopyTraderController::class, 'invest'])->name('web.copytrading.invest');
 Route::get('/trading-bots', [WebController::class, 'tradingBots'])->name('web.tradingbots');
 Route::get('/arbitrage-bots', [WebController::class, 'arbitrageBots'])->name('web.arbitragebots');
 Route::get('/arbitrage-bots/{id}', [WebController::class, 'arbitrageBotsDetail'])->name('web.arbitragebots.detail');
-Route::post('/arbitrage-subscriptions', [ArbitrageSubscriptionController::class, 'store'])->name('arbitrage.subscription.store');
 Route::get('/earn/overview', [WebController::class, 'earnOverview'])->name('web.earn.overview');
 Route::get('/markets', [WebController::class, 'markets'])->name('web.markets');
 // route('web.earn.overview')
 // User Dashboard
-Route::get('/dashboard', [WebController::class, 'dashboard'])
-    ->middleware(['auth', 'verified'])
-    ->name('user.dashboard');
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('copy-trader/{username}/invest', [UserCopyTraderController::class, 'create'])->name('web.copytrading.create');
+    Route::post('/arbitrage-subscriptions', [ArbitrageSubscriptionController::class, 'store'])->name('arbitrage.subscription.store');
+    Route::post('copy-trader/{id}/invest', [UserCopyTraderController::class, 'invest'])->name('web.copytrading.invest');
+    Route::get('/dashboard', [WebController::class, 'dashboard'])
+        ->middleware(['auth', 'verified'])
+        ->name('user.dashboard');
     Route::post('/notifications/{id}/read', function ($id) {
         $notification = auth()->user()->notifications()->findOrFail($id);
         $notification->markAsRead();

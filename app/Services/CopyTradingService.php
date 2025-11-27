@@ -20,7 +20,10 @@ class CopyTradingService
     {
         return DB::transaction(function () use ($userId, $copyTraderId, $amount, $periodDays) {
             // validate period_days however you like (or remove this)
-            $validPeriods = [7, 10, 30]; // or derive from packages
+            $validPeriods = []; // or derive from packages
+            foreach (CopyTraderPackage::where('copy_trader_id', $copyTraderId)->get() as $package) {
+                $validPeriods[] = $package->copyTradingPackage->duration_days;
+            }
             if (!in_array($periodDays, $validPeriods)) {
                 throw new \InvalidArgumentException('Invalid investment period.');
             }
