@@ -6,6 +6,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
+                    @guest
                     <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
                         Trade smarter,<br>
                         just copy trading!
@@ -16,6 +17,20 @@
                         </svg>
                         <span class="text-gray-300">Upcoming elite trader list requirements and perks</span>
                     </div>
+                    @endguest
+                    @auth
+                        <div class="flex gap-1 items-center font-medium decoration-dotted text-sm">
+                            Total Copying Balance
+                            <button class="cursor-pointer" onclick="this.querySelector('i').className='fa-solid fa-eye'"><i class="fa-solid fa-eye text-sm text-gray-300"></i></button>
+                        </div>
+                        <h2 class="text-4xl my-2 xl:my-3 font-bold">
+                            {{ Auth::guard('web')->user()->copyInvestments()->where('status', 'active')->sum('net_investment') }} <small class="text-xl font-medium">USDT</small>
+                        </h2>
+                        <p class="text-sm mb-3">Total Unrealized PnL {{ Auth::guard('web')->user()->totalUnrealizedPnl() ?? '--'  }}</p>
+                        <a href="#" class="bg-crypto-primary text-center cursor-pointer text-black py-2 px-4 rounded text-sm font-medium hover:bg-crypto-primary/80 transition-colors">
+                            Copy Overview
+                        </a>
+                    @endauth
                 </div>
 
                 <div class="relative">
@@ -309,7 +324,7 @@
         </div>
     </section>
 
-    @foreach ($copyTraders as $trader)        
+    @foreach ($copyTraders as $trader)
         <!-- HappyTrading Detailed Modal -->
         <div id="copy-{{ $trader->id }}-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
 
@@ -397,7 +412,7 @@
                                             $riskLevel = $trader->risk_level;
                                             $yellowDots = match($riskLevel) {
                                                 'low' => 1,
-                                                'medium' => 3, 
+                                                'medium' => 3,
                                                 'high' => 5,
                                                 default => 0
                                             };

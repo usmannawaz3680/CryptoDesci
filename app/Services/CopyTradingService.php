@@ -19,10 +19,37 @@ class CopyTradingService
     public function investFixedRatio(int $userId, int $copyTraderId, float $amount, int $periodDays): UserCopyInvestment
     {
         return DB::transaction(function () use ($userId, $copyTraderId, $amount, $periodDays) {
-            // validate period_days however you like (or remove this)
-            $validPeriods = [7, 10, 30]; // or derive from packages
-            if (!in_array($periodDays, $validPeriods)) {
-                throw new \InvalidArgumentException('Invalid investment period.');
+            // Normalize periodDays against available package durations for this trader.
+            // If no packages exist, allow the provided periodDays. If packages exist but no exact match,
+            // pick the closest duration to avoid hard failures during auto-invest.
+            $validPeriods = [];
+            foreach (CopyTraderPackage::where('copy_trader_id', $copyTraderId)->get() as $package) {
+                $validPeriods[] = $package->copyTradingPackage->duration_days;
+            }
+
+            if (!empty($validPeriods)) {
+                // Remove non-positive and duplicates
+                $validPeriods = array_values(array_unique(array_filter($validPeriods, fn($d) => (int)$d > 0)));
+                if (!in_array($periodDays, $validPeriods, true)) {
+                    // Choose closest valid duration
+                    $closest = null;
+                    $closestDiff = PHP_INT_MAX;
+                    foreach ($validPeriods as $d) {
+                        $diff = abs($d - $periodDays);
+                        if ($diff < $closestDiff) {
+                            $closestDiff = $diff;
+                            $closest = $d;
+                        }
+                    }
+                    if ($closest !== null) {
+                        $periodDays = $closest;
+                    }
+                }
+            } else {
+                // No packages → accept provided periodDays as-is
+                if ($periodDays <= 0) {
+                    $periodDays = 1; // minimal sane default
+                }
             }
 
             $range = CopyTraderFeeProfit::where('copy_trader_id', $copyTraderId)

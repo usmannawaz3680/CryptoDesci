@@ -1,0 +1,29 @@
+{
+    "name": "Desci Crypto",
+    "short_name": "desci",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#131314",
+    "theme_color": "#dfff00",
+    "icons": [
+        {
+            "src": "assets/images/bitcoin.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshots/Screenshot 2025-11-29 161430.png",
+            "type": "image/jpeg",
+            "sizes": "1427x781",
+            "form_factor": "wide"
+        },
+        {
+            "src": "screenshots/Screenshot 2025-11-29 164046.png",
+            "type": "image/jpeg",
+            "sizes": "427x832",
+            "form_factor": "narrow"
+        }
+    ]
+}

@@ -2,7 +2,7 @@
 @section('title', 'Home')
 @section('content')
     <section>
-        <div class="min-h-screen w-full">
+        <div class="min-h-screen w-full px-4 xl:px-0">
             <div class="max-w-7xl mx-auto py-12">
                 <!-- TradingView Widget BEGIN -->
                 {{-- <div class="tradingview-widget-container">

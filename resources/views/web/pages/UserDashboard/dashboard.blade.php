@@ -8,9 +8,9 @@
 
 @section('content')
     <div class="overflow-x-hidden custom-scrollbar bg-neutral-900">
-        <div class="content-area page-transition">
+        <div class="content-area page-transition mt-20 md:mt-0">
             <!-- User Profile Section -->
-            <div class="p-4 md:p-6">
+            <div class="p-4 md:p-6 mt-50 md:mt-10">
                 <div class="flex flex-col md:flex-row md:items-center flex-wrap">
                     <!-- User Avatar and Name -->
                     <div class="flex items-center mb-4 md:mb-0">

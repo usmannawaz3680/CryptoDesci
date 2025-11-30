@@ -59,8 +59,11 @@ class UserCopyTraderController extends Controller
 
         $validated = $request->validate($rules);
 
-        $userId = Auth::guard('web')->id();
-
+        $user = Auth::guard('web')->user();
+        $userId = $user->id;
+        if ($user->wallets()->sum('balance') < ($mode === 'fixed_ratio' ? $validated['amount'] : $validated['copy_amount'])) {
+            return redirect()->back()->with('error', 'Insufficient wallet balance for this investment.');
+        }
         try {
             // 1) Create the main subscription based on mode
             if ($mode === 'fixed_ratio') {
