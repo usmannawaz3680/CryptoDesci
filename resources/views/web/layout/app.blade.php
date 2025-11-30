@@ -9,6 +9,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+        <link rel="manifest" href="{{ asset('manifest.json') }}">
         @stack('style')
     </head>
 
@@ -21,12 +22,12 @@
         <!-- Header with highest z-index -->
         <header class="fixed top-0 left-0 right-0 z-50 bg-white border-gray-200 dark:bg-crypto-accent dark:border-gray-700">
             <nav>
-                <div class="w-full flex flex-wrap items-center justify-between md:justify-start md:gap-8 p-4">
+                <div class="w-full flex flex-wrap items-center justify-between md:justify-start md:gap-4 p-4">
                     <a href="{{ url('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{ env('APP_NAME') }}</span>
                     </a>
-                    <div class="flex items-center gap-4 ml-auto">
-                        <div class="xl:hidden flex gap-2">
+                    <div class="flex items-center gap-4 xl:gap-0">
+                        <div class="xl:hidden flex gap-2 xl:gap-0">
                             @auth('web')
                                 <div class="relative group">
                                     <button class="flex items-center focus:outline-none">
@@ -59,7 +60,7 @@
                                             <span class="absolute top-0 right-0 h-2 w-2 bg-crypto-primary rounded-full animate-ping"></span>
                                         @endif
                                     </button>
-    
+
                                     <div x-show="open" @click.away="open = false" x-transition class="absolute -right-10 mt-2 w-80 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg shadow-lg z-50">
                                         <div class="p-4 border-b border-gray-200 dark:border-gray-700 font-semibold">
                                             Notifications
@@ -91,7 +92,7 @@
                                         </ul>
                                     </div>
                                 </div>
-    
+
                             @endauth
                             @if (auth('web')->guest())
                                 <a href="/login" class="bg-crypto-primary text-black font-normal px-3 py-1 rounded hover:bg-crypto-primary/80 transition">Login</a>
@@ -270,7 +271,10 @@
                 </div>
             </main>
         </div>
-
+        {{--    Loader    --}}
+        <div class="absolute w-full h-screen start-0 top-0 flex bg-crypto-accent/40 items-center justify-center z-[999]" id="loader">
+            <i class="fa-solid fa-circle-notch fa-spin text-4xl"></i>
+        </div>
         <!-- Footer -->
         <footer class="bg-crypto-accent/90 text-white py-8 transition-all duration-300 ease-in-out" @hasSection('sidebar')
             :class="sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-72'"
@@ -348,7 +352,7 @@
             show = true; message = '{{ session('warning') }}'; type = 'warning';
         @elseif(session('info'))
             show = true; message = '{{ session('info') }}'; type = 'info'; @endif
-        
+
         if (show) {
             setTimeout(() => show = false, 5000);
         }" x-show="show" x-transition class="fixed bottom-5 right-5 z-50">

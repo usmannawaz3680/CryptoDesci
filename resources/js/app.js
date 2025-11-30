@@ -5,7 +5,6 @@ import "datatables.net-dt/css/dataTables.dataTables.css";
 import $ from "jquery";
 import Alpine from 'alpinejs'
 import { collapse } from "@alpinejs/collapse";
-
 window.Alpine = Alpine
 
 Alpine.start()
@@ -29,4 +28,9 @@ $(document).ready(function () {
             columnDefs: [{ orderable: false, targets: [3] }],
         });
     });
+});
+let loaderDiv = document.getElementById('loader');
+window.addEventListener('load', function() {
+    loaderDiv.classList.remove('flex');
+    loaderDiv.classList.add('hidden');
 });

@@ -47,7 +47,7 @@ class UserCopyInvestment extends Model
 
     public function transactions()
     {
-        return $this->hasMany(CopyTransaction::class);
+        return $this->hasMany(CopyTransaction::class, 'user_investment_id');
     }
 
     // Method to get current balance from transactions

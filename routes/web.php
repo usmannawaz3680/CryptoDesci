@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CopyPortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\AdminAuthController;
@@ -49,6 +50,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/withdrawls', [WebController::class, 'withdrawls'])->name('user.withdrawls');
     Route::post('/withdraw/submit', [WithdrawlController::class, 'submit'])->name('user.withdraw.submit');
     Route::get('dashboard/assets', [WebController::class, 'assets'])->name('user.assets');
+    Route::get('/copy-trading/portfolio', [CopyPortfolioController::class, 'index'])
+        ->name('copy-portfolio.index');
+    Route::post('/copy-trading/auto-invest/{auto}/cancel', [CopyPortfolioController::class, 'cancelAutoInvest'])
+        ->name('copy-auto-invest.cancel');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

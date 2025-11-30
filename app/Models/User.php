@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -46,6 +47,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Withdrawl::class, 'user_id', 'id');
     }
+
+    public function CopyInvestmentCount() : int
+    {
+        return $this->hasMany(UserCopyInvestment::class, 'user_id', 'id')->count();
+    }
+    public function copyInvestments() : HasMany
+    {
+        return $this->hasMany(UserCopyInvestment::class, 'user_id', 'id');
+    }
+    public function totalUnrealizedPnl()
+    {
+        return $this->copyInvestments()
+            ->where('status', 'active')
+            ->get()
+            ->sum(function ($inv) {
+                return $inv->transactions()->sum('amount') - $inv->net_investment;
+            });
+    }
+
     /**
      * Get the attributes that should be cast.
      *
